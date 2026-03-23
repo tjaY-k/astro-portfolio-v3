@@ -5,6 +5,7 @@ slug: one-zabeel-2024
 pubDate: 2024-01-01
 year: 2024
 featured: true
+cover_image: https://picsum.photos/id/1015/800/600
 image: https://picsum.photos/id/1015/800/600
 video: "https://assets.mixkit.co/videos/preview/123/123-small.mp4"
 tech: ["disguise", "Projection Mapping", "Panasonic Projectors"]

@@ -24,8 +24,8 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   name: 'Konstantin Laptev',
-  title: 'Video Technical Manager',
-  url: 'https://tjay-k.github.io/astro-portfolio-v3', // ← поменяй на свой .pages.dev после первого деплоя
+  title: 'Video Technical Manager & Senior disguise Operator',
+  url: 'https://konstantin-laptev.pages.dev',
   description:
     'Senior disguise Operator & Video Technical Manager | Projection Mapping • Media Servers • xR | 18+ лет опыта | F1, Soundstorm, FIFA World Cup, Noor Riyadh',
   tagline: 'Projection Mapping • disguise • xR • LED',

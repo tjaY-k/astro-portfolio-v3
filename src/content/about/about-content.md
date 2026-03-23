@@ -1,32 +1,21 @@
 ---
-title: About Lewis Kori
+title: About Konstantin Laptev
 subtitle: Entrepreneur, Operator, and Builder of Systems
 ---
 
-I am an entrepreneur focused on building products, platforms, and companies that compound over time. My work sits at the intersection of technology, product, and business strategy, with a bias toward ownership, long-term thinking, and execution.
+Hi, I'm Konstantin Laptev.
 
-I started my career deep in software engineering, where I learned how systems fail, scale, and succeed in the real world. Over time, my role expanded beyond code into product design, infrastructure, analytics, and ultimately company building. That progression shapes how I operate today: I think in systems, but I act through products.
+**Video Technical Manager & Senior disguise Operator** with over 18 years turning venues into unforgettable immersive visual experiences.
 
-I currently build and operate multiple ventures, including [Inflection Studio](https://inflectionstudio.io/), while advising founders and leadership teams on critical product and technology decisions. I am selective about where I spend time and energy, preferring problems that require judgment, not just effort.
+I specialize in projection mapping, media server programming (disguise d3, Pixera, Resolume), xR virtual production and LED screen planning for the world's biggest events — from record-breaking structures to festivals with 600,000+ attendees.
 
-I am interested in businesses that value trust, clarity, and durability over speed for its own sake. I optimise for leverage, learning and compounding outcomes rather than short-term wins.
+Whether it's delivering the world's longest projection mapping on ONE Zabeel, managing site-wide video systems for MDL Soundstorm, operating xR studios for broadcast or running technical video operations for Formula 1 and FIFA World Cup — I bring technical precision and creative vision to every project.
 
-## What I Do
+**Ready to create something epic together?**
 
-### Venture Building
+- Explore my **[Projects](/projects)** — see the biggest shows I've delivered  
+- Check my **[Advisory & Consulting Services](/advisory)** — projection mapping, media servers, xR setup and technical audits  
+- View my full **[Experience](/)** and **[Skills](/)**  
+- Or just **[get in touch](/contact)** — I'm always open to new collaborations worldwide (Dubai-based)
 
-I design, build, and operate digital products from concept to market. This includes defining product strategy, assembling teams, shipping platforms, and iterating based on real-world usage.
-
-[View Projects ↗](/projects)
-
-### Advisory & Strategy
-
-I work with founders and leadership teams navigating product, technology, and growth decisions. Engagements are selective and focused on clarity rather than execution volume.
-
-[Learn More ↗](/advisory)
-
-### Writing & Thought Work
-
-Through essays and my newsletter, I explore edge cases in technology, business, and human decision-making. Writing is a tool for thinking clearly and sharing patterns learned through building.
-
-[Read Articles ↗](/blog)
+Let's make the next big event visually unforgettable.

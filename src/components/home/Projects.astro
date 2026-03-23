@@ -4,10 +4,12 @@ import { ArrowIcon } from '../ui/icons';
 
 const allProjects = await getCollection('projects');
 
+// Filter only featured projects and sort by year (descending)
 const projects = allProjects
   .filter((p) => p.data.featured === true)
   .sort((a, b) => b.data.year - a.data.year);
 
+// Get project body content for modal
 const projectsWithContent = await Promise.all(
   projects.map(async (project) => {
     const { Content } = await project.render();
@@ -19,23 +21,39 @@ const projectsWithContent = await Promise.all(
 <section class='py-20 relative' id='projects'>
   <div class='container-fluid'>
     <div>
-      <h2 class='text-4xl font-semibold text-foreground mb-3 text-center first-letter-color'>
+      <h2
+        class='text-4xl font-semibold text-foreground mb-3 text-center first-letter-color'
+      >
         Featured Projects
       </h2>
       <p class='text-center text-muted-foreground text-lg mb-3'>
         A selection of my recent work
       </p>
-      <div class='h-1 w-20 bg-linear-to-r from-primary to-secondary rounded-full mx-auto mb-16'></div>
+      <div
+        class='h-1 w-20 bg-linear-to-r from-primary to-secondary rounded-full mx-auto mb-16'
+      >
+      </div>
     </div>
 
-    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-[300px]'>
+    <!-- Masonry Grid -->
+    <div
+      class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 auto-rows-[300px]'
+    >
       {
         projectsWithContent.map(({ project }, index) => {
           const getGridClass = (i: number) => {
-            const patterns = ['md:col-span-2 md:row-span-2', 'md:col-span-1 md:row-span-1', 'md:col-span-1 md:row-span-1', 'md:col-span-1 md:row-span-1', 'md:col-span-2 md:row-span-1', 'md:col-span-1 md:row-span-1', 'md:col-span-2 md:row-span-2', 'md:col-span-1 md:row-span-1'];
+            const patterns = [
+              'md:col-span-2 md:row-span-2',
+              'md:col-span-1 md:row-span-1',
+              'md:col-span-1 md:row-span-1',
+              'md:col-span-1 md:row-span-1',
+              'md:col-span-2 md:row-span-1',
+              'md:col-span-1 md:row-span-1',
+              'md:col-span-2 md:row-span-2',
+              'md:col-span-1 md:row-span-1',
+            ];
             return patterns[i % patterns.length];
           };
-
           return (
             <article
               class={`group relative overflow-hidden rounded-xl border border-border/50 bg-card hover:border-primary/30 transition-all duration-500 hover:shadow-xl hover:shadow-primary/5 cursor-pointer animate-blur-fade ${getGridClass(index)}`}
@@ -55,18 +73,40 @@ const projectsWithContent = await Promise.all(
               ) : (
                 <div class='absolute inset-0 overflow-hidden bg-linear-to-br from-primary/20 to-secondary/20' />
               )}
-
               <div class='relative h-full flex flex-col justify-end p-6 space-y-4'>
-                <h3 class='text-2xl font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] group-hover:text-primary-foreground transition-colors first-letter-color'>
+                <h3 class='text-2xl font-bold text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] group-hover:text-primary-foreground retro:group-hover:text-primary dark:group-hover:text-primary transition-colors first-letter-color'>
                   {project.data.title}
                 </h3>
-
+                <p class='text-white/90 leading-relaxed line-clamp-2 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]'>
+                  {project.data.made_at && `Made at ${project.data.made_at}`}
+                </p>
                 <div class='flex flex-wrap gap-2'>
                   {project.data.tech.slice(0, 3).map((tech) => (
                     <span class='px-3 py-1 bg-white/20 text-white rounded-full text-xs font-medium border border-white/30 backdrop-blur-sm'>
                       {tech}
                     </span>
                   ))}
+                  {project.data.tech.length > 3 && (
+                    <span class='px-3 py-1 bg-white/20 text-white/80 rounded-full text-xs font-medium backdrop-blur-sm'>
+                      +{project.data.tech.length - 3}
+                    </span>
+                  )}
+                </div>
+                <div class='flex items-center gap-2 text-white font-medium pt-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]'>
+                  <span>View Details</span>
+                  <svg
+                    class='w-4 h-4 group-hover:translate-x-1 transition-transform'
+                    fill='none'
+                    viewBox='0 0 24 24'
+                    stroke='currentColor'
+                  >
+                    <path
+                      stroke-linecap='round'
+                      stroke-linejoin='round'
+                      stroke-width='2'
+                      d='M17 8l4 4m0 0l-4 4m4-4H3'
+                    />
+                  </svg>
                 </div>
               </div>
             </article>
@@ -75,8 +115,12 @@ const projectsWithContent = await Promise.all(
       }
     </div>
 
+    <!-- View All Projects Link -->
     <div class='text-center mt-10'>
-      <a href='/projects' class='inline-flex items-center gap-2 px-5 text-sm py-2.5 border border-primary text-primary rounded-md font-medium hover:bg-primary hover:text-background transition-all hover:scale-105'>
+      <a
+        href='/projects'
+        class='inline-flex items-center gap-2 px-5 text-sm py-2.5 border border-primary text-primary rounded-md font-medium hover:bg-primary hover:text-background transition-all hover:scale-105'
+      >
         View All Projects
         <ArrowIcon class='w-4 h-4' />
       </a>
@@ -84,65 +128,130 @@ const projectsWithContent = await Promise.all(
   </div>
 </section>
 
-<!-- Project Modal -->
-<dialog id='project-modal' class='backdrop:bg-background/90 backdrop:backdrop-blur-md bg-card border border-border rounded-3xl max-w-4xl w-full p-0 shadow-2xl m-auto max-h-[95vh] overflow-hidden'>
-  <div class='relative max-h-[95vh] overflow-y-auto p-8 md:p-10' id='modal-content'></div>
+<!-- Modal -->
+<dialog
+  id='project-modal'
+  class='backdrop:bg-background/80 backdrop:backdrop-blur-sm bg-card border border-border/50 rounded-2xl max-w-3xl w-full p-0 shadow-2xl m-auto'
+>
+  <div
+    class='relative max-h-[90vh] overflow-y-auto project-modal-content pb-8'
+    id='modal-content'
+  >
+    <!-- Content will be injected here -->
+  </div>
 </dialog>
 
-<script define:vars={{ projectsData: projectsWithContent.map(({ project }) => ({
-  id: project.id,
-  title: project.data.title,
-  description: project.data.description || '',
-  tech: project.data.tech || [],
-  image: project.data.cover_image || project.data.image,
-  video_url: project.data.video_url,
-  external_link: project.data.external_link,
-  year: project.data.year,
-})) }}>
+<script
+  define:vars={{
+    projectsData: projectsWithContent.map(({ project, Content }) => ({
+      id: project.id,
+      title: project.data.title,
+      tech: project.data.tech,
+      cover_image: project.data.cover_image,
+      external_link: project.data.external_link,
+      github_link: project.data.github_link,
+      app_store: project.data.app_store,
+      google_play: project.data.google_play,
+      made_at: project.data.made_at,
+      year: project.data.year,
+      body: project.body,
+      video_url: project.data.video_url,   // ← новое поле
+    })),
+  }}
+>
   function initProjectModals() {
-    const cards = document.querySelectorAll('[data-project-id]');
+    const projectCards = document.querySelectorAll('[data-project-id]');
     const modal = document.getElementById('project-modal');
     const modalContent = document.getElementById('modal-content');
+    if (!modal || !modalContent) return;
 
-    cards.forEach(card => {
+    projectCards.forEach((card) => {
       card.addEventListener('click', () => {
-        const id = card.getAttribute('data-project-id');
-        const project = projectsData.find(p => p.id === id);
+        const projectId = card.getAttribute('data-project-id');
+        const project = projectsData.find((p) => p.id === projectId);
         if (!project) return;
 
-        const html = `
-          <div>
-            ${project.image ? `<img src="${project.image}" class="w-full rounded-2xl mb-8 shadow-xl">` : ''}
-            
-            <h2 class="text-4xl font-bold mb-2 text-foreground">${project.title}</h2>
-            <p class="text-muted-foreground text-lg leading-relaxed mb-8">${project.description}</p>
-            
-            <div class="flex flex-wrap gap-3 mb-10">
-              ${project.tech.map(t => `<span class="px-5 py-2 bg-secondary/90 text-sm rounded-full font-medium">${t}</span>`).join('')}
-            </div>
-
-            <div class="flex flex-wrap gap-3">
-              ${project.external_link 
-                ? `<a href="${project.external_link}" target="_blank" class="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all">Visit Website <span class="text-xl">→</span></a>` 
-                : ''}
-              
-              ${project.video_url 
-                ? `<button onclick="showVideo('${project.video_url}')" 
-                         class="inline-flex items-center gap-3 bg-secondary hover:bg-secondary/90 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all">Watch Video ▶</button>` 
-                : ''}
-            </div>
-
-            <button onclick="document.getElementById('project-modal').close()" 
-                    class="absolute top-6 right-6 text-4xl text-muted-foreground hover:text-foreground transition-colors">×</button>
+        const linksHtml = `
+          <div class="flex flex-wrap gap-3">
+            ${
+              project.external_link
+                ? `
+              <a href="${project.external_link}" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 px-5 text-sm py-2.5 bg-primary text-background rounded-md font-medium hover:bg-primary/90 transition-all">
+                Visit Website
+              </a>
+            `
+                : ''
+            }
+            ${
+              project.video_url
+                ? `
+              <button onclick="showVideo('${project.video_url}')"
+                class="inline-flex items-center gap-2 px-5 text-sm py-2.5 bg-secondary text-white rounded-md font-medium hover:bg-secondary/90 transition-all">
+                Watch Video ▶
+              </button>
+            `
+                : ''
+            }
           </div>
         `;
 
-        modalContent.innerHTML = html;
+        modalContent.innerHTML = `
+          <button onclick="document.getElementById('project-modal').close()"
+            class="absolute top-4 right-4 z-10 p-2 rounded-full bg-background/80 backdrop-blur-sm border border-border hover:bg-muted transition-colors">
+            <svg class="w-6 h-6 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+          ${
+            project.cover_image
+              ? `<div class="aspect-[16/9] overflow-hidden">
+                   <img src="${project.cover_image}" alt="${project.title}"
+                     class="w-full h-full object-cover" />
+                 </div>`
+              : ''
+          }
+          <div class="p-8 space-y-6">
+            <div>
+              <h2 class="text-4xl font-bold text-foreground mb-2">${project.title}</h2>
+              ${project.made_at ? `<p class="text-muted-foreground mb-4">Made at ${project.made_at} • ${project.year}</p>` : ''}
+              <div class="text-muted-foreground text-lg leading-relaxed prose prose-lg dark:prose-invert max-w-none">
+                ${project.body}
+              </div>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-foreground mb-3">Tech Stack</h3>
+              <div class="flex flex-wrap gap-2">
+                ${(project.tech || [])
+                  .map(
+                    (tech) =>
+                      `<span class="px-3.5 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-medium border border-primary/20">${tech}</span>`,
+                  )
+                  .join('')}
+              </div>
+            </div>
+            ${linksHtml}
+          </div>
+        `;
         modal.showModal();
       });
     });
+
+    // Close on backdrop click
+    modal.addEventListener('click', (e) => {
+      const rect = modal.getBoundingClientRect();
+      if (
+        e.clientX < rect.left ||
+        e.clientX > rect.right ||
+        e.clientY < rect.top ||
+        e.clientY > rect.bottom
+      ) {
+        modal.close();
+      }
+    });
   }
 
+  // Функция открытия iframe
   window.showVideo = function(url) {
     const modalContent = document.getElementById('modal-content');
     modalContent.innerHTML = `
@@ -157,5 +266,14 @@ const projectsWithContent = await Promise.all(
     `;
   };
 
-  document.addEventListener('DOMContentLoaded', initProjectModals);
+  // Initialize
+  initProjectModals();
+  document.addEventListener('astro:page-load', initProjectModals);
 </script>
+
+<style>
+  dialog::backdrop { animation: fade-in 0.3s ease-out; }
+  dialog[open] { animation: scale-fade-in 0.3s ease-out; }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes scale-fade-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+</style>

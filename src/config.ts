@@ -23,7 +23,7 @@ export interface SiteConfig {
 }
 export const siteConfig: SiteConfig = {
   name: 'Konstantin Laptev',
-  title: 'Lewis Kori – Building Products, Systems, and Leverage',
+  title: 'K- L',
   url: 'https://lewiskori.com',
   description:
     'Entrepreneur and product builder working at the intersection of technology, capital, and trust. Building platforms, advising institutions, and exploring how systems scale.',
@@ -31,8 +31,8 @@ export const siteConfig: SiteConfig = {
   authorDescription:
     'I am an entrepreneur and technologist focused on building scalable digital products, trusted platforms and businesses designed for long-term impact. My work spans product development, venture building and advisory across technology-driven markets.',
   avatar: aboutImage,
-  location: '  Kenya',
-  email: 'n8tocd0jy@mozmail.com',
-  phone: '+254 712 345678',
+  location: 'Dubai, UAE',
+  email: 'kslaptev@gmail.com',
+  phone: '+971 58 5716150',
   profileImage: profileImage,
 };

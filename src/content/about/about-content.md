@@ -3,7 +3,7 @@ title: About Konstantin Laptev
 subtitle: Video Technical Manager
 ---
 
-Hi, I'm Konstantin Laptev.
+Hi, I'm Konstantin Laptev
 
 **Video Technical Manager & Senior disguise Operator** with over 18 years turning venues into unforgettable immersive visual experiences.
 

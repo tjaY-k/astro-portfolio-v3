@@ -1,6 +1,6 @@
 ---
 title: About Konstantin Laptev
-subtitle: Entrepreneur, Operator, and Builder of Systems
+subtitle: Video Technical Manager
 ---
 
 Hi, I'm Konstantin Laptev.

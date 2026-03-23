@@ -1,5 +1,5 @@
 import aboutImage from '@/assets/about-image.webp';
-import profileImage from '@/assets/lewis-profile-no-bg.webp';
+import profileImage from '@/assets/K-profile.webp';
 
 export interface SocialData {
   name: string;

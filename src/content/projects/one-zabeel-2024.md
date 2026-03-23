@@ -6,6 +6,7 @@ pubDate: 2024-01-01
 year: 2024
 featured: true
 image: https://picsum.photos/id/1015/800/600
+video: "https://assets.mixkit.co/videos/preview/123/123-small.mp4"
 tech: ["disguise", "Projection Mapping", "Panasonic Projectors"]
 external_link: "https://www.disguise.one/en/insights/news/oneonly-celebrates-landmark-hotel-launch-record-breaking-projection-powered-disguise"
 ---

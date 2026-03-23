@@ -21,16 +21,18 @@ export interface SiteConfig {
   email: string;
   phone: string;
 }
-
 export const siteConfig: SiteConfig = {
- export const SITE = {
-  title: "Konstantin Laptev",
-  description: "Video Technical Manager & Senior disguise Operator | Projection Mapping • Media Servers • xR | F1, Soundstorm, FIFA World Cup",
-  author: "Konstantin Laptev",
-  location: "Dubai, UAE",
-  email: "kslaptev@gmail.com",
-  phone: "+971 58 571 6150",
-  linkedin: "https://linkedin.com/in/konstantin-laptev-72b70595",
-  // ... остальное оставь как есть
-}
+  name: 'Konstantin Laptev',
+  title: 'Lewis Kori – Building Products, Systems, and Leverage',
+  url: 'https://lewiskori.com',
+  description:
+    'Entrepreneur and product builder working at the intersection of technology, capital, and trust. Building platforms, advising institutions, and exploring how systems scale.',
+  tagline: 'Building Products, Systems and Companies That Endure',
+  authorDescription:
+    'I am an entrepreneur and technologist focused on building scalable digital products, trusted platforms and businesses designed for long-term impact. My work spans product development, venture building and advisory across technology-driven markets.',
+  avatar: aboutImage,
+  location: '  Kenya',
+  email: 'n8tocd0jy@mozmail.com',
+  phone: '+254 712 345678',
+  profileImage: profileImage,
 };

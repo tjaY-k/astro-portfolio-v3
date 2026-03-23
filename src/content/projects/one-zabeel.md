@@ -3,6 +3,7 @@ title: ONE Zabeel Opening 2024
 description: "World's longest projection mapping on a 230-meter building. Full cycle: 3D study, mapping, disguise programming and onsite execution."
 slug: one-zabeel-2024
 pubDate: 2024-01-01
+year: 2024
 image: https://picsum.photos/id/1015/800/600
 tech: ["disguise", "Projection Mapping", "Panasonic Projectors"]
 links:

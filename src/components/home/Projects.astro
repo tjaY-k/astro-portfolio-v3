@@ -99,14 +99,14 @@ const projectsWithContent = await Promise.all(
 
 <!-- Project Modal -->
 <dialog id='project-modal' class='backdrop:bg-background/90 backdrop:backdrop-blur-md bg-card border border-border rounded-3xl max-w-4xl w-full p-0 shadow-2xl m-auto max-h-[95vh] overflow-hidden'>
-  <div class='relative max-h-[95vh] overflow-y-auto' id='modal-content'></div>
+  <div class='relative max-h-[95vh] overflow-y-auto p-8 md:p-10' id='modal-content'></div>
 </dialog>
 
 <script define:vars={{ projectsData: projectsWithContent.map(({ project }) => ({
   id: project.id,
   title: project.data.title,
-  description: project.data.description,
-  tech: project.data.tech,
+  description: project.data.description || '',
+  tech: project.data.tech || [],
   image: project.data.cover_image || project.data.image,
   video: project.data.video,
   external_link: project.data.external_link,
@@ -124,7 +124,7 @@ const projectsWithContent = await Promise.all(
         if (!project) return;
 
         const html = `
-          <div class="p-8 md:p-10">
+          <div>
             ${project.video 
               ? `<video src="${project.video}" controls autoplay class="w-full rounded-2xl mb-8 shadow-xl"></video>` 
               : `<img src="${project.image}" class="w-full rounded-2xl mb-8 shadow-xl">`
@@ -134,7 +134,7 @@ const projectsWithContent = await Promise.all(
             <p class="text-muted-foreground text-lg leading-relaxed mb-8">${project.description}</p>
             
             <div class="flex flex-wrap gap-3 mb-10">
-              ${project.tech.map(t => `<span class="px-5 py-2 bg-secondary text-sm rounded-full font-medium">${t}</span>`).join('')}
+              ${project.tech.map(t => `<span class="px-5 py-2 bg-secondary/90 text-sm rounded-full font-medium">${t}</span>`).join('')}
             </div>
 
             ${project.external_link 

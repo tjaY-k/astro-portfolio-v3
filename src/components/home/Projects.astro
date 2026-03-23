@@ -98,10 +98,8 @@ const projectsWithContent = await Promise.all(
 </section>
 
 <!-- Project Modal -->
-<dialog id='project-modal' class='backdrop:bg-background/80 backdrop:backdrop-blur-sm bg-card border border-border/50 rounded-2xl max-w-3xl w-full p-0 shadow-2xl m-auto max-h-[90vh] overflow-hidden'>
-  <div class='relative max-h-[90vh] overflow-y-auto' id='modal-content'>
-    <!-- Content injected by JavaScript -->
-  </div>
+<dialog id='project-modal' class='backdrop:bg-background/90 backdrop:backdrop-blur-md bg-card border border-border rounded-3xl max-w-4xl w-full p-0 shadow-2xl m-auto max-h-[95vh] overflow-hidden'>
+  <div class='relative max-h-[95vh] overflow-y-auto' id='modal-content'></div>
 </dialog>
 
 <script define:vars={{ projectsData: projectsWithContent.map(({ project }) => ({
@@ -113,7 +111,6 @@ const projectsWithContent = await Promise.all(
   video: project.data.video,
   external_link: project.data.external_link,
   year: project.data.year,
-  body: project.body,
 })) }}>
   function initProjectModals() {
     const cards = document.querySelectorAll('[data-project-id]');
@@ -126,22 +123,26 @@ const projectsWithContent = await Promise.all(
         const project = projectsData.find(p => p.id === id);
         if (!project) return;
 
-        let html = `
-          <div class="p-8">
-            ${project.video ? `<video src="${project.video}" controls class="w-full rounded-xl mb-6"></video>` : 
-              `<img src="${project.image}" class="w-full rounded-xl mb-6">`}
+        const html = `
+          <div class="p-8 md:p-10">
+            ${project.video 
+              ? `<video src="${project.video}" controls autoplay class="w-full rounded-2xl mb-8 shadow-xl"></video>` 
+              : `<img src="${project.image}" class="w-full rounded-2xl mb-8 shadow-xl">`
+            }
             
-            <h2 class="text-3xl font-bold mb-2">${project.title}</h2>
-            <p class="text-muted-foreground mb-6">${project.description}</p>
+            <h2 class="text-4xl font-bold mb-2 text-foreground">${project.title}</h2>
+            <p class="text-muted-foreground text-lg leading-relaxed mb-8">${project.description}</p>
             
-            <div class="flex gap-2 flex-wrap mb-8">
-              ${project.tech.map(t => `<span class="px-4 py-1 bg-secondary text-sm rounded-full">${t}</span>`).join('')}
+            <div class="flex flex-wrap gap-3 mb-10">
+              ${project.tech.map(t => `<span class="px-5 py-2 bg-secondary text-sm rounded-full font-medium">${t}</span>`).join('')}
             </div>
 
-            ${project.external_link ? `<a href="${project.external_link}" target="_blank" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-xl font-medium hover:bg-primary/90">Visit Project →</a>` : ''}
+            ${project.external_link 
+              ? `<a href="${project.external_link}" target="_blank" class="inline-flex items-center gap-3 bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-2xl font-semibold text-lg transition-all">Visit Project <span class="text-xl">→</span></a>` 
+              : ''}
             
             <button onclick="document.getElementById('project-modal').close()" 
-                    class="absolute top-4 right-4 text-3xl text-muted-foreground hover:text-foreground">×</button>
+                    class="absolute top-6 right-6 text-4xl text-muted-foreground hover:text-foreground transition-colors">×</button>
           </div>
         `;
 

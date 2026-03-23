@@ -4,6 +4,7 @@ description: "World's longest projection mapping on a 230-meter building. Full c
 slug: one-zabeel-2024
 pubDate: 2024-01-01
 year: 2024
+featured: true
 image: https://picsum.photos/id/1015/800/600
 tech: ["disguise", "Projection Mapping", "Panasonic Projectors"]
 links:

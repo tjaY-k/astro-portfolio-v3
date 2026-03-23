@@ -21,18 +21,19 @@ export interface SiteConfig {
   email: string;
   phone: string;
 }
+
 export const siteConfig: SiteConfig = {
   name: 'Konstantin Laptev',
-  title: 'K- L',
-  url: 'https://lewiskori.com',
+  title: 'Video Technical Manager',
+  url: 'https://tjay-k.github.io/astro-portfolio-v3', // ← поменяй на свой .pages.dev после первого деплоя
   description:
-    'Entrepreneur and product builder working at the intersection of technology, capital, and trust. Building platforms, advising institutions, and exploring how systems scale.',
-  tagline: 'TagLine',
+    'Senior disguise Operator & Video Technical Manager | Projection Mapping • Media Servers • xR | 18+ лет опыта | F1, Soundstorm, FIFA World Cup, Noor Riyadh',
+  tagline: 'Projection Mapping • disguise • xR • LED',
   authorDescription:
-    'I am an entrepreneur and technologist focused on building scalable digital products, trusted platforms and businesses designed for long-term impact. My work spans product development, venture building and advisory across technology-driven markets.',
+    'Dynamic and versatile Video Technical Manager with over 18 years in live production, corporate events and broadcast. Expertise in projection mapping, disguise (d3), Pixera, xR technologies and large-scale events (Formula 1, Soundstorm 600k+, ONE Zabeel world record).',
   avatar: aboutImage,
+  profileImage: profileImage,
   location: 'Dubai, UAE',
   email: 'kslaptev@gmail.com',
-  phone: '+971 58 5716150',
-  profileImage: profileImage,
+  phone: '+971 58 571 6150',
 };

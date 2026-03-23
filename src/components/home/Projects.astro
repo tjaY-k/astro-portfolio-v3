@@ -155,7 +155,7 @@ const projectsWithContent = await Promise.all(
       made_at: project.data.made_at,
       year: project.data.year,
       body: project.body,
-      video_url: project.data.video_url,   // ← новое поле
+      video_url: project.data.video_url,   // ← добавлено
     })),
   }}
 >
@@ -237,7 +237,6 @@ const projectsWithContent = await Promise.all(
       });
     });
 
-    // Close on backdrop click
     modal.addEventListener('click', (e) => {
       const rect = modal.getBoundingClientRect();
       if (
@@ -251,7 +250,6 @@ const projectsWithContent = await Promise.all(
     });
   }
 
-  // Функция открытия iframe
   window.showVideo = function(url) {
     const modalContent = document.getElementById('modal-content');
     modalContent.innerHTML = `

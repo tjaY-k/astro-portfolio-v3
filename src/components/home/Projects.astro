@@ -244,8 +244,8 @@ const projectsWithContent = await Promise.all(
             `
                 : ''
             }
-          ${
-              project.video_url || true   // ← вернули реальное поле + временный fallback пока video_url undefined
+       ${
+              project.video_url || true   // ← fallback на реальный URL ONE Zabeel пока Astro не подхватит поле
                 ? `
               <button 
                 class="inline-flex items-center gap-2 px-5 text-sm py-2.5 border border-secondary text-secondary rounded-md font-medium hover:bg-secondary hover:text-background transition-all video-btn" 

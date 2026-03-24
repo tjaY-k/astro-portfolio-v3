@@ -1,7 +1,7 @@
 const DATA = {
-  siteTitle: 'Lewis Kori – Entrepreneur, Product Builder, Operator',
-  siteDescription: 'Entrepreneur and product builder working at the intersection of technology, capital, and trust. Building platforms, advising institutions, and exploring how systems scale.',
-  siteUrl: 'https://lewis-astro-portfolio.netlify.app',
+  siteTitle: 'Konstantin Laptev - Video Ninja',
+  siteDescription: 'Versatile Video Technical Manager',
+  siteUrl: 'https://konstantin-laptev.pages.dev',
   navLinks: [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },

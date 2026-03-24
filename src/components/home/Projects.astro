@@ -146,6 +146,16 @@ const projectsWithContent = await Promise.all(
   </div>
 </dialog>
 
+<!-- Video Modal для home -->
+<dialog id="videoModalHome" class="backdrop:bg-black/90 bg-black rounded-2xl max-w-4xl w-full p-0 shadow-2xl m-auto hidden">
+  <div class="flex justify-end p-4 border-b border-white/10">
+    <button id="closeVideoModalHome" class="text-3xl text-white/70 hover:text-white">×</button>
+  </div>
+  <div class="aspect-video bg-black">
+    <iframe id="videoFrameHome" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</dialog>
+
 <script
   define:vars={{
     projectsData: projectsWithContent.map(({ project, Content }) => ({
@@ -235,7 +245,7 @@ const projectsWithContent = await Promise.all(
             }
             ${
               project.video_url
-        ? `
+                ? `
       <button
         class="inline-flex items-center gap-2 px-5 text-sm py-2.5 border border-secondary text-secondary rounded-md font-medium hover:bg-secondary hover:text-background transition-all video-btn"
         data-video-url="${project.video_url}"
@@ -247,8 +257,8 @@ const projectsWithContent = await Promise.all(
         Watch Video
       </button>
     `
-        : ''
-    }
+                : ''
+            }
           </div>
         `;
 
@@ -317,42 +327,39 @@ const projectsWithContent = await Promise.all(
 
   // Reinitialize after view transitions
   document.addEventListener('astro:page-load', initProjectModals);
-  <!-- Video Modal (точно такой же дизайн, как на /projects) -->
-<dialog id="videoModalHome" class="backdrop:bg-black/90 bg-black rounded-2xl max-w-4xl w-full p-0 shadow-2xl m-auto hidden">
-  <div class="flex justify-end p-4 border-b border-white/10">
-    <button id="closeVideoModalHome" class="text-3xl text-white/70 hover:text-white">×</button>
-  </div>
-  <div class="aspect-video bg-black">
-    <iframe id="videoFrameHome" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-</dialog>
 
-<script>
-  // Video Modal для home (не ломает существующий project-modal)
+  // Video Modal (не ломает основной проект-модал)
   const videoModalHome = document.getElementById('videoModalHome');
   const videoFrameHome = document.getElementById('videoFrameHome');
   const closeVideoHome = document.getElementById('closeVideoModalHome');
 
   document.querySelectorAll('.video-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.stopImmediatePropagation(); // чтобы не открывался основной проект-модал
+      e.stopImmediatePropagation();
       const url = btn.getAttribute('data-video-url');
-      videoFrameHome.src = url;
-      videoModalHome.showModal();
-      videoModalHome.classList.remove('hidden');
+      if (url) {
+        videoFrameHome.src = url;
+        videoModalHome.showModal();
+        videoModalHome.classList.remove('hidden');
+      }
     });
   });
 
-  closeVideoHome.addEventListener('click', () => {
-    videoModalHome.close();
-    videoModalHome.classList.add('hidden');
-    videoFrameHome.src = '';
-  });
+  if (closeVideoHome) {
+    closeVideoHome.addEventListener('click', () => {
+      videoModalHome.close();
+      videoModalHome.classList.add('hidden');
+      videoFrameHome.src = '';
+    });
+  }
 
-  videoModalHome.addEventListener('click', (e) => {
-    if (e.target === videoModalHome) closeVideoHome.click();
-  });
-</script>
+  if (videoModalHome) {
+    videoModalHome.addEventListener('click', (e) => {
+      if (e.target === videoModalHome) {
+        closeVideoHome.click();
+      }
+    });
+  }
 </script>
 
 <style>

@@ -187,7 +187,7 @@ const projectsWithContent = await Promise.all(
         const project = projectsData.find((p) => p.id === projectId);
 
         if (!project) return;
-        console.log('🔍 Project in modal:', project.title, '| video_url =', project.video_url);   // ← добавлено для отладки
+        // console.log('🔍 Project in modal:', project.title, '| video_url =', project.video_url);   // ← добавлено для отладки
 
         // Build modal content
         const linksHtml = `

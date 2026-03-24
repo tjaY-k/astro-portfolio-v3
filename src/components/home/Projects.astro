@@ -183,16 +183,10 @@ const projectsWithContent = await Promise.all(
             `
                 : ''
             }
-            ${
-              project.video_url
-                ? `
-              <button onclick="showVideo('${project.video_url}')"
-                class="inline-flex items-center gap-2 px-5 text-sm py-2.5 bg-secondary text-white rounded-md font-medium hover:bg-secondary/90 transition-all">
-                Watch Video ▶
-              </button>
-            `
-                : ''
-            }
+            <button onclick="showVideo('https://www.youtube.com/embed/uE-H46ieQfQ?si=m4LFFSCbllvgQrEo')"
+              class="inline-flex items-center gap-2 px-5 text-sm py-2.5 bg-secondary text-white rounded-md font-medium hover:bg-secondary/90 transition-all">
+              Watch Video ▶ (TEST)
+            </button>
           </div>
         `;
 

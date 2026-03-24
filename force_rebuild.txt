@@ -1,4 +1,4 @@
-force_rebuild
+force_rebuild 1
 
 
 cache clean

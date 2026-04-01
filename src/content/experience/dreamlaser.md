@@ -1,5 +1,5 @@
 ---  
-company: 'dreamlaser'  
+company: 'dreamlaser (Russia)'  
 website: 'https://dreamlaser.com'  
 role: 'Video Technical Manager & Media Server Operator'  
 period: 'November 2018 – September 2021'  

@@ -8,7 +8,7 @@ const currentYear = new Date().getFullYear();
 
 <footer class='relative border-t-[0.25px] border-border/40 backdrop-blur'>
   <div class='container-fluid pt-16 pb-8'>
-    <div class='grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16'>
+    <div class='grid grid-cols-1 gap-12'>
       <div class='space-y-8'>
         <div class='space-y-4'>
           <div class='flex items-center gap-3'>
@@ -72,9 +72,6 @@ const currentYear = new Date().getFullYear();
           </div>
         </div>
       </div>
-
-      <!-- Right Section: Newsletter -->
-      <NewsletterForm id='footer-newsletter-form' />
     </div>
 
     <!-- Bottom Bar -->
@@ -106,38 +103,10 @@ const currentYear = new Date().getFullYear();
             href='/'
             class='text-foreground hover:text-primary transition-colors font-medium'
           >
-            Lewis Kori
+            Konstantin Laptev
           </a>
         </div>
       </div>
     </div>
   </div>
 </footer>
-
-<script is:inline>
-  function initNewsletterForm() {
-    const form = document.getElementById('newsletter-form');
-    if (!form) return;
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = new FormData(form);
-      const email = formData.get('email');
-
-      // Add your newsletter signup logic here
-      // console.log('Newsletter signup:', email);
-
-      // Show success message (you can customize this)
-      alert('Thanks for subscribing! 🎉');
-      form.reset();
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initNewsletterForm);
-  } else {
-    initNewsletterForm();
-  }
-
-  document.addEventListener('astro:page-load', initNewsletterForm);
-</script>

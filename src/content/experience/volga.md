@@ -1,5 +1,5 @@
 ---  
-company: 'Volga TV Company'  
+company: 'Volga TV Company (Russia)'  
 website: 'https://www.volga-tv.ru'  
 role: 'Video Production Specialist'  
 period: 'August 2007 – April 2017'  

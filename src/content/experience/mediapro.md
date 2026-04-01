@@ -1,5 +1,5 @@
 ---  
-company: 'MediaPro International LLC (UAE)'  
+company: 'MediaPro International (UAE)'  
 website: 'https://www.mediaproav.com'  
 role: 'Video Technical Manager & Senior disguise Operator'  
 period: 'October 2021 – Present'  

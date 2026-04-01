@@ -1,5 +1,5 @@
 ---  
-company: 'LiveScreen'  
+company: 'LiveScreen (Russia)'  
 website: 'https://www.facebook.com/lvscnn'  
 role: 'Technical Producer'  
 period: 'June 2014 – August 2017'  

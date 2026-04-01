@@ -28,7 +28,7 @@ export const siteConfig: SiteConfig = {
   url: 'https://konstantin-laptev.pages.dev',
   description:
     'Senior disguise Operator & Video Technical Manager | Projection Mapping • Media Servers • xR | 18+ лет опыта | F1, Soundstorm, FIFA World Cup, Noor Riyadh',
-  tagline: 'Projection Mapping • disguise • xR • LED',
+  tagline: 'Technical Producer & Media Server Expert',
   authorDescription:
     'Dynamic and versatile Video Technical Manager with over 18 years in live production, corporate events and broadcast. Expertise in projection mapping, disguise (d3), Pixera, xR technologies and large-scale events (Formula 1, Soundstorm 600k+, ONE Zabeel world record).',
   avatar: aboutImage,

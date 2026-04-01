@@ -1,13 +1,10 @@
----
-company: 'Teya'
-website: 'https://www.teya.com'
-role: 'Senior Software Engineer'
-period: 'January 2023 - November 2024'
-order: 2
----
-
-- Transitioned to Teya following the acquisition of Yoyo Group and led the migration of Yoyo's legacy systems to Teya's AWS cloud platform.
-- Designed Kubernetes infrastructure code using **Helm charts**, **Tilt**, **Tekton**, and **ArgoCD (CI/CD)**, delivering a resilient, high-performing cloud-based system.
-- Built and integrated Python libraries for cloud observability, enhancing applications with **telemetry data**, **alert mechanisms**, and **Prometheus-powered Grafana dashboards** for comprehensive monitoring.
-- Integrated the company's centralized merchant database with loyalty domain apps, fostering an interconnected ecosystem for improved customer experience.
-- Spearheaded the integration of the company's transaction processor with loyalty apps, utilizing **Kafka** and Kubernetes autoscaling to handle up to **2 million transactions daily**.
+---  
+company: 'dreamlaser'  
+website: ''  
+role: 'Video Technical Manager & Media Server Operator'  
+period: 'November 2018 – September 2021'  
+order: 2  
+---  
+- Programmed and operated disguise (d3) media servers for projection mapping, LED setups, and xR environments, utilizing Panasonic/Christie projectors, NovaStar systems, and stYpe RedSpy tracking.  
+- Contributed to project concept development, technical pre-production, equipment procurement, and crew management as video technical manager.  
+- Delivered high-profile projects including Russian Student Spring Festival, KHL All-Star Week, IBM xR Studio, and Monaco Grand Prix Gala-Dinner.

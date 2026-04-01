@@ -1,11 +1,10 @@
----
-company: 'Acquicent'
-website: 'https://www.acquicent.com'
-role: 'Founding Senior Software Engineer'
-period: 'April 2021 - July 2023'
-order: 4
----
-
-- Engineered the organization's MVP, integrating key financial services like **Opensea** and **Circle Financial Services** to enable zero-blockchain payment processing with **USDC**, **Plaid**, and **Templum APIs**.
-- Delivered the MVP rapidly, attracting VC and investor attention, culminating in a successful **$1 million pre-seed funding** round.
-- Spearheaded the research and development of blockchain infrastructure using **ethers.js**, **Hardhat**, **OpenZeppelin**, and **Solidity**.
+---  
+company: 'LiveScreen'  
+website: ''  
+role: 'Technical Producer'  
+period: 'June 2014 – August 2017'  
+order: 4  
+---  
+- Led technical coordination for live broadcasts and internet streaming, overseeing multi-camera systems, audio equipment, and streaming software.  
+- Directed live broadcasts, managed real-time switching, graphics integration, and streaming for sports, e-sports, corporate events, and webinars.  
+- Optimized internet streaming workflows for YouTube, Twitch, and custom portals while troubleshooting technical issues to ensure uninterrupted transmission.

@@ -6,18 +6,18 @@
 </div>
 
 <script>
-  // Plexus Blue v2 — оптимизированная версия (как в видео) — без тормозов
+  // Plexus Blue v3 — СВЕРХЛЁГКАЯ версия (65 частиц) — без тормозов даже на слабых устройствах
   const canvas = document.getElementById('artPlumCanvas') as HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
   let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number }> = [];
   let animationFrameId: number;
 
-  const NUM_PARTICLES = 105;               // ← сильно снижено для производительности
-  const CONNECT_DISTANCE = 145;
-  const PARTICLE_COLOR = '#00ddff55';
-  const LINE_COLOR = '#00ddff35';
-  const SPEED = 0.16;                      // ← ещё плавнее
-  const GLOW = 16;                         // ← мягкий glow без перегрузки GPU
+  const NUM_PARTICLES = 65;                // ← минимальное количество для плавности
+  const CONNECT_DISTANCE = 120;            // ← меньше расстояние = меньше вычислений
+  const PARTICLE_COLOR = '#00ddff44';
+  const LINE_COLOR = '#00ddff22';
+  const SPEED = 0.14;                      // ← ещё медленнее и спокойнее
+  const GLOW = 8;                          // ← минимальный glow
 
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
@@ -36,7 +36,7 @@
         y: Math.random() * window.innerHeight,
         vx: (Math.random() - 0.5) * SPEED,
         vy: (Math.random() - 0.5) * SPEED,
-        radius: Math.random() * 2.6 + 1.0,
+        radius: Math.random() * 2.3 + 0.9,
       });
     }
   }
@@ -46,23 +46,23 @@
     const height = window.innerHeight;
     ctx.clearRect(0, 0, width, height);
 
-    // Один раз настраиваем glow (самое тяжёлое)
+    // glow настраивается один раз вне цикла
     ctx.shadowBlur = GLOW;
     ctx.shadowColor = '#00ddff';
 
-    // Обновление и отрисовка частиц
+    // Обновление частиц
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
 
-      p.vx += (Math.random() - 0.5) * 0.11;
-      p.vy += (Math.random() - 0.5) * 0.11;
-      p.vx *= 0.975;
-      p.vy *= 0.975;
+      p.vx += (Math.random() - 0.5) * 0.09;
+      p.vy += (Math.random() - 0.5) * 0.09;
+      p.vx *= 0.97;
+      p.vy *= 0.97;
 
-      if (p.x < 0 || p.x > width) p.vx *= -0.92;
-      if (p.y < 0 || p.y > height) p.vy *= -0.92;
+      if (p.x < 0 || p.x > width) p.vx *= -0.9;
+      if (p.y < 0 || p.y > height) p.vy *= -0.9;
 
       ctx.fillStyle = PARTICLE_COLOR;
       ctx.beginPath();
@@ -70,8 +70,8 @@
       ctx.fill();
     }
 
-    // Соединяющие линии (plexus-сеть)
-    ctx.lineWidth = 0.85;
+    // Соединяющие линии
+    ctx.lineWidth = 0.75;
     ctx.strokeStyle = LINE_COLOR;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
@@ -80,7 +80,7 @@
         const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
 
         if (dist < CONNECT_DISTANCE) {
-          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * 0.62;
+          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * 0.45;
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);

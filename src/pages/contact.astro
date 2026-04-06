@@ -15,13 +15,6 @@ const lookingForOptions = [
   { value: 'other', label: 'Something Else' },
 ];
 
-const budgetOptions = [
-  { value: 'under-10k', label: 'Under $10k' },
-  { value: '10k-50k', label: '$10k - $50k' },
-  { value: '50k-100k', label: '$50k - $100k' },
-  { value: '100k-plus', label: '$100k+' },
-];
-
 const contactMethods = [
   {
     icon: EmailIcon,
@@ -154,29 +147,6 @@ const contactMethods = [
                         name='looking_for'
                         value={option.value}
                         class='appearance-none w-5 h-5 rounded border-2 border-border bg-background cursor-pointer transition-all checked:bg-primary checked:border-primary relative flex items-center justify-center before:content-[""] before:absolute before:w-2.5 before:h-1.5 before:border-l-2 before:border-b-2 before:border-primary-foreground before:-rotate-45 before:-translate-y-px before:opacity-0 checked:before:opacity-100'
-                      />
-                      <span class='text-sm text-foreground group-hover:text-primary transition-colors'>
-                        {option.label}
-                      </span>
-                    </label>
-                  ))
-                }
-              </div>
-            </div>
-
-            <div class='space-y-3'>
-              <label class='text-sm font-medium text-foreground block'>
-                My budget range is (Optional)
-              </label>
-              <div class='grid sm:grid-cols-2 gap-3'>
-                {
-                  budgetOptions.map((option) => (
-                    <label class='flex items-center gap-3 p-4 rounded-lg border border-border bg-background hover:border-primary/50 cursor-pointer transition-all group'>
-                      <input
-                        type='radio'
-                        name='budget'
-                        value={option.value}
-                        class='appearance-none w-5 h-5 rounded-full border-2 border-border bg-background cursor-pointer transition-all checked:border-primary checked:border-[6px] '
                       />
                       <span class='text-sm text-foreground group-hover:text-primary transition-colors'>
                         {option.label}

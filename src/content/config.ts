@@ -17,6 +17,7 @@ const projectsCollection = defineCollection({
     app_store: z.string().url().optional(),
     google_play: z.string().url().optional(),
     made_at: z.string().optional(),
+    location: z.string().optional(),
   }),
 });
 

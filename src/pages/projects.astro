@@ -20,9 +20,7 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
 >
   <div class='container-fluid py-8 md:py-16'>
     <div class=''>
-      <div
-        class='flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8'
-      >
+      <div class='flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8'>
         <div>
           <h1 class='text-3xl md:text-4xl font-semibold mb-2'>All Projects</h1>
           <p class='text-sm md:text-base'>
@@ -31,10 +29,7 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
         </div>
 
         <div class='shrink-0'>
-          <label
-            for='year-filter'
-            class='text-sm font-semibold mb-3 block text-muted-foreground'
-          >
+          <label for='year-filter' class='text-sm font-semibold mb-3 block text-muted-foreground'>
             Filter by Year
           </label>
           <select
@@ -94,12 +89,7 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
                     <td class='py-3 md:py-4 px-3 md:px-6'>
                       <div class='flex gap-2 md:gap-3'>
                         {project.data.external_link && (
-                          <a
-                            href={project.data.external_link}
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            class='text-secondary hover:text-secondary/80 transition-colors'
-                          >
+                          <a href={project.data.external_link} target='_blank' rel='noopener noreferrer' class='text-secondary hover:text-secondary/80 transition-colors'>
                             <svg class='w-5 h-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
                               <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9' />
                             </svg>
@@ -117,10 +107,20 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
     </div>
   </div>
 
-  <!-- Modal (точно такой же механизм, как на главной странице) -->
+  <!-- Rich Modal — точно как на главной странице -->
   <dialog id='project-modal' class='backdrop:bg-background/80 backdrop:backdrop-blur-sm bg-card border border-border/50 rounded-2xl max-w-3xl w-full p-0 shadow-2xl m-auto'>
     <div class='relative max-h-[90vh] overflow-y-auto project-modal-content pb-8' id='modal-content'>
-      <!-- JS injects content here -->
+      <!-- JS injects rich content here -->
+    </div>
+  </dialog>
+
+  <!-- Video Modal -->
+  <dialog id="videoModalHome" class="backdrop:bg-black/90 bg-black rounded-2xl max-w-4xl w-full p-0 shadow-2xl m-auto hidden">
+    <div class="flex justify-end p-4 border-b border-white/10">
+      <button id="closeVideoModalHome" class="text-3xl text-white/70 hover:text-white">×</button>
+    </div>
+    <div class="aspect-video bg-black">
+      <iframe id="videoFrameHome" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
   </dialog>
 
@@ -129,15 +129,20 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
     title: p.data.title,
     made_at: p.data.made_at,
     location: p.data.location,
+    year: p.data.year,
     tech: p.data.tech,
     cover_image: p.data.cover_image,
     external_link: p.data.external_link,
+    video_url: p.data.video_url,
     body: p.body
   })) }}>
     function initProjectModals() {
       const cards = document.querySelectorAll('[data-project-id]');
       const modal = document.getElementById('project-modal');
       const modalContent = document.getElementById('modal-content');
+      const videoModal = document.getElementById('videoModalHome');
+      const videoFrame = document.getElementById('videoFrameHome');
+      const closeVideoBtn = document.getElementById('closeVideoModalHome');
 
       cards.forEach(card => {
         card.addEventListener('click', () => {
@@ -146,25 +151,54 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
           if (!project) return;
 
           modalContent.innerHTML = `
-            <div class="p-8">
-              ${project.cover_image ? `<img src="${project.cover_image}" class="w-full rounded-xl mb-6" alt="${project.title}">` : ''}
-              <h2 class="text-3xl font-semibold mb-2">${project.title}</h2>
-              <p class="text-muted-foreground mb-6">
-                ${project.made_at ? `Made at ${project.made_at}` : ''}
-                ${project.location ? ` • ${project.location}` : ''}
-              </p>
-              <div class="prose prose-invert max-w-none">${project.body || ''}</div>
-              <div class="flex gap-4 mt-8">
-                ${project.external_link ? `<a href="${project.external_link}" target="_blank" class="text-primary font-medium">Visit Project →</a>` : ''}
+            <div class="p-0">
+              ${project.cover_image ? `<img src="${project.cover_image}" class="w-full rounded-t-2xl" alt="${project.title}">` : ''}
+              <div class="p-8">
+                <h2 class="text-3xl font-semibold mb-2">${project.title}</h2>
+                <p class="text-muted-foreground mb-6">
+                  Made at ${project.made_at || '—'} • ${project.year}
+                  ${project.location ? ` • ${project.location}` : ''}
+                </p>
+                <div class="prose prose-invert max-w-none">${project.body || ''}</div>
+
+                <!-- Tech Stack -->
+                ${project.tech && project.tech.length ? `
+                <div class="mt-8">
+                  <h3 class="text-sm font-semibold mb-3 text-muted-foreground">Tech Stack</h3>
+                  <div class="flex flex-wrap gap-2">
+                    ${project.tech.map(t => `<span class="text-xs px-3 py-1 bg-secondary/20 rounded-full text-foreground">${t}</span>`).join('')}
+                  </div>
+                </div>` : ''}
+
+                <!-- Buttons -->
+                <div class="flex flex-wrap gap-3 mt-8">
+                  ${project.external_link ? `<a href="${project.external_link}" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-medium hover:bg-white/90 transition-colors">🌐 Visit Website</a>` : ''}
+                  ${project.video_url ? `<button onclick="openVideoModal('${project.video_url}')" class="inline-flex items-center gap-2 px-6 py-3 border border-white/30 hover:border-white/70 rounded-xl font-medium transition-colors">▶️ Watch Video</button>` : ''}
+                </div>
               </div>
             </div>
           `;
+
           modal.showModal();
         });
       });
 
+      // Close modal on backdrop click
       modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.close();
+      });
+
+      // Video modal functions
+      window.openVideoModal = function(url) {
+        videoFrame.src = url;
+        videoModal.classList.remove('hidden');
+        videoModal.showModal();
+      };
+
+      closeVideoBtn.addEventListener('click', () => {
+        videoModal.close();
+        videoFrame.src = '';
+        videoModal.classList.add('hidden');
       });
     }
 

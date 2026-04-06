@@ -64,6 +64,10 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
                   class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden sm:table-cell text-sm md:text-base'
                   >Made At</th
                 >
+                   <th
+                  class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden sm:table-cell text-sm md:text-base'
+                  >Location</th
+                >
                 <th
                   class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden lg:table-cell text-sm md:text-base'
                   >Built With</th
@@ -90,6 +94,9 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
                     <td class='py-3 md:py-4 px-3 md:px-6 text-muted-foreground hidden sm:table-cell text-sm md:text-base'>
                       {project.data.made_at || '—'}
                     </td>
+                    <td class='py-3 md:py-4 px-3 md:px-6 text-muted-foreground hidden sm:table-cell text-sm md:text-base'>
+                    {project.data.location || '—'}
+</td>
                     <td class='py-3 md:py-4 px-3 md:px-6 hidden lg:table-cell'>
                       <div class='flex flex-wrap gap-2'>
                         {project.data.tech?.map((tech) => {

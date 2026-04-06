@@ -60,9 +60,7 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort((a, b) =
                     class='project-row hover:bg-muted/50 transition-colors border-b border-border last:border-0'
                     data-year={project.data.year}
                   >
-                    <td class='py-3 md:py-4 px-3 md:px-6 text-muted-foreground text-sm md:text-base'>
-                      {project.data.year}
-                    </td>
+                    <td class='py-3 md:py-4 px-3 md:px-6 text-muted-foreground text-sm md:text-base'>{project.data.year}</td>
                     <td 
                       class='py-3 md:py-4 px-3 md:px-6 font-medium text-foreground text-sm md:text-base cursor-pointer hover:text-primary hover:underline'
                       data-project-id={project.id}
@@ -78,9 +76,7 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort((a, b) =
                     <td class='py-3 md:py-4 px-3 md:px-6 hidden lg:table-cell'>
                       <div class='flex flex-wrap gap-2'>
                         {project.data.tech?.map((tech) => (
-                          <span class='text-xs px-2 py-1 bg-secondary/20 rounded-full text-foreground whitespace-nowrap'>
-                            {tech}
-                          </span>
+                          <span class='text-xs px-2 py-1 bg-secondary/20 rounded-full text-foreground whitespace-nowrap'>{tech}</span>
                         ))}
                       </div>
                     </td>
@@ -105,7 +101,22 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort((a, b) =
     </div>
   </div>
 
-  <!-- Rich Modal — точно как на главной странице -->
+  <!-- Dummy block — заставляет Tailwind включить все классы модалки -->
+  <div class="hidden">
+    <div class="p-8 rounded-2xl bg-card border border-border/50 shadow-2xl">
+      <img class="w-full rounded-t-2xl" />
+      <h2 class="text-3xl font-semibold mb-2"></h2>
+      <p class="text-muted-foreground mb-6"></p>
+      <div class="prose prose-invert max-w-none"></div>
+      <div class="flex flex-wrap gap-2">
+        <span class="text-xs px-3 py-1 bg-secondary/20 rounded-full text-foreground"></span>
+      </div>
+      <a class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-medium hover:bg-white/90 transition-colors"></a>
+      <button class="inline-flex items-center gap-2 px-6 py-3 border border-white/30 hover:border-white/70 rounded-xl font-medium transition-colors"></button>
+    </div>
+  </div>
+
+  <!-- Real Modal -->
   <dialog id='project-modal' class='backdrop:bg-background/80 backdrop:backdrop-blur-sm bg-card border border-border/50 rounded-2xl max-w-3xl w-full p-0 shadow-2xl m-auto'>
     <div class='relative max-h-[90vh] overflow-y-auto project-modal-content pb-8' id='modal-content'></div>
   </dialog>
@@ -157,7 +168,6 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort((a, b) =
                 </p>
                 <div class="prose prose-invert max-w-none">${project.body || ''}</div>
 
-                <!-- Tech Stack -->
                 ${project.tech.length ? `
                 <div class="mt-8">
                   <h3 class="text-sm font-semibold mb-3 text-muted-foreground">Tech Stack</h3>
@@ -166,7 +176,6 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort((a, b) =
                   </div>
                 </div>` : ''}
 
-                <!-- Buttons -->
                 <div class="flex flex-wrap gap-3 mt-8">
                   ${project.external_link ? `<a href="${project.external_link}" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-medium hover:bg-white/90 transition-colors">🌐 Visit Website</a>` : ''}
                   ${project.video_url ? `<button onclick="openVideoModal('${project.video_url}')" class="inline-flex items-center gap-2 px-6 py-3 border border-white/30 hover:border-white/70 rounded-xl font-medium transition-colors">▶️ Watch Video</button>` : ''}
@@ -179,12 +188,10 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort((a, b) =
         });
       });
 
-      // Close modal on backdrop click
       modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.close();
       });
 
-      // Video modal
       window.openVideoModal = function(url) {
         videoFrame.src = url;
         videoModal.classList.remove('hidden');

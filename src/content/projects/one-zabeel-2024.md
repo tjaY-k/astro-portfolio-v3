@@ -7,6 +7,7 @@ year: 2024
 featured: true
 cover_image: https://picsum.photos/id/1015/800/600
 tech: ["disguise", "Projection Mapping", "Panasonic Projectors"]
+made_at: 'MediaPro International LLC'
 external_link: "https://www.disguise.one/en/insights/news/oneonly-celebrates-landmark-hotel-launch-record-breaking-projection-powered-disguise"
 video_url: "https://www.youtube.com/embed/uE-H46ieQfQ?si=m4LFFSCbllvgQrEo"
 ---

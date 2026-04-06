@@ -6,16 +6,21 @@
 </div>
 
 <script>
-  // Новый динамический canvas: Particle Network (повышенная контрастность)
+  // Particle Network v2: пониженная скорость + периодическое формирование изображения "KL"
   const canvas = document.getElementById('artPlumCanvas') as HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
-  let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number }> = [];
+  let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number; targetX?: number; targetY?: number }> = [];
   let animationFrameId: number;
+  let shapeTargets: Array<{ x: number; y: number }> = [];
+  let forming = false;
+  let lastFormTime = Date.now();
 
   const NUM_PARTICLES = 140;
   const CONNECT_DISTANCE = 130;
-  const COLOR = '#cccccc60';           // ← ярче и контрастнее
-  const SPEED = 0.6;
+  const COLOR = '#cccccc60';
+  const SPEED = 0.25;                    // ← скорость снижена в 2 раза
+  const FORM_INTERVAL = 25000;           // каждые 25 секунд
+  const FORM_DURATION = 9000;            // форма держится 9 секунд
 
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
@@ -26,6 +31,33 @@
     ctx.scale(dpr, dpr);
   }
 
+  // Создаём точки для изображения "KL" (один раз при инициализации)
+  function createShapeTargets() {
+    const offscreen = document.createElement('canvas');
+    offscreen.width = 800;
+    offscreen.height = 400;
+    const oCtx = offscreen.getContext('2d')!;
+    oCtx.fillStyle = '#ffffff';
+    oCtx.font = 'bold 280px Arial';
+    oCtx.textAlign = 'center';
+    oCtx.textBaseline = 'middle';
+    oCtx.fillText('KL', 400, 220);
+
+    const imageData = oCtx.getImageData(0, 0, 800, 400).data;
+    shapeTargets = [];
+    for (let y = 0; y < 400; y += 8) {
+      for (let x = 0; x < 800; x += 8) {
+        const i = (y * 800 + x) * 4;
+        if (imageData[i + 3] > 128) {
+          shapeTargets.push({
+            x: (x / 800) * window.innerWidth,
+            y: (y / 400) * window.innerHeight,
+          });
+        }
+      }
+    }
+  }
+
   function createParticles() {
     particles = [];
     for (let i = 0; i < NUM_PARTICLES; i++) {
@@ -34,7 +66,7 @@
         y: Math.random() * window.innerHeight,
         vx: (Math.random() - 0.5) * SPEED,
         vy: (Math.random() - 0.5) * SPEED,
-        radius: Math.random() * 2.5 + 1.0,   // ← чуть крупнее
+        radius: Math.random() * 2.5 + 1.0,
       });
     }
   }
@@ -42,14 +74,47 @@
   function draw() {
     const width = window.innerWidth;
     const height = window.innerHeight;
+    const now = Date.now();
+
+    // Переключаем режим формирования
+    if (now - lastFormTime > FORM_INTERVAL) {
+      forming = true;
+      lastFormTime = now;
+    }
+    if (forming && now - lastFormTime > FORM_DURATION) {
+      forming = false;
+      lastFormTime = now;
+    }
+
     ctx.clearRect(0, 0, width, height);
 
-    // Обновление и отрисовка частиц
+    // Обновление частиц
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
+
+      if (forming && shapeTargets.length > 0) {
+        // Притягиваем к ближайшей точке "KL"
+        const target = shapeTargets[i % shapeTargets.length];
+        p.targetX = target.x;
+        p.targetY = target.y;
+        const dx = p.targetX - p.x;
+        const dy = p.targetY - p.y;
+        p.vx = dx * 0.08;
+        p.vy = dy * 0.08;
+      } else {
+        // Хаотичный режим
+        p.vx += (Math.random() - 0.5) * 0.3;
+        p.vy += (Math.random() - 0.5) * 0.3;
+        p.vx *= 0.96; // лёгкое затухание
+        p.vy *= 0.96;
+        delete p.targetX;
+        delete p.targetY;
+      }
+
       p.x += p.vx;
       p.y += p.vy;
 
+      // Отскок от краёв
       if (p.x < 0 || p.x > width) p.vx *= -1;
       if (p.y < 0 || p.y > height) p.vy *= -1;
 
@@ -61,7 +126,7 @@
 
     // Соединяющие линии (более контрастные)
     ctx.strokeStyle = COLOR;
-    ctx.lineWidth = 1.0;                    // ← толще
+    ctx.lineWidth = 1.0;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const p1 = particles[i];
@@ -71,7 +136,7 @@
         const dist = Math.hypot(dx, dy);
 
         if (dist < CONNECT_DISTANCE) {
-          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * 0.6;  // ← выше прозрачность
+          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * (forming ? 0.8 : 0.6);
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);
@@ -90,11 +155,13 @@
     ctx = tempCtx;
 
     resizeCanvas();
+    createShapeTargets();
     createParticles();
     draw();
 
     window.addEventListener('resize', () => {
       resizeCanvas();
+      createShapeTargets();
       createParticles();
     });
   }

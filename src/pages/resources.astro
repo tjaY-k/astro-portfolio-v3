@@ -1,183 +1,103 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-import SectionHeader from '@/components/shared/SectionHeader.astro';
-import ResourceItem from '@/components/shared/ResourceItem.astro';
-
-const allSponsors = await getCollection(
-  'sponsors',
-  ({ data }) => data.is_featured,
-);
-
-const currentBooks = await getCollection('books');
-const techStack = await getCollection('techStack');
-const desktopSetup = await getCollection('desktopSetup');
 ---
 
 <Layout
-  title='Resources – Lewis Kori'
-  description='Books, tools, and hardware I use while building products and companies. A curated list of what I actually rely on day-to-day.'
-  ogTitle='Resources & Stack – Lewis Kori'
-  ogDescription='The books I read, tools I ship with, and hardware on my desk. Curated by an entrepreneur and product builder.'
+  title='Resources – Konstantin Laptev'
+  description='Technical arsenal, media servers, projection mapping and broadcast equipment used in F1, FIFA World Cup and major events.'
 >
-  <div class='relative'>
-    <div class='container-fluid py-16 md:py-20 relative'>
-      <div class='mb-20 text-center space-y-6'>
-        <div class='inline-block'>
-          <span
-            class='text-xs uppercase tracking-widest text-primary font-bold px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm'
-          >
+  <div class="relative">
+    <div class="container-fluid py-16 md:py-20 relative">
+      <div class="mb-20 text-center space-y-6">
+        <div class="inline-block">
+          <span class="text-xs uppercase tracking-widest text-primary font-bold px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
             My Arsenal
           </span>
         </div>
-        <h1
-          class='text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight first-letter-color'
-        >
-          Tools & Resources<br />
-          <span class='text-secondary'>I Use Daily</span>
+        <h1 class="text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight">
+          Tools &amp; Resources<br />
+          <span class="text-secondary">I Use Daily</span>
         </h1>
-        <p
-          class='text-lg md:text-xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed'
-        >
-          A peek into the books, tech, and gear that fuel my work and keep me
-          productive
+        <p class="text-lg md:text-xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed">
+          18+ years of live production • disguise • Pixera • projection mapping • broadcast hardware
         </p>
       </div>
 
-      <section class='mb-32'>
-        <SectionHeader
-          title='Currently Reading'
-          subtitle='Expanding my mind one page at a time'
-        />
-        <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
-          {
-            currentBooks.map((book, index) => (
-              <ResourceItem
-                href={book.data.link}
-                image={book.data.image}
-                title={book.data.title}
-                subtitle={book.data.author}
-                description={book.data.description}
-                linkText='View book'
-                imageSize='book'
-                index={index}
-              />
-            ))
-          }
+      <!-- Current Reading → заменяем на Media Servers (с миниатюрами в стиле шаблона) -->
+      <div class="mb-20">
+        <h2 class="text-3xl font-semibold mb-8">Media Servers</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="border border-border rounded-3xl p-6 hover:border-primary transition-colors group">
+            <div class="h-48 bg-secondary/30 rounded-2xl mb-4 flex items-center justify-center text-6xl">🎥</div>
+            <h3 class="font-semibold text-xl mb-1">disguise (d3)</h3>
+            <p class="text-muted-foreground text-sm mb-4">7+ years • Certified Operator</p>
+            <a href="https://www.disguise.one" target="_blank" class="text-primary hover:underline text-sm flex items-center gap-1">Learn more →</a>
+          </div>
+          <div class="border border-border rounded-3xl p-6 hover:border-primary transition-colors group">
+            <div class="h-48 bg-secondary/30 rounded-2xl mb-4 flex items-center justify-center text-6xl">📦</div>
+            <h3 class="font-semibold text-xl mb-1">Pixera</h3>
+            <p class="text-muted-foreground text-sm mb-4">Certified</p>
+            <a href="https://www.pixera.one" target="_blank" class="text-primary hover:underline text-sm flex items-center gap-1">Learn more →</a>
+          </div>
+          <div class="border border-border rounded-3xl p-6 hover:border-primary transition-colors group">
+            <div class="h-48 bg-secondary/30 rounded-2xl mb-4 flex items-center justify-center text-6xl">🌀</div>
+            <h3 class="font-semibold text-xl mb-1">Resolume Arena</h3>
+            <p class="text-muted-foreground text-sm mb-4">Real-time video mixing</p>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <section class='mb-32'>
-        <SectionHeader
-          title='My Setup'
-          subtitle='The gear that powers my daily workflow'
-        />
-        <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
-          {
-            desktopSetup.map((item, index) => (
-              <ResourceItem
-                href={item.data.link}
-                image={item.data.image}
-                title={item.data.name}
-                description={item.data.description}
-                linkText='Buy here'
-                imageSize='medium'
-                index={index}
-              />
-            ))
-          }
+      <!-- My Desk Setup → Hardware & Broadcast Equipment -->
+      <div class="mb-20">
+        <h2 class="text-3xl font-semibold mb-8">Hardware &amp; Broadcast Equipment</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="border border-border rounded-3xl p-6 hover:border-primary transition-colors group">
+            <div class="h-48 bg-secondary/30 rounded-2xl mb-4 flex items-center justify-center text-6xl">📺</div>
+            <h3 class="font-semibold text-xl mb-1">Barco E2 • Analog Way Aquilon • Ross Ultrix</h3>
+            <p class="text-muted-foreground">Vision mixers &amp; processors</p>
+          </div>
+          <div class="border border-border rounded-3xl p-6 hover:border-primary transition-colors group">
+            <div class="h-48 bg-secondary/30 rounded-2xl mb-4 flex items-center justify-center text-6xl">🔦</div>
+            <h3 class="font-semibold text-xl mb-1">Panasonic &amp; Christie projectors</h3>
+            <p class="text-muted-foreground">Projection mapping hardware</p>
+          </div>
+          <div class="border border-border rounded-3xl p-6 hover:border-primary transition-colors group">
+            <div class="h-48 bg-secondary/30 rounded-2xl mb-4 flex items-center justify-center text-6xl">📡</div>
+            <h3 class="font-semibold text-xl mb-1">NovaStar LED • stYpe RedSpy</h3>
+            <p class="text-muted-foreground">LED control &amp; tracking</p>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <section class='mb-32'>
-        <SectionHeader
-          title='Tech Stack'
-          subtitle='The tools I rely on for building software'
-          accentColor='secondary'
-        />
-        <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
-          {
-            techStack.map((tech, index) => (
-              <ResourceItem
-                href={tech.data.link}
-                image={tech.data.image}
-                title={tech.data.name}
-                description={tech.data.description}
-                linkText='Learn more'
-                imageSize='small'
-                index={index}
-                target='_blank'
-                rel='noopener noreferrer'
-              />
-            ))
-          }
+      <!-- Tech Stack → Projection & Mapping + Creative Software -->
+      <div class="mb-20">
+        <h2 class="text-3xl font-semibold mb-8">Projection, Mapping &amp; Creative Software</h2>
+        <div class="flex flex-wrap gap-3">
+          <span class="px-5 py-2 bg-secondary/70 text-foreground rounded-3xl text-sm font-medium">Projection mapping (study → onsite)</span>
+          <span class="px-5 py-2 bg-secondary/70 text-foreground rounded-3xl text-sm font-medium">LED screen planning</span>
+          <span class="px-5 py-2 bg-secondary/70 text-foreground rounded-3xl text-sm font-medium">xR technologies</span>
+          <span class="px-5 py-2 bg-secondary/70 text-foreground rounded-3xl text-sm font-medium">Vectorworks (Core Certified)</span>
+          <span class="px-5 py-2 bg-secondary/70 text-foreground rounded-3xl text-sm font-medium">Adobe After Effects</span>
+          <span class="px-5 py-2 bg-secondary/70 text-foreground rounded-3xl text-sm font-medium">Resolume Arena</span>
+          <span class="px-5 py-2 bg-secondary/70 text-foreground rounded-3xl text-sm font-medium">MadMapper</span>
+          <span class="px-5 py-2 bg-secondary/70 text-foreground rounded-3xl text-sm font-medium">Final Cut Pro</span>
         </div>
-      </section>
+      </div>
 
-      <section class='mb-16'>
-        <SectionHeader
-          title='Sponsors'
-          subtitle='The partners who make my content possible'
-          accentColor='secondary'
-        />
-        <div class='grid md:grid-cols-2 gap-6'>
-          {
-            allSponsors.map((sponsor, index) => {
-              return (
-                <div
-                  class='group flex gap-6 md:gap-8 transition-all duration-300'
-                  style={`animation-delay: ${index * 100}ms`}
-                >
-                  <div class='relative shrink-0'>
-                    <div class='relative w-16 h-16 flex items-center justify-center rounded-xl p-2'>
-                      <img
-                        src={
-                          sponsor.data.logo ||
-                          `https://logo.clearbit.com/${new URL(sponsor.data.url).hostname}`
-                        }
-                        alt={sponsor.data.name}
-                        class='w-full h-full object-contain'
-                        onerror={`this.src='https://logo.clearbit.com/${new URL(sponsor.data.url).hostname}'`}
-                      />
-                    </div>
-                  </div>
-                  <div class='flex flex-col space-y-4 min-w-0'>
-                    <div class='space-y-2'>
-                      <h3 class='text-xl font-semibold text-foreground group-hover:text-primary transition-colors'>
-                        {sponsor.data.name}
-                      </h3>
-                      <a
-                        href={sponsor.data.url}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        class='inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all'
-                      >
-                        <span>Visit Website</span>
-                        <svg
-                          class='w-4 h-4'
-                          fill='none'
-                          viewBox='0 0 24 24'
-                          stroke='currentColor'
-                        >
-                          <path
-                            stroke-linecap='round'
-                            stroke-linejoin='round'
-                            stroke-width='2'
-                            d='M17 8l4 4m0 0l-4 4m4-4H3'
-                          />
-                        </svg>
-                      </a>
-                    </div>
-                    <p class='text-sm text-muted-foreground leading-relaxed'>
-                      {sponsor.data.excerpt}
-                    </p>
-                  </div>
-                </div>
-              );
-            })
-          }
+      <!-- Certifications & Notable Projects (с ссылками) -->
+      <div>
+        <h2 class="text-3xl font-semibold mb-8">Certifications &amp; Notable Projects</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="border border-border rounded-3xl p-8 hover:border-primary transition-colors">
+            <h3 class="text-2xl font-semibold mb-2">disguise Certified Operator</h3>
+            <a href="https://www.disguise.one/en/insights/news/oneonly-celebrates-landmark-hotel-launch-record-breaking-projection-powered-disguise" target="_blank" class="text-primary hover:underline">ONE Zabeel Opening →</a>
+          </div>
+          <div class="border border-border rounded-3xl p-8 hover:border-primary transition-colors">
+            <h3 class="text-2xl font-semibold mb-2">Pixera Certified</h3>
+            <a href="https://tinyurl.com/mediapro-soundstorm-2025" target="_blank" class="text-primary hover:underline">MDL Soundstorm 2023–2025 →</a>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   </div>
 </Layout>

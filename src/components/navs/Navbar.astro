@@ -13,13 +13,8 @@ const navLinks = [
   { name: 'Work', href: isHomePage ? '#work' : '/#work' },
   { name: 'Projects', href: isHomePage ? '#projects' : '/projects' },
   // { name: 'Advisory', href: '/advisory' },
+  { name: 'Resources', href: '/resources' },   // ← добавлено как обычный пункт
   { name: 'Contact', href: '/contact' },
-];
-
-const moreLinks = [
-  { name: 'Resources', href: '/resources' },
-  { name: 'Operating Notes', href: '/operating-notes' },
-  { name: 'Blog', href: isHomePage ? '#blogs' : '/blog' },
 ];
 
 // Helper function to check if a link is active
@@ -70,42 +65,6 @@ const isActive = (href: string) => {
             </li>
           ))
         }
-        <li class='relative group'>
-          <button
-            class='text-foreground hover:text-primary transition-colors text-sm flex items-center gap-1'
-            aria-label='More menu'
-          >
-            Writing
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              class='size-3.5'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'
-            >
-              <path
-                stroke-linecap='round'
-                stroke-linejoin='round'
-                stroke-width='2'
-                d='M19 9l-7 7-7-7'></path>
-            </svg>
-          </button>
-          <ul
-            class='absolute top-full right-0 mt-2 p-1.5 w-48 bg-background border border-border rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200'
-          >
-            {
-              moreLinks.map((link) => (
-                <li
-                  class={` px-4 py-2 text-foreground hover:text-primary hover:bg-secondary/50 transition-colors text-sm first:rounded-t-md last:rounded-b-md ${isActive(link.href) ? 'text-primary font-semibold bg-secondary/20' : ''}`}
-                >
-                  <a class='w-full block' href={link.href}>
-                    {link.name}
-                  </a>
-                </li>
-              ))
-            }
-          </ul>
-        </li>
       </ul>
       <div class='flex items-center gap-2 border-l border-border pl-4'>
         <!-- <LanguageSwitcher /> -->
@@ -113,6 +72,6 @@ const isActive = (href: string) => {
       </div>
     </div>
 
-    <MobileNav navLinks={[...navLinks, ...moreLinks]} />
+    <MobileNav navLinks={navLinks} />
   </nav>
 </header>

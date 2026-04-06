@@ -52,30 +52,12 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
           <table class='w-full border-collapse'>
             <thead class='bg-muted'>
               <tr>
-                <th
-                  class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border text-sm md:text-base'
-                  >Year</th
-                >
-                <th
-                  class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border text-sm md:text-base'
-                  >Project</th
-                >
-                <th
-                  class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden sm:table-cell text-sm md:text-base'
-                  >Made At</th
-                >
-                <th
-                  class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden sm:table-cell text-sm md:text-base'
-                  >Location</th
-                >
-                <th
-                  class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden lg:table-cell text-sm md:text-base'
-                  >Built With</th
-                >
-                <th
-                  class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border text-sm md:text-base'
-                  >Link</th
-                >
+                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border text-sm md:text-base'>Year</th>
+                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border text-sm md:text-base'>Project</th>
+                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden sm:table-cell text-sm md:text-base'>Made At</th>
+                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden sm:table-cell text-sm md:text-base'>Location</th>
+                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden lg:table-cell text-sm md:text-base'>Built With</th>
+                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border text-sm md:text-base'>Link</th>
               </tr>
             </thead>
             <tbody>
@@ -102,13 +84,11 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
                     </td>
                     <td class='py-3 md:py-4 px-3 md:px-6 hidden lg:table-cell'>
                       <div class='flex flex-wrap gap-2'>
-                        {project.data.tech?.map((tech) => {
-                          return (
-                            <span class='text-xs px-2 py-1 bg-secondary/20 retro:bg-primary/20 rounded-full text-foreground whitespace-nowrap'>
-                              {tech}
-                            </span>
-                          );
-                        })}
+                        {project.data.tech?.map((tech) => (
+                          <span class='text-xs px-2 py-1 bg-secondary/20 rounded-full text-foreground whitespace-nowrap'>
+                            {tech}
+                          </span>
+                        ))}
                       </div>
                     </td>
                     <td class='py-3 md:py-4 px-3 md:px-6'>
@@ -116,24 +96,12 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
                         {project.data.external_link && (
                           <a
                             href={project.data.external_link}
-                            title='Website'
                             target='_blank'
                             rel='noopener noreferrer'
                             class='text-secondary hover:text-secondary/80 transition-colors'
-                            aria-label='Visit website'
                           >
-                            <svg
-                              class='w-5 h-5'
-                              fill='none'
-                              viewBox='0 0 24 24'
-                              stroke='currentColor'
-                            >
-                              <path
-                                stroke-linecap='round'
-                                stroke-linejoin='round'
-                                stroke-width='2'
-                                d='M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9'
-                              />
+                            <svg class='w-5 h-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9' />
                             </svg>
                           </a>
                         )}
@@ -149,29 +117,23 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
     </div>
   </div>
 
-  <!-- Modal window (identical to homepage) -->
+  <!-- Modal (точно такой же механизм, как на главной странице) -->
   <dialog id='project-modal' class='backdrop:bg-background/80 backdrop:backdrop-blur-sm bg-card border border-border/50 rounded-2xl max-w-3xl w-full p-0 shadow-2xl m-auto'>
     <div class='relative max-h-[90vh] overflow-y-auto project-modal-content pb-8' id='modal-content'>
-      <!-- JS will inject project content here -->
+      <!-- JS injects content here -->
     </div>
   </dialog>
 
-  <script>
-    const projectsData = [
-      // Data will be populated from Astro
-      {
-        id: '',
-        title: '',
-        tech: [],
-        cover_image: '',
-        external_link: '',
-        video_url: '',
-        made_at: '',
-        year: 0,
-        body: ''
-      }
-    ];
-
+  <script define:vars={{ projectsData: sortedProjects.map(p => ({
+    id: p.id,
+    title: p.data.title,
+    made_at: p.data.made_at,
+    location: p.data.location,
+    tech: p.data.tech,
+    cover_image: p.data.cover_image,
+    external_link: p.data.external_link,
+    body: p.body
+  })) }}>
     function initProjectModals() {
       const cards = document.querySelectorAll('[data-project-id]');
       const modal = document.getElementById('project-modal');
@@ -187,7 +149,10 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort(
             <div class="p-8">
               ${project.cover_image ? `<img src="${project.cover_image}" class="w-full rounded-xl mb-6" alt="${project.title}">` : ''}
               <h2 class="text-3xl font-semibold mb-2">${project.title}</h2>
-              <p class="text-muted-foreground mb-6">${project.made_at ? `Made at ${project.made_at}` : ''}</p>
+              <p class="text-muted-foreground mb-6">
+                ${project.made_at ? `Made at ${project.made_at}` : ''}
+                ${project.location ? ` • ${project.location}` : ''}
+              </p>
               <div class="prose prose-invert max-w-none">${project.body || ''}</div>
               <div class="flex gap-4 mt-8">
                 ${project.external_link ? `<a href="${project.external_link}" target="_blank" class="text-primary font-medium">Visit Project →</a>` : ''}

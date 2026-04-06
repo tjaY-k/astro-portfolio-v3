@@ -6,7 +6,7 @@
 </div>
 
 <script>
-  // Particle Network v3: KL + супер-плавное формирование
+  // Particle Network v4: низкий контраст + огромный неоновый KL (как в PSD) + супер-плавная анимация
   const canvas = document.getElementById('artPlumCanvas') as HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
   let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number; targetX?: number; targetY?: number }> = [];
@@ -15,12 +15,13 @@
   let forming = false;
   let lastFormTime = Date.now();
 
-  const NUM_PARTICLES = 140;
+  const NUM_PARTICLES = 160;
   const CONNECT_DISTANCE = 130;
-  const COLOR = '#cccccc60';
-  const SPEED = 0.25;
-  const FORM_INTERVAL = 25000;
-  const FORM_DURATION = 10000;
+  const BASE_COLOR = '#88888828';           // ← сильно снижен контраст (очень мягкий)
+  const NEON_COLOR = '#00f0ff55';           // ← неоновый cyan как в PSD
+  const SPEED = 0.22;
+  const FORM_INTERVAL = 28000;
+  const FORM_DURATION = 12000;
 
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
@@ -33,24 +34,24 @@
 
   function createShapeTargets() {
     const offscreen = document.createElement('canvas');
-    offscreen.width = 800;
-    offscreen.height = 400;
+    offscreen.width = 1200;                  // ← увеличено
+    offscreen.height = 600;                  // ← увеличено
     const oCtx = offscreen.getContext('2d')!;
     oCtx.fillStyle = '#ffffff';
-    oCtx.font = 'bold 280px Arial';
+    oCtx.font = 'bold 420px Arial';          // ← значительно крупнее
     oCtx.textAlign = 'center';
     oCtx.textBaseline = 'middle';
-    oCtx.fillText('KL', 400, 220);
+    oCtx.fillText('KL', 600, 320);           // ← центрировано под новый размер
 
-    const imageData = oCtx.getImageData(0, 0, 800, 400).data;
+    const imageData = oCtx.getImageData(0, 0, 1200, 600).data;
     shapeTargets = [];
-    for (let y = 0; y < 400; y += 8) {
-      for (let x = 0; x < 800; x += 8) {
-        const i = (y * 800 + x) * 4;
+    for (let y = 0; y < 600; y += 7) {
+      for (let x = 0; x < 1200; x += 7) {
+        const i = (y * 1200 + x) * 4;
         if (imageData[i + 3] > 128) {
           shapeTargets.push({
-            x: (x / 800) * window.innerWidth,
-            y: (y / 400) * window.innerHeight,
+            x: (x / 1200) * window.innerWidth,
+            y: (y / 600) * window.innerHeight,
           });
         }
       }
@@ -65,7 +66,7 @@
         y: Math.random() * window.innerHeight,
         vx: (Math.random() - 0.5) * SPEED,
         vy: (Math.random() - 0.5) * SPEED,
-        radius: Math.random() * 2.5 + 1.0,
+        radius: Math.random() * 2.4 + 0.9,
       });
     }
   }
@@ -85,7 +86,9 @@
     }
 
     ctx.clearRect(0, 0, width, height);
+    ctx.shadowBlur = 0;
 
+    // Обновление частиц
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
 
@@ -93,18 +96,17 @@
         const target = shapeTargets[i % shapeTargets.length];
         p.targetX = target.x;
         p.targetY = target.y;
-
         const dx = p.targetX - p.x;
         const dy = p.targetY - p.y;
 
-        // Очень мягкое притяжение + damping
-        p.vx += dx * 0.028;
-        p.vy += dy * 0.028;
-        p.vx *= 0.92;
-        p.vy *= 0.92;
+        // СУПЕР-ПЛАВНОЕ притяжение (намного мягче чем раньше)
+        p.vx += dx * 0.014;
+        p.vy += dy * 0.014;
+        p.vx *= 0.935;
+        p.vy *= 0.935;
       } else {
-        p.vx += (Math.random() - 0.5) * 0.3;
-        p.vy += (Math.random() - 0.5) * 0.3;
+        p.vx += (Math.random() - 0.5) * 0.25;
+        p.vy += (Math.random() - 0.5) * 0.25;
         p.vx *= 0.96;
         p.vy *= 0.96;
         delete p.targetX;
@@ -117,14 +119,25 @@
       if (p.x < 0 || p.x > width) p.vx *= -1;
       if (p.y < 0 || p.y > height) p.vy *= -1;
 
-      ctx.fillStyle = COLOR;
+      // Рисуем точки (разный цвет + glow только в режиме KL)
+      if (forming) {
+        ctx.shadowBlur = 18;
+        ctx.shadowColor = '#00f0ff';
+        ctx.fillStyle = NEON_COLOR;
+      } else {
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = BASE_COLOR;
+      }
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    ctx.strokeStyle = COLOR;
-    ctx.lineWidth = 1.0;
+    // Соединяющие линии (низкий контраст)
+    ctx.shadowBlur = forming ? 12 : 0;
+    ctx.shadowColor = '#00f0ff';
+    ctx.strokeStyle = forming ? NEON_COLOR : BASE_COLOR;
+    ctx.lineWidth = 0.9;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const p1 = particles[i];
@@ -134,7 +147,7 @@
         const dist = Math.hypot(dx, dy);
 
         if (dist < CONNECT_DISTANCE) {
-          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * (forming ? 0.75 : 0.6);
+          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * (forming ? 0.45 : 0.28);
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);
@@ -143,6 +156,7 @@
       }
     }
     ctx.globalAlpha = 1;
+    ctx.shadowBlur = 0;
 
     animationFrameId = requestAnimationFrame(draw);
   }

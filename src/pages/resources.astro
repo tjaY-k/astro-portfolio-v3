@@ -1,94 +1,183 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import SectionHeader from '@/components/shared/SectionHeader.astro';
+import ResourceItem from '@/components/shared/ResourceItem.astro';
+
+const allSponsors = await getCollection(
+  'sponsors',
+  ({ data }) => data.is_featured,
+);
+
+const currentBooks = await getCollection('books');
+const techStack = await getCollection('techStack');
+const desktopSetup = await getCollection('desktopSetup');
 ---
 
 <Layout
-  title='Technical Arsenal – Konstantin Laptev'
-  description='Media servers, projection mapping, hardware and 18+ years of live production expertise. Konstantin Laptev • Video Technical Manager'
-  ogTitle='Technical Arsenal – Konstantin Laptev'
-  ogDescription='disguise, Pixera, Resolume, projection mapping, LED, xR and broadcast equipment used in F1, FIFA World Cup and major events.'
+  title='Resources – Lewis Kori'
+  description='Books, tools, and hardware I use while building products and companies. A curated list of what I actually rely on day-to-day.'
+  ogTitle='Resources & Stack – Lewis Kori'
+  ogDescription='The books I read, tools I ship with, and hardware on my desk. Curated by an entrepreneur and product builder.'
 >
   <div class='relative'>
-    <div class='container-fluid py-16 md:py-20 relative max-w-5xl mx-auto'>
-      
-      <!-- Header -->
-      <div class='text-center mb-16'>
-        <h1 class='text-5xl md:text-6xl font-bold tracking-tighter mb-4 text-foreground'>
-          Technical Arsenal
+    <div class='container-fluid py-16 md:py-20 relative'>
+      <div class='mb-20 text-center space-y-6'>
+        <div class='inline-block'>
+          <span
+            class='text-xs uppercase tracking-widest text-primary font-bold px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm'
+          >
+            My Arsenal
+          </span>
+        </div>
+        <h1
+          class='text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight first-letter-color'
+        >
+          Tools & Resources<br />
+          <span class='text-secondary'>I Use Daily</span>
         </h1>
-        <p class='text-2xl text-muted-foreground mb-2'>
-          Konstantin Laptev • Video Technical Manager &amp; Media Server Specialist
+        <p
+          class='text-lg md:text-xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed'
+        >
+          A peek into the books, tech, and gear that fuel my work and keep me
+          productive
         </p>
-        <p class='max-w-2xl mx-auto text-lg text-muted-foreground'>
-          18+ years delivering immersive visual experiences for F1 Grand Prix, FIFA World Cup, MDL Soundstorm and major projection-mapping events worldwide.
-        </p>
       </div>
 
-      <!-- Skills Grid -->
-      <div class='grid md:grid-cols-2 gap-12'>
-
-        <!-- 1. Media Servers -->
-        <div>
-          <h2 class='text-3xl font-semibold mb-6 text-foreground'>Media Servers</h2>
-          <ul class='space-y-4 text-lg'>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> <strong>disguise (d3)</strong> — 7+ years, Certified Operator</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> <strong>Pixera</strong> — Certified</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> <strong>Resolume Arena</strong></li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> <strong>MadMapper</strong></li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> <strong>Mapping Matter</strong></li>
-          </ul>
+      <section class='mb-32'>
+        <SectionHeader
+          title='Currently Reading'
+          subtitle='Expanding my mind one page at a time'
+        />
+        <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
+          {
+            currentBooks.map((book, index) => (
+              <ResourceItem
+                href={book.data.link}
+                image={book.data.image}
+                title={book.data.title}
+                subtitle={book.data.author}
+                description={book.data.description}
+                linkText='View book'
+                imageSize='book'
+                index={index}
+              />
+            ))
+          }
         </div>
+      </section>
 
-        <!-- 2. Projection & Mapping -->
-        <div>
-          <h2 class='text-3xl font-semibold mb-6 text-foreground'>Projection &amp; Mapping</h2>
-          <ul class='space-y-4 text-lg'>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> Projection mapping (study → onsite execution)</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> LED screen planning &amp; execution</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> xR technologies &amp; virtual production</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> Vectorworks (Core Certified), Blender</li>
-          </ul>
+      <section class='mb-32'>
+        <SectionHeader
+          title='My Setup'
+          subtitle='The gear that powers my daily workflow'
+        />
+        <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
+          {
+            desktopSetup.map((item, index) => (
+              <ResourceItem
+                href={item.data.link}
+                image={item.data.image}
+                title={item.data.name}
+                description={item.data.description}
+                linkText='Buy here'
+                imageSize='medium'
+                index={index}
+              />
+            ))
+          }
         </div>
+      </section>
 
-        <!-- 3. Hardware & Broadcast Equipment -->
-        <div>
-          <h2 class='text-3xl font-semibold mb-6 text-foreground'>Hardware &amp; Broadcast Equipment</h2>
-          <ul class='space-y-4 text-lg'>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> Barco E2, Analog Way Aquilon, Ross Ultrix</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> Panasonic &amp; Christie projectors</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> NovaStar LED control systems</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> stYpe RedSpy tracking</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> Broadcast cameras &amp; vision mixers</li>
-          </ul>
+      <section class='mb-32'>
+        <SectionHeader
+          title='Tech Stack'
+          subtitle='The tools I rely on for building software'
+          accentColor='secondary'
+        />
+        <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
+          {
+            techStack.map((tech, index) => (
+              <ResourceItem
+                href={tech.data.link}
+                image={tech.data.image}
+                title={tech.data.name}
+                description={tech.data.description}
+                linkText='Learn more'
+                imageSize='small'
+                index={index}
+                target='_blank'
+                rel='noopener noreferrer'
+              />
+            ))
+          }
         </div>
+      </section>
 
-        <!-- 4. Creative Software -->
-        <div>
-          <h2 class='text-3xl font-semibold mb-6 text-foreground'>Creative Software</h2>
-          <ul class='space-y-4 text-lg'>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> Adobe Suite (After Effects, Premiere Pro)</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> Final Cut Pro</li>
-            <li class='flex items-start gap-3'><span class='text-primary font-mono text-xl'>•</span> Motion design &amp; VJ-ing</li>
-          </ul>
+      <section class='mb-16'>
+        <SectionHeader
+          title='Sponsors'
+          subtitle='The partners who make my content possible'
+          accentColor='secondary'
+        />
+        <div class='grid md:grid-cols-2 gap-6'>
+          {
+            allSponsors.map((sponsor, index) => {
+              return (
+                <div
+                  class='group flex gap-6 md:gap-8 transition-all duration-300'
+                  style={`animation-delay: ${index * 100}ms`}
+                >
+                  <div class='relative shrink-0'>
+                    <div class='relative w-16 h-16 flex items-center justify-center rounded-xl p-2'>
+                      <img
+                        src={
+                          sponsor.data.logo ||
+                          `https://logo.clearbit.com/${new URL(sponsor.data.url).hostname}`
+                        }
+                        alt={sponsor.data.name}
+                        class='w-full h-full object-contain'
+                        onerror={`this.src='https://logo.clearbit.com/${new URL(sponsor.data.url).hostname}'`}
+                      />
+                    </div>
+                  </div>
+                  <div class='flex flex-col space-y-4 min-w-0'>
+                    <div class='space-y-2'>
+                      <h3 class='text-xl font-semibold text-foreground group-hover:text-primary transition-colors'>
+                        {sponsor.data.name}
+                      </h3>
+                      <a
+                        href={sponsor.data.url}
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        class='inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all'
+                      >
+                        <span>Visit Website</span>
+                        <svg
+                          class='w-4 h-4'
+                          fill='none'
+                          viewBox='0 0 24 24'
+                          stroke='currentColor'
+                        >
+                          <path
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                            stroke-width='2'
+                            d='M17 8l4 4m0 0l-4 4m4-4H3'
+                          />
+                        </svg>
+                      </a>
+                    </div>
+                    <p class='text-sm text-muted-foreground leading-relaxed'>
+                      {sponsor.data.excerpt}
+                    </p>
+                  </div>
+                </div>
+              );
+            })
+          }
         </div>
-
-      </div>
-
-      <!-- Certifications -->
-      <div class='mt-20 border-t border-border pt-12'>
-        <h2 class='text-3xl font-semibold mb-8 text-center'>Certifications</h2>
-        <div class='flex flex-wrap justify-center gap-x-12 gap-y-6 text-xl text-foreground'>
-          <div class='flex items-center gap-3'>✅ disguise Certified Operator</div>
-          <div class='flex items-center gap-3'>✅ Pixera Certified</div>
-          <div class='flex items-center gap-3'>✅ Vectorworks Core Certified</div>
-        </div>
-      </div>
-
-      <!-- Resume footer -->
-      <div class='mt-20 text-center text-sm text-muted-foreground border border-border rounded-3xl p-8 max-w-2xl mx-auto'>
-        18 years live production • F1 Grand Prix • FIFA World Cup • MDL Soundstorm • ONE Zabeel projection (230 m) • events up to 1.3 million visitors
-      </div>
-
+      </section>
     </div>
   </div>
 </Layout>

@@ -116,6 +116,7 @@ const projects = defineCollection({
     year: z.number(),
     made_at: z.string().optional(),
     video_url: z.string().optional(),
+    location: z.string().optional(),
   }),
 });
 

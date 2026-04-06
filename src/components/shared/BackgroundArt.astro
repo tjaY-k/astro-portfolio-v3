@@ -6,18 +6,18 @@
 </div>
 
 <script>
-  // Plexus Blue v1 — точно как в видео https://youtu.be/s9xk77X4m5c (macro plexus, glowing blue, плавное organic движение)
+  // Plexus Blue v2 — оптимизированная версия (как в видео) — без тормозов
   const canvas = document.getElementById('artPlumCanvas') as HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
   let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number }> = [];
   let animationFrameId: number;
 
-  const NUM_PARTICLES = 220;              // больше точек — плотнее plexus
-  const CONNECT_DISTANCE = 160;
-  const PARTICLE_COLOR = '#00ddff55';     // glowing cyan-blue как в видео
+  const NUM_PARTICLES = 105;               // ← сильно снижено для производительности
+  const CONNECT_DISTANCE = 145;
+  const PARTICLE_COLOR = '#00ddff55';
   const LINE_COLOR = '#00ddff35';
-  const SPEED = 0.18;                     // очень плавная и спокойная скорость
-  const GLOW_INTENSITY = 22;              // macro / depth-of-field glow
+  const SPEED = 0.16;                      // ← ещё плавнее
+  const GLOW = 16;                         // ← мягкий glow без перегрузки GPU
 
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
@@ -36,7 +36,7 @@
         y: Math.random() * window.innerHeight,
         vx: (Math.random() - 0.5) * SPEED,
         vy: (Math.random() - 0.5) * SPEED,
-        radius: Math.random() * 2.8 + 1.1,
+        radius: Math.random() * 2.6 + 1.0,
       });
     }
   }
@@ -46,46 +46,41 @@
     const height = window.innerHeight;
     ctx.clearRect(0, 0, width, height);
 
-    // Обновление частиц — очень органичное и плавное движение (как в Plexus видео)
+    // Один раз настраиваем glow (самое тяжёлое)
+    ctx.shadowBlur = GLOW;
+    ctx.shadowColor = '#00ddff';
+
+    // Обновление и отрисовка частиц
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
       p.x += p.vx;
       p.y += p.vy;
 
-      // лёгкое случайное «дыхание» + затухание для hypnotic эффекта
-      p.vx += (Math.random() - 0.5) * 0.12;
-      p.vy += (Math.random() - 0.5) * 0.12;
+      p.vx += (Math.random() - 0.5) * 0.11;
+      p.vy += (Math.random() - 0.5) * 0.11;
       p.vx *= 0.975;
       p.vy *= 0.975;
 
-      // мягкий отскок от краёв
-      if (p.x < 0 || p.x > width) p.vx *= -0.9;
-      if (p.y < 0 || p.y > height) p.vy *= -0.9;
+      if (p.x < 0 || p.x > width) p.vx *= -0.92;
+      if (p.y < 0 || p.y > height) p.vy *= -0.92;
 
-      // рисуем точку с glow
-      ctx.shadowBlur = GLOW_INTENSITY;
-      ctx.shadowColor = '#00ddff';
       ctx.fillStyle = PARTICLE_COLOR;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    // соединяющие линии (plexus-сеть)
-    ctx.shadowBlur = GLOW_INTENSITY / 2;
-    ctx.shadowColor = '#00ddff';
-    ctx.strokeStyle = LINE_COLOR;
+    // Соединяющие линии (plexus-сеть)
     ctx.lineWidth = 0.85;
+    ctx.strokeStyle = LINE_COLOR;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const p1 = particles[i];
         const p2 = particles[j];
-        const dx = p1.x - p2.x;
-        const dy = p1.y - p2.y;
-        const dist = Math.hypot(dx, dy);
+        const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
 
         if (dist < CONNECT_DISTANCE) {
-          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * 0.65;
+          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * 0.62;
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);

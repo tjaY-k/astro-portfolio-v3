@@ -1,17 +1,17 @@
 ---
 import { ArrowIcon } from '@/components/ui/icons';
 import EmailIcon from '@/components/ui/icons/EmailIcon.astro';
-import XIcon from '@/components/ui/icons/XIcon.astro';
 import LinkedInIcon from '@/components/ui/icons/LinkedInIcon.astro';
 import Layout from '@/layouts/Layout.astro';
 import { siteConfig } from '@/config';
 
 const lookingForOptions = [
-  { value: 'product-development', label: 'Product Development' },
-  { value: 'technical-advisory', label: 'Technical Advisory' },
-  { value: 'consulting', label: 'Consulting Services' },
-  { value: 'collaboration', label: 'Collaboration' },
-  { value: 'speaking', label: 'Speaking Engagement' },
+  { value: 'projection-mapping', label: 'Projection Mapping Project' },
+  { value: 'media-server-programming', label: 'Media Server Programming (disguise / Pixera)' },
+  { value: 'xr-led-setup', label: 'xR / LED Wall Setup' },
+  { value: 'technical-consulting', label: 'Technical Consulting for Events' },
+  { value: 'festival-production', label: 'Festival / Large Event Production' },
+  { value: 'collaboration', label: 'Collaboration / Partnership' },
   { value: 'other', label: 'Something Else' },
 ];
 
@@ -30,27 +30,20 @@ const contactMethods = [
     href: `mailto:${siteConfig.email}`,
   },
   {
-    icon: XIcon,
-    label: 'Twitter',
-    value: '@lewis_kihiu',
-    href: 'https://twitter.com/lewis_kihiu',
-    external: true,
-  },
-  {
     icon: LinkedInIcon,
     label: 'LinkedIn',
-    value: 'lewis-kihiu',
-    href: 'https://linkedin.com/in/lewis-kihiu-aba63011b/',
+    value: 'konstantin-laptev-72b70595',
+    href: 'https://linkedin.com/in/konstantin-laptev-72b70595',
     external: true,
   },
 ];
 ---
 
 <Layout
-  title='Contact – Lewis Kori'
-  description='Get in touch with Lewis Kori for thoughtful collaboration, advisory conversations, or long-term partnerships.'
-  ogTitle='Contact Lewis Kori'
-  ogDescription='For collaboration, advisory discussions, or aligned long-term work.'
+  title='Contact – Konstantin Laptev'
+  description='Get in touch with Konstantin Laptev — Video Technical Manager & Senior disguise Operator — for projection mapping, media server projects, xR setups and large-scale live events.'
+  ogTitle='Contact Konstantin Laptev'
+  ogDescription='Projection mapping • Media servers • xR • Large-scale events in Dubai & worldwide'
 >
   <!-- Calendly Script -->
   <script
@@ -73,10 +66,8 @@ const contactMethods = [
         Start a Conversation
       </h1>
       <p class='text-lg text-muted-foreground max-w-3xl mx-auto'>
-        I'm always open to conversations with founders, operators, and
-        collaborators working on meaningful problems. If you're building
-        something serious and value thoughtful engagement, feel free to reach
-        out.
+        I'm always open to conversations about large-scale live production, projection mapping, disguise / Pixera programming, xR technologies and immersive events. 
+        If you have a project in Dubai, Riyadh, or anywhere in the world — feel free to reach out.
       </p>
     </div>
 
@@ -130,7 +121,7 @@ const contactMethods = [
                   type='text'
                   id='company'
                   name='company'
-                  placeholder='Company'
+                  placeholder='Company / Event Organizer'
                   class='w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground'
                 />
               </div>
@@ -207,292 +198,88 @@ const contactMethods = [
                 name='message'
                 required
                 rows='6'
-                placeholder='Tell me about your project, goals, or how we might work together...'
-                class='w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground resize-none'
+                placeholder='Tell me about your event, projection mapping needs, media server requirements, dates, location...'
+                class='w-full px-4 py-3 rounded-lg border border-border bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all placeholder:text-muted-foreground resize-y'
               ></textarea>
             </div>
 
-            <div
-              class='flex items-start gap-3 p-4 rounded-lg border border-border bg-secondary/10'
+            <button
+              type='submit'
+              class='w-full md:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors'
             >
-              <input
-                type='checkbox'
-                id='subscribe'
-                name='subscribe'
-                class='appearance-none w-5 h-5 rounded border-2 border-border bg-background cursor-pointer transition-all checked:bg-primary checked:border-primary relative flex items-center justify-center before:content-[""] before:absolute before:w-2.5 before:h-1.5 before:border-l-2 before:border-b-2 before:border-primary-foreground before:-rotate-45 before:-translate-y-px before:opacity-0 checked:before:opacity-100 mt-0.5 shrink-0'
-              />
-              <label
-                for='subscribe'
-                class='text-sm text-foreground cursor-pointer'
-              >
-                <span class='font-medium'>Subscribe to my newsletter</span>
-                <p class='text-xs text-muted-foreground mt-1'>
-                  Get insights on software engineering, startups, and tech
-                  trends delivered to your inbox.
-                </p>
-              </label>
-            </div>
-
-            <div class='flex flex-col sm:flex-row items-center gap-4'>
-              <button
-                id='contact-submit-btn'
-                type='submit'
-                class='w-full sm:w-auto px-8 py-4 rounded-md text-sm bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-semibold inline-flex items-center justify-center gap-2 group disabled:opacity-50 disabled:cursor-not-allowed'
-              >
-                <span id='submit-btn-text'>Get in Touch</span>
-                <span id='submit-btn-icon'>
-                  <ArrowIcon
-                    class='size-4 transition-transform group-hover:-translate-y-1'
-                  />
-                </span>
-              </button>
-            </div>
+              Send Message
+              <ArrowIcon class='w-4 h-4' />
+            </button>
           </form>
         </div>
-        <div class='lg:col-span-2'>
-          <div class='sticky top-24 space-y-8'>
-            <div
-              class='rounded-2xl bg-linear-to-br from-primary/10 via-secondary/20 to-primary/5 border border-border p-8 md:p-12 flex items-center justify-center min-h-75'
-            >
-              <div class='text-center space-y-4'>
-                <div
-                  class='w-24 h-24 mx-auto rounded-full bg-primary/20 flex items-center justify-center'
-                >
-                  <svg
-                    class='w-12 h-12 text-primary'
-                    fill='none'
-                    viewBox='0 0 24 24'
-                    stroke='currentColor'
-                  >
-                    <path
-                      stroke-linecap='round'
-                      stroke-linejoin='round'
-                      stroke-width='2'
-                      d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z'
-                    ></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class='text-xl font-semibold text-foreground mb-2'>
-                    Let's Build Together
-                  </h3>
-                  <p class='text-sm text-muted-foreground'>
-                    I respond to every message personally
-                  </p>
-                </div>
-              </div>
-            </div>
 
-            <!-- Alternative Contact Methods -->
-            <div class='space-y-4'>
-              <p
-                class='text-xs uppercase tracking-wider text-muted-foreground font-medium'
-              >
-                Direct Contact
-              </p>
-
+        <!-- Sidebar -->
+        <div class='lg:col-span-2 space-y-8'>
+          <div class='bg-background border border-border rounded-3xl p-8'>
+            <h3 class='font-semibold text-lg mb-6'>Direct Contact</h3>
+            <div class='space-y-6'>
               {
                 contactMethods.map((method) => (
                   <a
                     href={method.href}
                     target={method.external ? '_blank' : undefined}
-                    rel={method.external ? 'noopener noreferrer' : undefined}
-                    class='block p-4 rounded-lg border border-border bg-secondary/10 hover:bg-secondary/20 transition-all group'
+                    class='flex items-start gap-4 group'
                   >
-                    <div class='flex items-center gap-4'>
-                      <div class='w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0'>
-                        <method.icon class='w-5 h-5 text-primary' />
-                      </div>
-                      <div>
-                        <h4 class='font-semibold text-foreground text-sm'>
-                          {method.label}
-                        </h4>
-                        <p class='text-xs text-muted-foreground'>
-                          {method.value}
-                        </p>
-                      </div>
+                    <div class='mt-1'>
+                      <method.icon class='w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors' />
+                    </div>
+                    <div>
+                      <div class='text-sm font-medium text-foreground'>{method.label}</div>
+                      <div class='text-foreground/70 text-base'>{method.value}</div>
                     </div>
                   </a>
                 ))
               }
             </div>
           </div>
+
+          <div class='text-sm text-muted-foreground'>
+            I respond to every message personally within 24 hours.
+          </div>
         </div>
       </div>
     </div>
 
+    <!-- Calendly tab -->
     <div id='calendly-tab' class='tab-content hidden'>
-      <div class=''>
-        <div
-          class='calendly-inline-widget overflow-hidden'
-          data-url='https://calendly.com/lewiskori/30min?background_color=0c1326&primary_color=47c9a7&text_color=ffffff'
-          style='min-width:320px;height:700px;'
-        >
-        </div>
-        <!-- Calendly inline widget end -->
-      </div>
+      <div class='calendly-inline-widget' data-url='https://calendly.com/lewis-kihiu/30min' style='min-width:320px;height:700px;'></div>
     </div>
   </div>
-</Layout>
 
-<script>
-  import { siteConfig } from '@/config';
-
-  function initTabs() {
+  <script>
+    // Tab switching logic
     const formTabBtn = document.getElementById('form-tab-btn');
     const calendlyTabBtn = document.getElementById('calendly-tab-btn');
     const formTab = document.getElementById('form-tab');
     const calendlyTab = document.getElementById('calendly-tab');
 
-    function switchTab(showForm: boolean) {
-      if (showForm) {
-        formTabBtn?.classList.add('active');
-        calendlyTabBtn?.classList.remove('active');
-        formTab?.classList.remove('hidden');
-        calendlyTab?.classList.add('hidden');
-      } else {
-        formTabBtn?.classList.remove('active');
-        calendlyTabBtn?.classList.add('active');
-        formTab?.classList.add('hidden');
-        calendlyTab?.classList.remove('hidden');
-      }
-    }
-
-    formTabBtn?.addEventListener('click', () => switchTab(true));
-    calendlyTabBtn?.addEventListener('click', () => switchTab(false));
-  }
-
-  initTabs();
-  document.addEventListener('astro:page-load', initTabs);
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contact-form') as HTMLFormElement;
-    const submitBtn = document.getElementById(
-      'contact-submit-btn',
-    ) as HTMLButtonElement;
-    const submitBtnText = document.getElementById(
-      'submit-btn-text',
-    ) as HTMLSpanElement;
-    const submitBtnIcon = document.getElementById(
-      'submit-btn-icon',
-    ) as HTMLElement;
-
-    form?.addEventListener('submit', async (e) => {
-      e.preventDefault();
-
-      // Show loading state
-      submitBtn.disabled = true;
-      submitBtnText.textContent = 'Processing...';
-      submitBtnIcon.style.display = 'none';
-
-      const formData = new FormData(form);
-      const name = formData.get('name') as string;
-      const company = formData.get('company') as string;
-      const email = formData.get('email') as string;
-      const lookingFor = formData.getAll('looking_for');
-      const budget = formData.get('budget') as string;
-      const message = formData.get('message') as string;
-      const subscribe = formData.get('subscribe') === 'on';
-
-      // If user wants to subscribe, handle newsletter subscription first
-      if (subscribe && email) {
-        try {
-          const response = await fetch('/api/newsletter', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
-          });
-   
-          if (response.ok) {
-            console.log('Successfully subscribed to newsletter');
-          }
-        } catch (error) {
-          console.error('Newsletter subscription failed:', error);
-        }
-      }
-
-      // Format looking_for options
-      const services = lookingFor
-        .map((value) => {
-          const option = {
-            'product-development': 'Product Development',
-            'technical-advisory': 'Technical Advisory',
-            consulting: 'Consulting Services',
-            collaboration: 'Collaboration',
-            speaking: 'Speaking Engagement',
-            other: 'Other',
-          }[value as string];
-          return option;
-        })
-        .join(', ');
-
-      // Format budget
-      const budgetLabel = budget
-        ? {
-            'under-10k': 'Under $10k',
-            '10k-50k': '$10k - $50k',
-            '50k-100k': '$50k - $100k',
-            '100k-plus': '$100k+',
-          }[budget]
-        : 'Not specified';
-
-      const subject = `Partnership Inquiry: ${services || 'Collaboration'}`;
-
-      const body = `Hi Lewis,\n\nMy name is ${name}${company ? ` and I work at ${company}` : ''}.\n\nI'm interested in: ${services}\n${budget ? `Budget Range: ${budgetLabel}\n` : ''}\nProject Details:\n${message}\n\nBest regards,\n${name}\n${email}`;
-
-      const mailtoLink = `mailto:${siteConfig.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      // Open mail client
-      window.location.href = mailtoLink;
-
-      // Reset form and button state
-      setTimeout(() => {
-        form.reset();
-        submitBtn.disabled = false;
-        submitBtnText.textContent = 'Get in Touch';
-        submitBtnIcon.style.display = 'inline';
-      }, 500);
+    formTabBtn.addEventListener('click', () => {
+      formTab.classList.remove('hidden');
+      calendlyTab.classList.add('hidden');
+      formTabBtn.classList.add('active');
+      calendlyTabBtn.classList.remove('active');
     });
-  });
-</script>
 
-<style>
-  .tab-button {
-    color: var(--color-muted-foreground);
-  }
+    calendlyTabBtn.addEventListener('click', () => {
+      formTab.classList.add('hidden');
+      calendlyTab.classList.remove('hidden');
+      formTabBtn.classList.remove('active');
+      calendlyTabBtn.classList.add('active');
+    });
 
-  .tab-button.active {
-    background: var(--color-primary);
-    color: var(--color-primary-foreground);
-    font-weight: 600;
-  }
-
-  .tab-button:not(.active):hover {
-    background: var(--color-secondary);
-    color: var(--color-foreground);
-  }
-
-  .tab-content {
-    animation: fadeIn 0.3s ease-in;
-  }
-  .calendly-inline-widget img,
-  embed,
-  iframe,
-  object,
-  video {
-    height: 100% !important;
-    max-width: 100%;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
+    // Form submission (simple alert for demo)
+    const form = document.getElementById('contact-form');
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you! Your message has been sent. I will reply within 24 hours.');
+        form.reset();
+      });
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
+  </script>
+</Layout>

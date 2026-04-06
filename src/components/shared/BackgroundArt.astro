@@ -6,149 +6,100 @@
 </div>
 
 <script>
-  const r180 = Math.PI;
-  const r90 = Math.PI / 2;
-  const r15 = Math.PI / 12;
-  const color = '#88888825';
-
-  const MIN_BRANCH = 30;
-  const len = 6;
-
-  const randomMiddle = (): number => Math.random() * 0.6 + 0.2;
-
-  interface CanvasSize {
-    width: number;
-    height: number;
-  }
-
-  interface Counter {
-    value: number;
-  }
-
-  const initCanvas = (
-    canvas: HTMLCanvasElement,
-    width: number = 400,
-    height: number = 400,
-    _dpi?: number
-  ) => {
-    const ctx = canvas.getContext('2d');
-    if (!ctx) throw new Error('Unable to get canvas context');
-
-    const dpr = window.devicePixelRatio || 1;
-
-    const bsr =
-      //@ts-ignore
-      ctx.webkitBackingStorePixelRatio ||
-      //@ts-ignore
-      ctx.mozBackingStorePixelRatio ||
-      //@ts-ignore
-      ctx.msBackingStorePixelRatio ||
-      //@ts-ignore
-      ctx.oBackingStorePixelRatio ||
-      //@ts-ignore
-      ctx.backingStorePixelRatio ||
-      1;
-    const dpi = _dpi || dpr / bsr;
-
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    canvas.width = dpi * width;
-    canvas.height = dpi * height;
-    ctx.scale(dpi, dpi);
-
-    return { ctx, dpi };
-  };
-
-  const polar2cart = (
-    x: number = 0,
-    y: number = 0,
-    r: number = 0,
-    theta: number = 0
-  ): [number, number] => {
-    const dx = r * Math.cos(theta);
-    const dy = r * Math.sin(theta);
-    return [x + dx, y + dy];
-  };
-
+  // Новый динамический canvas: Particle Network (лёгкие частицы + соединения)
   const canvas = document.getElementById('artPlumCanvas') as HTMLCanvasElement;
-  const size: CanvasSize = {
-    width: window.innerWidth,
-    height: window.innerHeight,
-  };
-  const { ctx } = initCanvas(canvas, size.width, size.height);
-  const { width, height } = canvas;
+  let ctx: CanvasRenderingContext2D;
+  let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number }> = [];
+  let animationFrameId: number;
 
-  let steps: Array<() => void> = [];
-  let prevSteps: Array<() => void> = [];
+  const NUM_PARTICLES = 110;
+  const CONNECT_DISTANCE = 130;
+  const COLOR = '#88888835';
+  const SPEED = 0.5;
 
-  const step = (
-    x: number,
-    y: number,
-    rad: number,
-    counter: Counter = { value: 0 }
-  ): void => {
-    const length = Math.random() * len;
-    counter.value += 1;
+  function resizeCanvas() {
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+    ctx.scale(dpr, dpr);
+  }
 
-    const [nx, ny] = polar2cart(x, y, length, rad);
+  function createParticles() {
+    particles = [];
+    for (let i = 0; i < NUM_PARTICLES; i++) {
+      particles.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        vx: (Math.random() - 0.5) * SPEED,
+        vy: (Math.random() - 0.5) * SPEED,
+        radius: Math.random() * 2.2 + 0.8,
+      });
+    }
+  }
 
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(nx, ny);
-    ctx.stroke();
-
-    const rad1 = rad + Math.random() * r15;
-    const rad2 = rad - Math.random() * r15;
-
-    if (
-      nx < -100 ||
-      nx > size.width + 100 ||
-      ny < -100 ||
-      ny > size.height + 100
-    )
-      return;
-
-    const rate = counter.value <= MIN_BRANCH ? 0.8 : 0.5;
-
-    if (Math.random() < rate) steps.push(() => step(nx, ny, rad1, counter));
-    if (Math.random() < rate) steps.push(() => step(nx, ny, rad2, counter));
-  };
-
-  const frame = (): void => {
-    prevSteps = steps;
-    steps = [];
-
-    if (!prevSteps.length) return;
-
-    prevSteps.forEach((i) => {
-      if (Math.random() < 0.5) steps.push(i);
-      else i();
-    });
-
-    requestAnimationFrame(frame);
-  };
-
-  const start = (): void => {
+  function draw() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     ctx.clearRect(0, 0, width, height);
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = color;
-    prevSteps = [];
-    steps = [
-      () => step(randomMiddle() * size.width, -5, r90),
-      () => step(randomMiddle() * size.width, size.height + 5, -r90),
-      () => step(-5, randomMiddle() * size.height, 0),
-      () => step(size.width + 5, randomMiddle() * size.height, r180),
-    ];
-    if (size.width < 500) steps = steps.slice(0, 2);
-    requestAnimationFrame(frame);
-  };
 
-  start();
+    // Обновление и отрисовка частиц
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
 
-  window.addEventListener('resize', () => {
-    size.width = window.innerWidth;
-    size.height = window.innerHeight;
-    initCanvas(canvas, size.width, size.height);
-    start();
-  });
+      // Отскок от краёв
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+
+      // Рисуем точку
+      ctx.fillStyle = COLOR;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Соединяющие линии
+    ctx.strokeStyle = COLOR;
+    ctx.lineWidth = 0.7;
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const p1 = particles[i];
+        const p2 = particles[j];
+        const dx = p1.x - p2.x;
+        const dy = p1.y - p2.y;
+        const dist = Math.hypot(dx, dy);
+
+        if (dist < CONNECT_DISTANCE) {
+          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * 0.35;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        }
+      }
+    }
+    ctx.globalAlpha = 1;
+
+    animationFrameId = requestAnimationFrame(draw);
+  }
+
+  function init() {
+    const tempCtx = canvas.getContext('2d');
+    if (!tempCtx) return;
+    ctx = tempCtx;
+
+    resizeCanvas();
+    createParticles();
+    draw();
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createParticles();
+    });
+  }
+
+  init();
 </script>

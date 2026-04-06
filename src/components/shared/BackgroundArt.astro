@@ -6,16 +6,16 @@
 </div>
 
 <script>
-  // Новый динамический canvas: Particle Network (лёгкие частицы + соединения)
+  // Новый динамический canvas: Particle Network (повышенная контрастность)
   const canvas = document.getElementById('artPlumCanvas') as HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
   let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number }> = [];
   let animationFrameId: number;
 
-  const NUM_PARTICLES = 110;
+  const NUM_PARTICLES = 140;
   const CONNECT_DISTANCE = 130;
-  const COLOR = '#88888835';
-  const SPEED = 0.5;
+  const COLOR = '#cccccc60';           // ← ярче и контрастнее
+  const SPEED = 0.6;
 
   function resizeCanvas() {
     const dpr = window.devicePixelRatio || 1;
@@ -34,7 +34,7 @@
         y: Math.random() * window.innerHeight,
         vx: (Math.random() - 0.5) * SPEED,
         vy: (Math.random() - 0.5) * SPEED,
-        radius: Math.random() * 2.2 + 0.8,
+        radius: Math.random() * 2.5 + 1.0,   // ← чуть крупнее
       });
     }
   }
@@ -50,20 +50,18 @@
       p.x += p.vx;
       p.y += p.vy;
 
-      // Отскок от краёв
       if (p.x < 0 || p.x > width) p.vx *= -1;
       if (p.y < 0 || p.y > height) p.vy *= -1;
 
-      // Рисуем точку
       ctx.fillStyle = COLOR;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    // Соединяющие линии
+    // Соединяющие линии (более контрастные)
     ctx.strokeStyle = COLOR;
-    ctx.lineWidth = 0.7;
+    ctx.lineWidth = 1.0;                    // ← толще
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const p1 = particles[i];
@@ -73,7 +71,7 @@
         const dist = Math.hypot(dx, dy);
 
         if (dist < CONNECT_DISTANCE) {
-          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * 0.35;
+          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * 0.6;  // ← выше прозрачность
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);

@@ -7,7 +7,7 @@ excerpt: The newsletter platform built for growth. Beautiful emails, powerful an
 is_featured: true
 ---
 
-The newsletter platform built for growth. Beautiful emails, powerful analytics, and monetization tools — all without the headache.
+The bla newsletter platform built for growth. Beautiful emails, powerful analytics, and monetization tools — all without the headache.
 
 Trusted by thousands of creators and brands to build engaged audiences.
 

@@ -4,11 +4,6 @@ import { getCollection } from 'astro:content';
 import SectionHeader from '@/components/shared/SectionHeader.astro';
 import ResourceItem from '@/components/shared/ResourceItem.astro';
 
-const allSponsors = await getCollection(
-  'sponsors',
-  ({ data }) => data.is_featured,
-);
-
 const currentBooks = await getCollection('books');
 const techStack = await getCollection('techStack');
 const desktopSetup = await getCollection('desktopSetup');
@@ -16,9 +11,9 @@ const desktopSetup = await getCollection('desktopSetup');
 
 <Layout
   title='Technical Arsenal – Konstantin Laptev'
-  description='Media Servers (disguise, Pixera), Projection Mapping, Hardware & Broadcast Equipment and Pre-Production Tools. 18+ years live production for F1 Grand Prix, FIFA World Cup, MDL Soundstorm and major events.'
+  description='Media Servers (disguise, Pixera), Projection Mapping, Hardware & Broadcast Equipment and Pre-Production Tools. Live production for major international events.'
   ogTitle='Technical Arsenal – Konstantin Laptev'
-  ogDescription='Professional toolkit of Video Technical Manager & disguise Certified Operator Konstantin Laptev: media servers, projection mapping, xR and broadcast hardware used in world-class events.'
+  ogDescription='Professional toolkit of Video Technical Manager & disguise Certified Operator Konstantin Laptev.'
 >
   <div class='relative'>
     <div class='container-fluid py-16 md:py-20 relative'>
@@ -36,145 +31,92 @@ const desktopSetup = await getCollection('desktopSetup');
           Technical Arsenal<br />
           <span class='text-secondary'>Media Server &amp; Live Production</span>
         </h1>
-       <p
-  class='text-lg md:text-xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed'
->
-  Delivering media server operations, projection mapping and large-scale live productions worldwide
-</p>
+        <p
+          class='text-lg md:text-xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed'
+        >
+          Delivering large-scale live productions, media server operations and projection mapping worldwide
+        </p>
       </div>
 
       <section class='mb-32'>
-        <SectionHeader
-          title='Media Servers'
-          subtitle='disguise • Pixera • Resolume • MadMapper'
-        />
+        <SectionHeader title='Media Servers' subtitle='disguise • Pixera • Resolume • MadMapper' />
         <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
-          {
-            currentBooks.map((book, index) => (
-              <ResourceItem
-                href={book.data.link}
-                image={book.data.image}
-                title={book.data.title}
-                subtitle={book.data.author}
-                description={book.data.description}
-                linkText='Learn more'
-                imageSize='book'
-                index={index}
-              />
-            ))
-          }
+          {currentBooks.map((book, index) => (
+            <ResourceItem
+              href={book.data.link}
+              image={book.data.image}
+              title={book.data.title}
+              subtitle={book.data.author}
+              description={book.data.description}
+              linkText='Learn more'
+              imageSize='book'
+              index={index}
+            />
+          ))}
         </div>
       </section>
 
       <section class='mb-32'>
-        <SectionHeader
-          title='Hardware &amp; Broadcast Equipment'
-          subtitle='Projectors, mixers, LED processors and tracking systems'
-        />
+        <SectionHeader title='Hardware &amp; Broadcast Equipment' subtitle='Projectors, mixers, LED processors and tracking systems' />
         <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
-          {
-            desktopSetup.map((item, index) => (
-              <ResourceItem
-                href={item.data.link}
-                image={item.data.image}
-                title={item.data.name}
-                description={item.data.description}
-                linkText='Learn more'
-                imageSize='medium'
-                index={index}
-              />
-            ))
-          }
+          {desktopSetup.map((item, index) => (
+            <ResourceItem
+              href={item.data.link}
+              image={item.data.image}
+              title={item.data.name}
+              description={item.data.description}
+              linkText='Learn more'
+              imageSize='medium'
+              index={index}
+            />
+          ))}
         </div>
       </section>
 
       <section class='mb-32'>
-        <SectionHeader
-          title='Pre-Production Tools'
-          subtitle='Vectorworks • Blender • Mapping Matter'
-          accentColor='secondary'
-        />
+        <SectionHeader title='Pre-Production Tools' subtitle='Vectorworks • Blender • Mapping Matter' accentColor='secondary' />
         <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
-          {
-            techStack.map((tech, index) => (
-              <ResourceItem
-                href={tech.data.link}
-                image={tech.data.image}
-                title={tech.data.name}
-                description={tech.data.description}
-                linkText='Learn more'
-                imageSize='small'
-                index={index}
-                target='_blank'
-                rel='noopener noreferrer'
-              />
-            ))
-          }
+          {techStack.map((tech, index) => (
+            <ResourceItem
+              href={tech.data.link}
+              image={tech.data.image}
+              title={tech.data.name}
+              description={tech.data.description}
+              linkText='Learn more'
+              imageSize='small'
+              index={index}
+              target='_blank'
+              rel='noopener noreferrer'
+            />
+          ))}
         </div>
       </section>
 
+      <!-- CERTIFICATIONS -->
       <section class='mb-16'>
         <SectionHeader
-          title='Sponsors'
-          subtitle='The partners who make my content possible'
+          title='Certifications'
+          subtitle='Professional qualifications'
           accentColor='secondary'
         />
-        <div class='grid md:grid-cols-2 gap-6'>
-          {
-            allSponsors.map((sponsor, index) => {
-              return (
-                <div
-                  class='group flex gap-6 md:gap-8 transition-all duration-300'
-                  style={`animation-delay: ${index * 100}ms`}
-                >
-                  <div class='relative shrink-0'>
-                    <div class='relative w-16 h-16 flex items-center justify-center rounded-xl p-2'>
-                      <img
-                        src={
-                          sponsor.data.logo ||
-                          `https://logo.clearbit.com/${new URL(sponsor.data.url).hostname}`
-                        }
-                        alt={sponsor.data.name}
-                        class='w-full h-full object-contain'
-                        onerror={`this.src='https://logo.clearbit.com/${new URL(sponsor.data.url).hostname}'`}
-                      />
-                    </div>
-                  </div>
-                  <div class='flex flex-col space-y-4 min-w-0'>
-                    <div class='space-y-2'>
-                      <h3 class='text-xl font-semibold text-foreground group-hover:text-primary transition-colors'>
-                        {sponsor.data.name}
-                      </h3>
-                      <a
-                        href={sponsor.data.url}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        class='inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all'
-                      >
-                        <span>Visit Website</span>
-                        <svg
-                          class='w-4 h-4'
-                          fill='none'
-                          viewBox='0 0 24 24'
-                          stroke='currentColor'
-                        >
-                          <path
-                            stroke-linecap='round'
-                            stroke-linejoin='round'
-                            stroke-width='2'
-                            d='M17 8l4 4m0 0l-4 4m4-4H3'
-                          />
-                        </svg>
-                      </a>
-                    </div>
-                    <p class='text-sm text-muted-foreground leading-relaxed'>
-                      {sponsor.data.excerpt}
-                    </p>
-                  </div>
-                </div>
-              );
-            })
-          }
+        <div class='grid md:grid-cols-3 gap-6'>
+          <div class='group border border-border rounded-3xl p-8 hover:border-primary transition-all duration-300'>
+            <div class='text-4xl mb-4'>🎟️</div>
+            <h3 class='text-xl font-semibold mb-2'>disguise Certified Operator</h3>
+            <p class='text-sm text-muted-foreground'>Official certification for disguise (d3) media server – 7+ years of professional use.</p>
+          </div>
+
+          <div class='group border border-border rounded-3xl p-8 hover:border-primary transition-all duration-300'>
+            <div class='text-4xl mb-4'>📦</div>
+            <h3 class='text-xl font-semibold mb-2'>Pixera Certified</h3>
+            <p class='text-sm text-muted-foreground'>Certified specialist in Pixera media server platform for complex shows and virtual production.</p>
+          </div>
+
+          <div class='group border border-border rounded-3xl p-8 hover:border-primary transition-all duration-300'>
+            <div class='text-4xl mb-4'>📐</div>
+            <h3 class='text-xl font-semibold mb-2'>Vectorworks Core Certified</h3>
+            <p class='text-sm text-muted-foreground'>Certified in 3D design and planning for LED screens, stages and projection mapping.</p>
+          </div>
         </div>
       </section>
     </div>

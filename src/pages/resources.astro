@@ -16,7 +16,7 @@ const desktopSetup = await getCollection('desktopSetup');
 
 <Layout
   title='Technical Arsenal – Konstantin Laptev'
-  description='Media Servers (disguise, Pixera), Projection Mapping, Hardware & Broadcast Equipment and Pre-Production Tools. 18+ years live production for F1 Grand Prix, FIFA World Cup, MDL Soundstorm and major immersive events.'
+  description='Media Servers (disguise, Pixera), Projection Mapping, Hardware & Broadcast Equipment and Pre-Production Tools. 18+ years live production for F1 Grand Prix, FIFA World Cup, MDL Soundstorm and major events.'
   ogTitle='Technical Arsenal – Konstantin Laptev'
   ogDescription='Professional toolkit of Video Technical Manager & disguise Certified Operator Konstantin Laptev: media servers, projection mapping, xR and broadcast hardware used in world-class events.'
 >
@@ -33,21 +33,20 @@ const desktopSetup = await getCollection('desktopSetup');
         <h1
           class='text-3xl md:text-4xl font-semibold text-foreground leading-tight tracking-tight first-letter-color'
         >
-          Tools & Resources<br />
-          <span class='text-secondary'>I Use Daily</span>
+          Technical Arsenal<br />
+          <span class='text-secondary'>Media Server &amp; Live Production</span>
         </h1>
         <p
           class='text-lg md:text-xl text-muted-foreground font-light max-w-3xl mx-auto leading-relaxed'
         >
-          A peek into the books, tech, and gear that fuel my work and keep me
-          productive
+          18+ years delivering immersive visual experiences for F1 Grand Prix, FIFA World Cup, MDL Soundstorm and major projection mapping events
         </p>
       </div>
 
       <section class='mb-32'>
         <SectionHeader
-          title='Currently Reading'
-          subtitle='Expanding my mind one page at a time'
+          title='Media Servers'
+          subtitle='disguise • Pixera • Resolume • MadMapper'
         />
         <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
           {
@@ -58,7 +57,7 @@ const desktopSetup = await getCollection('desktopSetup');
                 title={book.data.title}
                 subtitle={book.data.author}
                 description={book.data.description}
-                linkText='View book'
+                linkText='Learn more'
                 imageSize='book'
                 index={index}
               />
@@ -69,8 +68,8 @@ const desktopSetup = await getCollection('desktopSetup');
 
       <section class='mb-32'>
         <SectionHeader
-          title='My Setup'
-          subtitle='The gear that powers my daily workflow'
+          title='Hardware &amp; Broadcast Equipment'
+          subtitle='Projectors, mixers, LED processors and tracking systems'
         />
         <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
           {
@@ -80,7 +79,7 @@ const desktopSetup = await getCollection('desktopSetup');
                 image={item.data.image}
                 title={item.data.name}
                 description={item.data.description}
-                linkText='Buy here'
+                linkText='Learn more'
                 imageSize='medium'
                 index={index}
               />
@@ -91,8 +90,8 @@ const desktopSetup = await getCollection('desktopSetup');
 
       <section class='mb-32'>
         <SectionHeader
-          title='Tech Stack'
-          subtitle='The tools I rely on for building software'
+          title='Pre-Production Tools'
+          subtitle='Vectorworks • Blender • Mapping Matter'
           accentColor='secondary'
         />
         <div class='grid md:grid-cols-2 gap-6 md:gap-12'>

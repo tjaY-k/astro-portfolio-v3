@@ -1,16 +1,37 @@
 [
   {
     "id": "barco-e2",
-    "name": "Barco E2 • Analog Way Aquilon • Ross Ultrix",
+    "name": "Barco E2",
     "image": "https://picsum.photos/id/160/600/400",
-    "description": "Vision mixers and video processors for live broadcast, large-scale events and seamless signal management.",
+    "description": "Vision mixer and video processor for live broadcast and large-scale events.",
     "link": "#"
   },
   {
-    "id": "projectors",
-    "name": "Panasonic & Christie Projectors",
+    "id": "analog-way-aquilon",
+    "name": "Analog Way Aquilon",
+    "image": "https://picsum.photos/id/161/600/400",
+    "description": "High-end video processor for seamless signal management and multi-screen setups.",
+    "link": "#"
+  },
+  {
+    "id": "ross-ultrix",
+    "name": "Ross Ultrix",
+    "image": "https://picsum.photos/id/162/600/400",
+    "description": "Advanced routing and vision mixing system for professional broadcast environments.",
+    "link": "#"
+  },
+  {
+    "id": "panasonic-projectors",
+    "name": "Panasonic Projectors",
     "image": "https://picsum.photos/id/180/600/400",
-    "description": "High-brightness projectors used for projection mapping and immersive visual experiences worldwide.",
+    "description": "High-brightness projectors used for projection mapping and immersive visual experiences.",
+    "link": "#"
+  },
+  {
+    "id": "christie-projectors",
+    "name": "Christie Projectors",
+    "image": "https://picsum.photos/id/181/600/400",
+    "description": "Premium projectors for large-scale projection mapping and stadium installations.",
     "link": "#"
   },
   {
@@ -19,5 +40,19 @@
     "image": "https://picsum.photos/id/201/600/400",
     "description": "LED screen processors and control systems for flawless large-format video walls.",
     "link": "https://www.novastar.tech"
+  },
+  {
+    "id": "broadcast-cameras",
+    "name": "Broadcast Cameras",
+    "image": "https://picsum.photos/id/220/600/400",
+    "description": "Professional broadcast cameras for live events, sports and television production.",
+    "link": "#"
+  },
+  {
+    "id": "managed-network",
+    "name": "Managed Network Infrastructure",
+    "image": "https://picsum.photos/id/250/600/400",
+    "description": "Site-wide network infrastructure for reliable media server communication and signal distribution.",
+    "link": "#"
   }
 ]

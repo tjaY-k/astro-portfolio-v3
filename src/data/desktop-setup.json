@@ -2,56 +2,56 @@
   {
     "id": "panasonic-projectors",
     "name": "Panasonic Projectors",
-    "image": "https://logo.clearbit.com/panasonic.com",
+    "image": "/logos/panasonic.svg",
     "description": "High-brightness projectors used for projection mapping and immersive visual experiences.",
     "link": "#"
   },
   {
     "id": "novastar",
     "name": "NovaStar LED Control Systems",
-    "image": "https://logo.clearbit.com/novastar.tech",
+    "image": "/logos/novastar.svg",
     "description": "LED screen processors and control systems for flawless large-format video walls.",
     "link": "https://www.novastar.tech"
   },
   {
     "id": "analog-way-aquilon",
     "name": "Analog Way Aquilon",
-    "image": "https://logo.clearbit.com/analogway.com",
+    "image": "/logos/analogway.svg",
     "description": "High-end video processor for seamless signal management and multi-screen setups.",
     "link": "#"
   },
   {
     "id": "barco-e2",
     "name": "Barco E2",
-    "image": "https://logo.clearbit.com/barco.com",
+    "image": "/logos/barco.svg",
     "description": "Vision mixer and video processor for live broadcast and large-scale events.",
     "link": "#"
   },
   {
     "id": "christie-projectors",
     "name": "Christie Projectors",
-    "image": "https://logo.clearbit.com/christiedigital.com",
+    "image": "/logos/christie.svg",
     "description": "Premium projectors for large-scale projection mapping and stadium installations.",
     "link": "#"
   },
   {
     "id": "broadcast-cameras",
     "name": "Broadcast Cameras",
-    "image": "https://logo.clearbit.com/blackmagicdesign.com",
+    "image": "/logos/broadcast-cameras.svg",
     "description": "Professional broadcast cameras for live events, sports and television production.",
     "link": "#"
   },
   {
     "id": "managed-network",
     "name": "Managed Network Infrastructure",
-    "image": "https://logo.clearbit.com/cisco.com",
+    "image": "/logos/managed-network.svg",
     "description": "Site-wide network infrastructure for reliable media server communication and signal distribution.",
     "link": "#"
   },
   {
     "id": "ross-ultrix",
     "name": "Ross Ultrix",
-    "image": "https://logo.clearbit.com/rossvideo.com",
+    "image": "/logos/ross.svg",
     "description": "Advanced routing and vision mixing system for professional broadcast environments.",
     "link": "#"
   }

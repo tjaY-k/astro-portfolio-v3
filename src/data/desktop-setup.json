@@ -2,56 +2,56 @@
   {
     "id": "panasonic-projectors",
     "name": "Panasonic Projectors",
-    "image": "https://picsum.photos/id/180/600/400",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/Panasonic_logo.svg/200px-Panasonic_logo.svg.png",
     "description": "High-brightness projectors used for projection mapping and immersive visual experiences.",
     "link": "#"
   },
   {
     "id": "novastar",
     "name": "NovaStar LED Control Systems",
-    "image": "https://picsum.photos/id/201/600/400",
+    "image": "https://www.novastar.tech/wp-content/uploads/2023/01/NovaStar-Logo.svg",
     "description": "LED screen processors and control systems for flawless large-format video walls.",
     "link": "https://www.novastar.tech"
   },
   {
     "id": "analog-way-aquilon",
     "name": "Analog Way Aquilon",
-    "image": "https://picsum.photos/id/161/600/400",
+    "image": "https://www.analogway.com/wp-content/uploads/2023/01/Analog-Way-Logo.svg",
     "description": "High-end video processor for seamless signal management and multi-screen setups.",
     "link": "#"
   },
   {
     "id": "barco-e2",
     "name": "Barco E2",
-    "image": "https://picsum.photos/id/160/600/400",
+    "image": "https://www.barco.com/etc.clientlibs/settings/wcm/designs/barco/clientlibs/clientlib-site/resources/images/logo.svg",
     "description": "Vision mixer and video processor for live broadcast and large-scale events.",
     "link": "#"
   },
   {
     "id": "christie-projectors",
     "name": "Christie Projectors",
-    "image": "https://picsum.photos/id/181/600/400",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Christie_Digital_logo.svg/200px-Christie_Digital_logo.svg.png",
     "description": "Premium projectors for large-scale projection mapping and stadium installations.",
     "link": "#"
   },
   {
     "id": "broadcast-cameras",
     "name": "Broadcast Cameras",
-    "image": "https://picsum.photos/id/220/600/400",
+    "image": "https://cdn-icons-png.flaticon.com/512/3135/3135789.png",
     "description": "Professional broadcast cameras for live events, sports and television production.",
     "link": "#"
   },
   {
     "id": "managed-network",
     "name": "Managed Network Infrastructure",
-    "image": "https://picsum.photos/id/250/600/400",
+    "image": "https://cdn-icons-png.flaticon.com/512/3135/3135789.png",
     "description": "Site-wide network infrastructure for reliable media server communication and signal distribution.",
     "link": "#"
   },
   {
     "id": "ross-ultrix",
     "name": "Ross Ultrix",
-    "image": "https://picsum.photos/id/162/600/400",
+    "image": "https://www.rossvideo.com/wp-content/uploads/2023/01/Ross-Video-Logo.svg",
     "description": "Advanced routing and vision mixing system for professional broadcast environments.",
     "link": "#"
   }

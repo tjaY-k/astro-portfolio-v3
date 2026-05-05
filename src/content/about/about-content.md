@@ -15,7 +15,7 @@ Whether it's delivering the world's longest projection mapping on ONE Zabeel, ma
 
 - Explore my **[Projects](/projects)** — see the biggest shows I've delivered  
 - Check my **[Advisory & Consulting Services](/advisory)** — projection mapping, media servers, xR setup and technical audits  
-- View my full **[Experience](#where-ive-worked)** and **[Skills](/resources)**  
+- View my full **[Experience](#work)** and **[Skills](/resources)**  
 - Or just **[get in touch](/contact)** — I'm always open to new collaborations worldwide (Dubai-based)
 
 Let's make the next big event visually unforgettable.

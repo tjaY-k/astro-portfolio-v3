@@ -1,10 +1,17 @@
 [
   {
-    "id": "barco-e2",
-    "name": "Barco E2",
-    "image": "https://picsum.photos/id/160/600/400",
-    "description": "Vision mixer and video processor for live broadcast and large-scale events.",
+    "id": "panasonic-projectors",
+    "name": "Panasonic Projectors",
+    "image": "https://picsum.photos/id/180/600/400",
+    "description": "High-brightness projectors used for projection mapping and immersive visual experiences.",
     "link": "#"
+  },
+  {
+    "id": "novastar",
+    "name": "NovaStar LED Control Systems",
+    "image": "https://picsum.photos/id/201/600/400",
+    "description": "LED screen processors and control systems for flawless large-format video walls.",
+    "link": "https://www.novastar.tech"
   },
   {
     "id": "analog-way-aquilon",
@@ -14,17 +21,10 @@
     "link": "#"
   },
   {
-    "id": "ross-ultrix",
-    "name": "Ross Ultrix",
-    "image": "https://picsum.photos/id/162/600/400",
-    "description": "Advanced routing and vision mixing system for professional broadcast environments.",
-    "link": "#"
-  },
-  {
-    "id": "panasonic-projectors",
-    "name": "Panasonic Projectors",
-    "image": "https://picsum.photos/id/180/600/400",
-    "description": "High-brightness projectors used for projection mapping and immersive visual experiences.",
+    "id": "barco-e2",
+    "name": "Barco E2",
+    "image": "https://picsum.photos/id/160/600/400",
+    "description": "Vision mixer and video processor for live broadcast and large-scale events.",
     "link": "#"
   },
   {
@@ -33,13 +33,6 @@
     "image": "https://picsum.photos/id/181/600/400",
     "description": "Premium projectors for large-scale projection mapping and stadium installations.",
     "link": "#"
-  },
-  {
-    "id": "novastar",
-    "name": "NovaStar LED Control Systems",
-    "image": "https://picsum.photos/id/201/600/400",
-    "description": "LED screen processors and control systems for flawless large-format video walls.",
-    "link": "https://www.novastar.tech"
   },
   {
     "id": "broadcast-cameras",
@@ -53,6 +46,13 @@
     "name": "Managed Network Infrastructure",
     "image": "https://picsum.photos/id/250/600/400",
     "description": "Site-wide network infrastructure for reliable media server communication and signal distribution.",
+    "link": "#"
+  },
+  {
+    "id": "ross-ultrix",
+    "name": "Ross Ultrix",
+    "image": "https://picsum.photos/id/162/600/400",
+    "description": "Advanced routing and vision mixing system for professional broadcast environments.",
     "link": "#"
   }
 ]

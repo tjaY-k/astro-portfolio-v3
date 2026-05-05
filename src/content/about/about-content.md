@@ -17,7 +17,7 @@ Key projects I’ve delivered include the world’s longest projection mapping o
 
 **Ready to create something epic together?**
 
-- Explore my **[Projects](/projects)** — see the biggest shows I've delivered  
+- Explore my **[Projects](#projects)** — see the biggest shows I've delivered  
 - View my full **[Experience](#work)** and **[Skills](/resources)**  
 - Or just **[get in touch](/contact)** — I'm always open to new collaborations worldwide (Dubai-based)
 

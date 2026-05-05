@@ -10,7 +10,7 @@ Hi, I'm Konstantin Laptev
 I specialise in the technical planning and delivery of video systems for live events and fixed installations. My core expertise includes:
 
 - Projection mapping  
-- Media server programming (disguise d3, Pixera, Resolume)  
+- Media server programming  
 - LED screen planning and execution
 
 Key projects I’ve delivered include the world’s longest projection mapping on ONE Zabeel, site-wide video systems for MDL Soundstorm, xR studio operations for broadcast, and technical video delivery for Formula 1 and the FIFA World Cup. I focus on technical precision combined with strong creative execution.

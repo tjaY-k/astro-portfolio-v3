@@ -7,13 +7,9 @@ Hi, I'm Konstantin Laptev
 
 **Video Technical Manager & Senior Disguise Operator** with over 18 years of experience delivering large-scale immersive productions for major international events.
 
-I specialise in the technical planning and delivery of video systems for live events and fixed installations. My core expertise includes:
+I specialise in the technical planning and delivery of video systems for both live events and fixed installations. My core expertise includes projection mapping, media server programming, and LED screen planning and execution.
 
-- Projection mapping  
-- Media server programming  
-- LED screen planning and execution
-
-Key projects I’ve delivered include the world’s longest projection mapping on ONE Zabeel, site-wide video systems for MDL Soundstorm, xR studio operations for broadcast, and technical video delivery for Formula 1 and the FIFA World Cup. I focus on technical precision combined with strong creative execution.
+Notable projects include the world’s longest projection mapping on ONE Zabeel, site-wide video systems for MDL Soundstorm, xR studio operations for broadcast, and technical video delivery for Formula 1 and the FIFA World Cup. I focus on technical precision combined with strong creative execution.
 
 **Ready to create something epic together?**
 

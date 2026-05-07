@@ -2,14 +2,14 @@
   {
     "id": "panasonic-projectors",
     "name": "Panasonic Projectors",
-    "image": "/logos/panasonic.png",
+    "image": "/logos/panasonic.svg",
     "description": "High-brightness projectors used for projection mapping and immersive visual experiences.",
     "link": "#"
   },
   {
     "id": "novastar",
     "name": "NovaStar LED Control Systems",
-    "image": "/logos/novastar.png",
+    "image": "/logos/novastar.svg",
     "description": "LED screen processors and control systems for flawless large-format video walls.",
     "link": "https://www.novastar.tech"
   },

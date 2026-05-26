@@ -9,14 +9,14 @@
   {
     "id": "christie-projectors",
     "name": "Christie Projectors",
-    "image": "/logos/christie.svg",
+    "image": "/logos/christie.png",
     "description": "High-lumen projectors. Used for demanding large-scale projection mapping and permanent stadium installations requiring exceptional brightness and reliability.",
     "link": "#"
   },
   {
     "id": "epson-projectors",
     "name": "Epson Projectors",
-    "image": "/logos/epson.svg",
+    "image": "/logos/epson.png",
     "description": "Reliable and cost-effective solution for large-scale projection mapping, corporate events and permanent installations.",
     "link": "#"
   },
@@ -37,14 +37,14 @@
   {
     "id": "barco-e2",
     "name": "Barco E2",
-    "image": "/logos/barco.svg",
+    "image": "/logos/barco.png",
     "description": "Vision mixer and video processor. Serves as a core backbone for complex live broadcasts and large-scale international events.",
     "link": "#"
   },
   {
     "id": "ross-ultrix",
     "name": "Ross Ultrix",
-    "image": "/logos/ross.svg",
+    "image": "/logos/ross.png",
     "description": "Advanced routing and vision mixing system. Trusted in professional broadcast environments and large-scale live productions.",
     "link": "#"
   },

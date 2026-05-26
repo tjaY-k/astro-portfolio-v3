@@ -1,11 +1,11 @@
 ---
 interface Props {
-  href: string;
+  href?: string;
   image: string;
   title: string;
   subtitle?: string;
   description: string;
-  linkText: string;
+  linkText?: string;
   imageSize?: 'small' | 'medium' | 'book';
   index?: number;
   target?: string;
@@ -34,12 +34,16 @@ const sizeClasses = {
 const imageClass = sizeClasses[imageSize];
 ---
 
-<a
-  href={href}
+{
+  const isLink = !!href && href !== '#';
+  const Wrapper = isLink ? 'a' : 'div';
+  const wrapperProps = isLink ? { href, target, rel } : {};
+}
+
+<Wrapper
   class='group flex gap-6 transition-all duration-300'
   style={`animation-delay: ${index * 50}ms`}
-  target={target}
-  rel={rel}
+  {...wrapperProps}
 >
   <div
     class={`relative ${imageClass} shrink-0 rounded overflow-hidden ${imageSize === 'book' ? 'shadow-md' : ''}`}
@@ -62,22 +66,24 @@ const imageClass = sizeClasses[imageSize];
     <p class='text-sm text-muted-foreground leading-relaxed'>
       {description}
     </p>
-    <span
-      class='inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all w-fit'
-    >
-      <span>{linkText}</span>
-      <svg
-        class='w-4 h-4'
-        fill='none'
-        viewBox='0 0 24 24'
-        stroke='currentColor'
+    {linkText && (
+      <span
+        class='inline-flex items-center gap-2 text-sm font-semibold text-primary hover:gap-3 transition-all w-fit'
       >
-        <path
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          stroke-width='2'
-          d='M17 8l4 4m0 0l-4 4m4-4H3'></path>
-      </svg>
-    </span>
+        <span>{linkText}</span>
+        <svg
+          class='w-4 h-4'
+          fill='none'
+          viewBox='0 0 24 24'
+          stroke='currentColor'
+        >
+          <path
+            stroke-linecap='round'
+            stroke-linejoin='round'
+            stroke-width='2'
+            d='M17 8l4 4m0 0l-4 4m4-4H3'></path>
+        </svg>
+      </span>
+    )}
   </div>
-</a>
+</Wrapper>

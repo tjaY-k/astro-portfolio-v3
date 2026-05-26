@@ -59,19 +59,22 @@ const desktopSetup = await getCollection('desktopSetup');
       <section class='mb-32'>
         <SectionHeader title='Hardware & Broadcast Equipment' subtitle='Projectors • Vision Mixers • LED Processors • Broadcast Systems' />
         <div class='grid md:grid-cols-2 gap-6 md:gap-12'>
-          {desktopSetup.map((item, index) => (
-            <ResourceItem
-              href={item.data.link}
-              image={item.data.image}
-              title={item.data.name}
-              description={item.data.description}
-              linkText='Learn more'
-              imageSize='medium'
-              index={index}
-              target='_blank'
-              rel='noopener noreferrer'
-            />
-          ))}
+          {desktopSetup.map((item, index) => {
+            const hideLink = item.id === 'broadcast-cameras' || item.id === 'managed-network';
+            return (
+              <ResourceItem
+                href={hideLink ? undefined : item.data.link}
+                image={item.data.image}
+                title={item.data.name}
+                description={item.data.description}
+                linkText={hideLink ? undefined : 'Learn more'}
+                imageSize='medium'
+                index={index}
+                target={hideLink ? undefined : '_blank'}
+                rel={hideLink ? undefined : 'noopener noreferrer'}
+              />
+            );
+          })}
         </div>
       </section>
 

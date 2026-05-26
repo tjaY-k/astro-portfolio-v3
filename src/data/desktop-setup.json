@@ -4,21 +4,21 @@
     "name": "Panasonic Projectors",
     "image": "/logos/panasonic.png",
     "description": "High-brightness projectors. Deployed on major projection mapping projects, including the world’s longest media facade projection (ONE Zabeel, 230 meters).",
-    "link": "#"
+    "link": "https://connect.na.panasonic.com/ppnda/projectors"
   },
   {
     "id": "christie-projectors",
     "name": "Christie Projectors",
     "image": "/logos/christie.png",
     "description": "High-lumen projectors. Used for demanding large-scale projection mapping and permanent stadium installations requiring exceptional brightness and reliability.",
-    "link": "#"
+    "link": "https://www.christiedigital.com/products/projectors/all-projectors/"
   },
   {
     "id": "epson-projectors",
     "name": "Epson Projectors",
     "image": "/logos/epson.png",
     "description": "Reliable and cost-effective solution for large-scale projection mapping, corporate events and permanent installations.",
-    "link": "#"
+    "link": "https://epson.com/For-Work/Projectors/c/w3"
   },
   {
     "id": "novastar",
@@ -32,34 +32,34 @@
     "name": "Analog Way Aquilon",
     "image": "/logos/analogway.png",
     "description": "High-end video processors. Enable seamless signal management, precise multi-screen synchronization, and complex routing in live production environments.",
-    "link": "#"
+    "link": "https://www.analogway.com/"
   },
   {
     "id": "barco-e2",
     "name": "Barco E2",
     "image": "/logos/barco.png",
     "description": "Vision mixer and video processor. Serves as a core backbone for complex live broadcasts and large-scale international events.",
-    "link": "#"
+    "link": "https://www.barco.com/en/product/e2-gen-2"
   },
   {
     "id": "ross-ultrix",
     "name": "Ross Ultrix",
     "image": "/logos/ross.png",
     "description": "Advanced routing and vision mixing system. Trusted in professional broadcast environments and large-scale live productions.",
-    "link": "#"
+    "link": "https://www.rossvideo.com/products/routing-systems/ultrix/"
   },
   {
     "id": "broadcast-cameras",
     "name": "Broadcast Cameras",
     "image": "/logos/broadcast-cameras.svg",
     "description": "Professional broadcast cameras. Deliver high-quality live image capture for sports events, concerts, and television productions.",
-    "link": "#"
+    "link": "https://pro.sony/ue_US/products/studio-and-broadcast-cameras"
   },
   {
     "id": "managed-network",
     "name": "Managed Network Infrastructure",
     "image": "/logos/managed-network.svg",
     "description": "Site-wide managed network infrastructure. Ensures stable, low-latency communication between media servers, processors, and control systems during live events.",
-    "link": "#"
+    "link": "https://www.netgear.com/hub/business/av/"
   }
 ]

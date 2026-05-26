@@ -3,56 +3,63 @@
     "id": "panasonic-projectors",
     "name": "Panasonic Projectors",
     "image": "/logos/panasonic.svg",
-    "description": "High-brightness projectors used for projection mapping and immersive visual experiences.",
-    "link": "#"
-  },
-  {
-    "id": "novastar",
-    "name": "NovaStar LED Control Systems",
-    "image": "/logos/novastar.svg",
-    "description": "LED screen processors and control systems for flawless large-format video walls.",
-    "link": "https://www.novastar.tech"
-  },
-  {
-    "id": "analog-way-aquilon",
-    "name": "Analog Way Aquilon",
-    "image": "/logos/analogway.png",
-    "description": "High-end video processor for seamless signal management and multi-screen setups.",
-    "link": "#"
-  },
-  {
-    "id": "barco-e2",
-    "name": "Barco E2",
-    "image": "/logos/barco.svg",
-    "description": "Vision mixer and video processor for live broadcast and large-scale events.",
+    "description": "High-brightness projectors. Deployed on major projection mapping projects, including the world’s longest media facade projection (ONE Zabeel, 230 meters).",
     "link": "#"
   },
   {
     "id": "christie-projectors",
     "name": "Christie Projectors",
     "image": "/logos/christie.svg",
-    "description": "Premium projectors for large-scale projection mapping and stadium installations.",
+    "description": "High-lumen projectors. Used for demanding large-scale projection mapping and permanent stadium installations requiring exceptional brightness and reliability.",
     "link": "#"
   },
   {
-    "id": "broadcast-cameras",
-    "name": "Broadcast Cameras",
-    "image": "/logos/broadcast-cameras.svg",
-    "description": "Professional broadcast cameras for live events, sports and television production.",
+    "id": "epson-projectors",
+    "name": "Epson Projectors",
+    "image": "/logos/epson.svg",
+    "description": "Reliable and cost-effective solution for large-scale projection mapping, corporate events and permanent installations.",
     "link": "#"
   },
   {
-    "id": "managed-network",
-    "name": "Managed Network Infrastructure",
-    "image": "/logos/managed-network.svg",
-    "description": "Site-wide network infrastructure for reliable media server communication and signal distribution.",
+    "id": "novastar",
+    "name": "NovaStar LED Control Systems",
+    "image": "/logos/novastar.svg",
+    "description": "LED processors and control systems. Power reliable large-format LED video walls at major festivals and events with audiences exceeding 100,000 people.",
+    "link": "https://www.novastar.tech"
+  },
+  {
+    "id": "analog-way-aquilon",
+    "name": "Analog Way Aquilon",
+    "image": "/logos/analogway.png",
+    "description": "High-end video processors. Enable seamless signal management, precise multi-screen synchronization, and complex routing in live production environments.",
+    "link": "#"
+  },
+  {
+    "id": "barco-e2",
+    "name": "Barco E2",
+    "image": "/logos/barco.svg",
+    "description": "Vision mixer and video processor. Serves as a core backbone for complex live broadcasts and large-scale international events.",
     "link": "#"
   },
   {
     "id": "ross-ultrix",
     "name": "Ross Ultrix",
     "image": "/logos/ross.svg",
-    "description": "Advanced routing and vision mixing system for professional broadcast environments.",
+    "description": "Advanced routing and vision mixing system. Trusted in professional broadcast environments and large-scale live productions.",
+    "link": "#"
+  },
+  {
+    "id": "broadcast-cameras",
+    "name": "Broadcast Cameras",
+    "image": "/logos/broadcast-cameras.svg",
+    "description": "Professional broadcast cameras. Deliver high-quality live image capture for sports events, concerts, and television productions.",
+    "link": "#"
+  },
+  {
+    "id": "managed-network",
+    "name": "Managed Network Infrastructure",
+    "image": "/logos/managed-network.svg",
+    "description": "Site-wide managed network infrastructure. Ensures stable, low-latency communication between media servers, processors, and control systems during live events.",
     "link": "#"
   }
 ]

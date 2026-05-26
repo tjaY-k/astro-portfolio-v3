@@ -21,6 +21,13 @@
     "link": "#"
   },
   {
+    "id": "novastar",
+    "name": "NovaStar LED Control Systems",
+    "image": "/logos/novastar.svg",
+    "description": "LED processors and control systems. Power reliable large-format LED video walls at major festivals and events with audiences exceeding 100,000 people.",
+    "link": "https://www.novastar.tech"
+  },
+  {
     "id": "analog-way-aquilon",
     "name": "Analog Way Aquilon",
     "image": "/logos/analogway.png",
@@ -47,13 +54,6 @@
     "image": "/logos/broadcast-cameras.svg",
     "description": "Professional broadcast cameras. Deliver high-quality live image capture for sports events, concerts, and television productions.",
     "link": "#"
-  },
-  {
-    "id": "novastar",
-    "name": "NovaStar LED Control Systems",
-    "image": "/logos/novastar.svg",
-    "description": "LED processors and control systems. Power reliable large-format LED video walls at major festivals and events with audiences exceeding 100,000 people.",
-    "link": "https://www.novastar.tech"
   },
   {
     "id": "managed-network",

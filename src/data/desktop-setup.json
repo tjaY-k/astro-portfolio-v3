@@ -7,11 +7,18 @@
     "link": "#"
   },
   {
-    "id": "novastar",
-    "name": "NovaStar LED Control Systems",
-    "image": "/logos/novastar.svg",
-    "description": "LED processors and control systems. Power reliable large-format LED video walls at major festivals and events with audiences exceeding 100,000 people.",
-    "link": "https://www.novastar.tech"
+    "id": "christie-projectors",
+    "name": "Christie Projectors",
+    "image": "/logos/christie.svg",
+    "description": "High-lumen projectors. Used for demanding large-scale projection mapping and permanent stadium installations requiring exceptional brightness and reliability.",
+    "link": "#"
+  },
+  {
+    "id": "epson-projectors",
+    "name": "Epson Projectors",
+    "image": "/logos/epson.svg",
+    "description": "Reliable and cost-effective solution for large-scale projection mapping, corporate events and permanent installations.",
+    "link": "#"
   },
   {
     "id": "analog-way-aquilon",
@@ -28,17 +35,10 @@
     "link": "#"
   },
   {
-    "id": "christie-projectors",
-    "name": "Christie Projectors",
-    "image": "/logos/christie.svg",
-    "description": "High-lumen projectors. Used for demanding large-scale projection mapping and permanent stadium installations requiring exceptional brightness and reliability.",
-    "link": "#"
-  },
-  {
-    "id": "epson-projectors",
-    "name": "Epson Projectors",
-    "image": "/logos/epson.svg",
-    "description": "Reliable and cost-effective solution for large-scale projection mapping, corporate events and permanent installations.",
+    "id": "ross-ultrix",
+    "name": "Ross Ultrix",
+    "image": "/logos/ross.svg",
+    "description": "Advanced routing and vision mixing system. Trusted in professional broadcast environments and large-scale live productions.",
     "link": "#"
   },
   {
@@ -49,17 +49,17 @@
     "link": "#"
   },
   {
+    "id": "novastar",
+    "name": "NovaStar LED Control Systems",
+    "image": "/logos/novastar.svg",
+    "description": "LED processors and control systems. Power reliable large-format LED video walls at major festivals and events with audiences exceeding 100,000 people.",
+    "link": "https://www.novastar.tech"
+  },
+  {
     "id": "managed-network",
     "name": "Managed Network Infrastructure",
     "image": "/logos/managed-network.svg",
     "description": "Site-wide managed network infrastructure. Ensures stable, low-latency communication between media servers, processors, and control systems during live events.",
-    "link": "#"
-  },
-  {
-    "id": "ross-ultrix",
-    "name": "Ross Ultrix",
-    "image": "/logos/ross.svg",
-    "description": "Advanced routing and vision mixing system. Trusted in professional broadcast environments and large-scale live productions.",
     "link": "#"
   }
 ]

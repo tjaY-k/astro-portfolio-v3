@@ -3,35 +3,35 @@
     "id": "panasonic-projectors",
     "name": "Panasonic Projectors",
     "image": "/logos/panasonic.svg",
-    "description": "Panasonic high-brightness projectors. Deployed on major projection mapping projects, including the world’s longest media facade projection (ONE Zabeel, 230 meters).",
+    "description": "High-brightness projectors. Deployed on major projection mapping projects, including the world’s longest media facade projection (ONE Zabeel, 230 meters).",
     "link": "#"
   },
   {
     "id": "novastar",
     "name": "NovaStar LED Control Systems",
     "image": "/logos/novastar.svg",
-    "description": "NovaStar LED processors and control systems. Power reliable large-format LED video walls at major festivals and events with audiences exceeding 100,000 people.",
+    "description": "LED processors and control systems. Power reliable large-format LED video walls at major festivals and events with audiences exceeding 100,000 people.",
     "link": "https://www.novastar.tech"
   },
   {
     "id": "analog-way-aquilon",
     "name": "Analog Way Aquilon",
     "image": "/logos/analogway.png",
-    "description": "Analog Way Aquilon high-end video processors. Enable seamless signal management, precise multi-screen synchronization, and complex routing in live production environments.",
+    "description": "High-end video processors. Enable seamless signal management, precise multi-screen synchronization, and complex routing in live production environments.",
     "link": "#"
   },
   {
     "id": "barco-e2",
     "name": "Barco E2",
     "image": "/logos/barco.svg",
-    "description": "Barco E2 vision mixer and video processor. Serves as a core backbone for complex live broadcasts and large-scale international events.",
+    "description": "Vision mixer and video processor. Serves as a core backbone for complex live broadcasts and large-scale international events.",
     "link": "#"
   },
   {
     "id": "christie-projectors",
     "name": "Christie Projectors",
     "image": "/logos/christie.svg",
-    "description": "Christie high-lumen projectors. Used for demanding large-scale projection mapping and permanent stadium installations requiring exceptional brightness and reliability.",
+    "description": "High-lumen projectors. Used for demanding large-scale projection mapping and permanent stadium installations requiring exceptional brightness and reliability.",
     "link": "#"
   },
   {
@@ -52,7 +52,7 @@
     "id": "ross-ultrix",
     "name": "Ross Ultrix",
     "image": "/logos/ross.svg",
-    "description": "Ross Ultrix advanced routing and vision mixing system. Trusted in professional broadcast environments and large-scale live productions.",
+    "description": "Advanced routing and vision mixing system. Trusted in professional broadcast environments and large-scale live productions.",
     "link": "#"
   }
 ]

@@ -2,7 +2,7 @@
   {
     "id": "panasonic-projectors",
     "name": "Panasonic Projectors",
-    "image": "/logos/panasonic.svg",
+    "image": "/logos/panasonic.png",
     "description": "High-brightness projectors. Deployed on major projection mapping projects, including the world’s longest media facade projection (ONE Zabeel, 230 meters).",
     "link": "#"
   },
@@ -23,7 +23,7 @@
   {
     "id": "novastar",
     "name": "NovaStar LED Control Systems",
-    "image": "/logos/novastar.svg",
+    "image": "/logos/novastar.png",
     "description": "LED processors and control systems. Power reliable large-format LED video walls at major festivals and events with audiences exceeding 100,000 people.",
     "link": "https://www.novastar.tech"
   },

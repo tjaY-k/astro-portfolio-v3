@@ -35,6 +35,13 @@
     "link": "#"
   },
   {
+    "id": "epson-projectors",
+    "name": "Epson Projectors",
+    "image": "/logos/epson.svg",
+    "description": "Reliable and cost-effective solution for large-scale projection mapping, corporate events and permanent installations.",
+    "link": "#"
+  },
+  {
     "id": "broadcast-cameras",
     "name": "Broadcast Cameras",
     "image": "/logos/broadcast-cameras.svg",

@@ -32,13 +32,11 @@ const sizeClasses = {
 };
 
 const imageClass = sizeClasses[imageSize];
----
 
-{
-  const isLink = !!href && href !== '#';
-  const Wrapper = isLink ? 'a' : 'div';
-  const wrapperProps = isLink ? { href, target, rel } : {};
-}
+const isLink = !!href && href !== '#';
+const Wrapper = isLink ? 'a' : 'div';
+const wrapperProps = isLink ? { href, target, rel } : {};
+---
 
 <Wrapper
   class='group flex gap-6 transition-all duration-300'

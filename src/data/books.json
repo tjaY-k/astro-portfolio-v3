@@ -3,7 +3,7 @@
     "id": "disguise",
     "title": "disguise (d3)",
     "author": "7+ years • Certified Operator",
-    "image": "https://picsum.photos/id/1015/600/400",
+    "image": "/logos/disguise.png",
     "description": "Media server for projection mapping, LED screens and xR environments. Used in F1 Grand Prix, FIFA World Cup and ONE Zabeel (230 m projection).",
     "link": "https://www.disguise.one"
   },
@@ -11,7 +11,7 @@
     "id": "pixera",
     "title": "Pixera",
     "author": "Certified",
-    "image": "https://picsum.photos/id/102/600/400",
+    "image": "/logos/pixera.png",
     "description": "Advanced media server for complex shows, virtual production and immersive installations.",
     "link": "https://www.pixera.one"
   },
@@ -19,7 +19,7 @@
     "id": "resolume",
     "title": "Resolume Arena",
     "author": "VJ & Live Mixing",
-    "image": "https://picsum.photos/id/201/600/400",
+    "image": "/logos/resolume.png",
     "description": "Real-time video mixing and VJ software for live performances and large events.",
     "link": "https://resolume.com"
   },
@@ -27,7 +27,7 @@
     "id": "madmapper",
     "title": "MadMapper",
     "author": "Projection Mapping",
-    "image": "https://picsum.photos/id/251/600/400",
+    "image": "/logos/madmapper.png",
     "description": "Powerful mapping software for LED bars, projection surfaces and creative installations.",
     "link": "https://madmapper.com"
   }

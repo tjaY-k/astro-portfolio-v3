@@ -51,15 +51,15 @@
   {
     "id": "broadcast-cameras",
     "name": "Broadcast Video Equipment",
-    "image": "/logos/broadcast-cameras.svg",
+    "image": "/logos/broadcast-video-equipment.svg",
     "description": "Professional broadcast video equipment including cameras, replay systems, encoders and monitoring solutions. Used on live sports, concerts, television productions and large-scale events.",
-    "link": "https://pro.sony/ue_US/products/studio-and-broadcast-cameras"
+    "link": "#"
   },
   {
     "id": "managed-network",
     "name": "Managed Network Infrastructure",
     "image": "/logos/managed-network.svg",
     "description": "Site-wide managed network infrastructure. Ensures stable, low-latency communication between media servers, processors, and control systems during live events.",
-    "link": "https://www.netgear.com/hub/business/av/"
+    "link": "#"
   }
 ]

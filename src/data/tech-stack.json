@@ -2,21 +2,21 @@
   {
     "id": "vectorworks",
     "name": "Vectorworks",
-    "image": "https://picsum.photos/id/301/600/400",
+    "image": "/logos/vectorworks.png",
     "description": "Core Certified. 3D design and planning for LED screens, stages and projection mapping.",
     "link": "https://www.vectorworks.net"
   },
   {
     "id": "blender",
     "name": "Blender",
-    "image": "https://picsum.photos/id/320/600/400",
+    "image": "/logos/blender.png",
     "description": "3D modeling and animation for pre-visualization and content creation.",
     "link": "https://www.blender.org"
   },
   {
     "id": "mapping-matter",
     "name": "Mapping Matter",
-    "image": "https://picsum.photos/id/301/600/400",
+    "image": "/logos/mappingMatter.png",
     "description": "Specialized software for precise projection mapping and surface calibration.",
     "link": "https://mappingmatter.com"
   }

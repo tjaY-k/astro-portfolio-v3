@@ -2,3 +2,5 @@ force_rebuild 1
 
 
 cache clean
+
+Force rebuild: 2026-05-26 - after ResourceItem.astro fix (const moved to frontmatter), tech-stack icons update, Broadcast Cameras + Managed Network link removal, external links added to hardware cards.

@@ -13,95 +13,86 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort((a, b) =
 <Layout
   title='Projects – Konstantin Laptev'
   description='Large-scale live production, projection mapping, media server programming and immersive events'
-  ogTitle="Projects"
-  ogDescription='Projection mapping • Media servers • xR • Large-scale events'
+  ogTitle="Featured Projects"
+  ogDescription='Selected large-scale live production and immersive visual projects'
 >
   <div class='container-fluid py-8 md:py-16'>
-    <div>
-      <div class='flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8'>
-        <div>
-          <h1 class='text-3xl md:text-4xl font-semibold mb-2'>All Projects</h1>
-          <p class='text-sm md:text-base'>
-            A list of large-scale live production and immersive visual projects
-          </p>
-        </div>
+    <!-- Header -->
+    <div class='flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10'>
+      <div>
+        <h1 class='text-4xl md:text-5xl font-semibold tracking-tight mb-3'>Featured Projects</h1>
+        <p class='text-lg text-muted-foreground max-w-2xl'>
+          Selected large-scale live production, projection mapping and immersive visual experiences.
+        </p>
+      </div>
 
-        <div class='shrink-0'>
-          <label for='year-filter' class='text-sm font-semibold mb-3 block text-muted-foreground'>
-            Filter by Year
-          </label>
-          <select
-            id='year-filter'
-            class='px-4 py-2 rounded-md border border-border bg-background hover:bg-muted transition-colors text-sm min-w-37.5 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary'
+      <!-- Year Filter -->
+      <div class='shrink-0 w-full md:w-auto'>
+        <label for='year-filter' class='text-sm font-medium mb-2 block text-muted-foreground'>
+          Filter by year
+        </label>
+        <select
+          id='year-filter'
+          class='w-full md:w-auto px-4 py-2.5 rounded-xl border border-border bg-background hover:bg-muted transition-colors text-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary'
+        >
+          <option value='all'>All Years</option>
+          {years.map((year) => <option value={year}>{year}</option>)}
+        </select>
+      </div>
+    </div>
+
+    <!-- Projects Grid (Card Layout) -->
+    <div class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6' id='projects-grid'>
+      {
+        sortedProjects.map((project) => (
+          <div 
+            class='group project-card border border-border rounded-2xl overflow-hidden bg-card hover:border-primary/50 hover:shadow-xl transition-all duration-200 cursor-pointer flex flex-col'
+            data-project-id={project.id}
+            data-year={project.data.year}
           >
-            <option value='all'>All Years</option>
-            {years.map((year) => <option value={year}>{year}</option>)}
-          </select>
-        </div>
-      </div>
+            <!-- Cover Image -->
+            {project.data.cover_image && (
+              <div class='aspect-video overflow-hidden bg-muted'>
+                <img 
+                  src={project.data.cover_image} 
+                  alt={project.data.title}
+                  class='w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300'
+                />
+              </div>
+            )}
 
-      <div class='overflow-x-auto -mx-4 md:mx-0'>
-        <div class='inline-block min-w-full align-middle'>
-          <table class='w-full border-collapse'>
-            <thead class='bg-muted'>
-              <tr>
-                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border text-sm md:text-base'>Year</th>
-                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border text-sm md:text-base'>Project</th>
-                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden sm:table-cell text-sm md:text-base'>Made At</th>
-                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden sm:table-cell text-sm md:text-base'>Location</th>
-                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border hidden lg:table-cell text-sm md:text-base'>Built With</th>
-                <th class='text-left py-3 md:py-4 px-3 md:px-6 font-semibold text-foreground border-b border-border text-sm md:text-base'>Link</th>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                sortedProjects.map((project) => (
-                  <tr
-                    class='project-row hover:bg-muted/50 transition-colors border-b border-border last:border-0'
-                    data-year={project.data.year}
-                  >
-                    <td class='py-3 md:py-4 px-3 md:px-6 text-muted-foreground text-sm md:text-base'>{project.data.year}</td>
-                    <td 
-                      class='py-3 md:py-4 px-3 md:px-6 font-medium text-foreground text-sm md:text-base cursor-pointer hover:text-primary hover:underline'
-                      data-project-id={project.id}
-                    >
-                      {project.data.title}
-                    </td>
-                    <td class='py-3 md:py-4 px-3 md:px-6 text-muted-foreground hidden sm:table-cell text-sm md:text-base'>
-                      {project.data.made_at || '—'}
-                    </td>
-                    <td class='py-3 md:py-4 px-3 md:px-6 text-muted-foreground hidden sm:table-cell text-sm md:text-base'>
-                      {project.data.location || '—'}
-                    </td>
-                    <td class='py-3 md:py-4 px-3 md:px-6 hidden lg:table-cell'>
-                      <div class='flex flex-wrap gap-2'>
-                        {project.data.tech?.map((tech) => (
-                          <span class='text-xs px-2 py-1 bg-secondary/20 rounded-full text-foreground whitespace-nowrap'>{tech}</span>
-                        ))}
-                      </div>
-                    </td>
-                    <td class='py-3 md:py-4 px-3 md:px-6'>
-                      <div class='flex gap-2 md:gap-3'>
-                        {project.data.external_link && (
-                          <a href={project.data.external_link} target='_blank' rel='noopener noreferrer' class='text-secondary hover:text-secondary/80 transition-colors'>
-                            <svg class='w-5 h-5' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                              <path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9' />
-                            </svg>
-                          </a>
-                        )}
-                      </div>
-                    </td>
-                  </tr>
-                ))
-              }
-            </tbody>
-          </table>
-        </div>
-      </div>
+            <div class='p-6 flex flex-col flex-1'>
+              <div class='flex items-start justify-between gap-4 mb-3'>
+                <h3 class='font-semibold text-xl leading-tight group-hover:text-primary transition-colors'>
+                  {project.data.title}
+                </h3>
+                <span class='text-sm text-muted-foreground font-mono shrink-0 mt-0.5'>
+                  {project.data.year}
+                </span>
+              </div>
+
+              <p class='text-muted-foreground text-sm line-clamp-3 mb-5 flex-1'>
+                {project.data.description}
+              </p>
+
+              <!-- Tech Tags -->
+              {project.data.tech?.length > 0 && (
+                <div class='flex flex-wrap gap-2 mt-auto pt-2'>
+                  {project.data.tech.slice(0, 5).map((tech) => (
+                    <span class='text-xs px-3 py-1 rounded-full bg-secondary/20 text-foreground'>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))
+      }
     </div>
   </div>
 
-  <!-- DUMMY BLOCK — заставляет Tailwind включить ВСЕ классы модалки -->
+  <!-- DUMMY BLOCK for Tailwind -->
   <div class="hidden">
     <div class="p-0 rounded-2xl bg-card border border-border/50 shadow-2xl">
       <img class="w-full rounded-t-2xl" />
@@ -115,103 +106,119 @@ const years = [...new Set(sortedProjects.map((p) => p.data.year))].sort((a, b) =
             <span class="text-xs px-3 py-1 bg-secondary/20 rounded-full text-foreground"></span>
           </div>
         </div>
-        <div class="flex flex-wrap gap-3 mt-8">
-          <a class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-medium hover:bg-white/90 transition-colors">Visit Website</a>
-          <button class="inline-flex items-center gap-2 px-6 py-3 border border-white/30 hover:border-white/70 rounded-xl font-medium transition-colors">Watch Video</button>
-        </div>
       </div>
     </div>
   </div>
 
-  <!-- Real Modal -->
+  <!-- Project Modal -->
   <dialog id='project-modal' class='backdrop:bg-background/80 backdrop:backdrop-blur-sm bg-card border border-border/50 rounded-2xl max-w-3xl w-full p-0 shadow-2xl m-auto'>
     <div class='relative max-h-[90vh] overflow-y-auto project-modal-content pb-8' id='modal-content'></div>
   </dialog>
 
   <!-- Video Modal -->
   <dialog id="videoModalHome" class="backdrop:bg-black/90 bg-black rounded-2xl max-w-4xl w-full p-0 shadow-2xl m-auto hidden">
-    <div class="flex justify-end p-4 border-b border-white/10">
-      <button id="closeVideoModalHome" class="text-3xl text-white/70 hover:text-white">×</button>
+    <div class="flex justify-end p-4">
+      <button onclick="closeVideoModal()" class="text-white/70 hover:text-white text-3xl leading-none">&times;</button>
     </div>
-    <div class="aspect-video bg-black">
-      <iframe id="videoFrameHome" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
+    <div class="p-2" id="videoContainer"></div>
   </dialog>
 
-  <script define:vars={{ projectsData: sortedProjects.map(p => ({
-    id: p.id,
-    title: p.data.title,
-    made_at: p.data.made_at,
-    location: p.data.location,
-    year: p.data.year,
-    tech: p.data.tech || [],
-    cover_image: p.data.cover_image,
-    external_link: p.data.external_link,
-    video_url: p.data.video_url,
-    body: p.body
-  })) }}>
-    function initProjectModals() {
-      const cards = document.querySelectorAll('[data-project-id]');
+  <script define:vars={{ sortedProjects }}>
+    const projectsData = sortedProjects.map(p => ({
+      id: p.id,
+      title: p.data.title,
+      made_at: p.data.made_at,
+      location: p.data.location,
+      year: p.data.year,
+      tech: p.data.tech || [],
+      cover_image: p.data.cover_image,
+      external_link: p.data.external_link,
+      video_url: p.data.video_url,
+      body: p.body
+    }));
+
+    document.addEventListener('DOMContentLoaded', () => {
       const modal = document.getElementById('project-modal');
       const modalContent = document.getElementById('modal-content');
+      const cards = document.querySelectorAll('.project-card');
       const videoModal = document.getElementById('videoModalHome');
-      const videoFrame = document.getElementById('videoFrameHome');
-      const closeVideoBtn = document.getElementById('closeVideoModalHome');
+      const videoContainer = document.getElementById('videoContainer');
 
+      // Open project modal on card click
       cards.forEach(card => {
         card.addEventListener('click', () => {
-          const projectId = card.getAttribute('data-project-id');
+          const projectId = card.dataset.projectId;
           const project = projectsData.find(p => p.id === projectId);
           if (!project) return;
 
           modalContent.innerHTML = `
-            <div class="p-0">
-              ${project.cover_image ? `<img src="${project.cover_image}" class="w-full rounded-t-2xl" alt="${project.title}">` : ''}
+            <div>
+              ${project.cover_image ? `<img src="${project.cover_image}" class="w-full rounded-t-2xl aspect-video object-cover" alt="${project.title}">` : ''}
               <div class="p-8">
-                <h2 class="text-3xl font-semibold mb-2">${project.title}</h2>
-                <p class="text-muted-foreground mb-6">
-                  Made at ${project.made_at || '—'} • ${project.year}
-                  ${project.location ? ` • ${project.location}` : ''}
-                </p>
-                <div class="prose prose-invert max-w-none">${project.body || ''}</div>
+                <div class="flex justify-between items-start mb-4">
+                  <h2 class="text-3xl font-semibold">${project.title}</h2>
+                  <span class="text-sm text-muted-foreground font-mono">${project.year}</span>
+                </div>
 
-                ${project.tech.length ? `
-                <div class="mt-8">
-                  <h3 class="text-sm font-semibold mb-3 text-muted-foreground">Tech Stack</h3>
-                  <div class="flex flex-wrap gap-2">
-                    ${project.tech.map(t => `<span class="text-xs px-3 py-1 bg-secondary/20 rounded-full text-foreground">${t}</span>`).join('')}
-                  </div>
-                </div>` : ''}
+                <div class="prose prose-invert max-w-none mb-8">
+                  ${project.body || project.description || ''}
+                </div>
 
-                <div class="flex flex-wrap gap-3 mt-8">
-                  ${project.external_link ? `<a href="${project.external_link}" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-medium hover:bg-white/90 transition-colors">🌐 Visit Website</a>` : ''}
-                  ${project.video_url ? `<button onclick="openVideoModal('${project.video_url}')" class="inline-flex items-center gap-2 px-6 py-3 border border-white/30 hover:border-white/70 rounded-xl font-medium transition-colors">▶️ Watch Video</button>` : ''}
+                ${project.tech?.length ? `
+                  <div class="mb-8">
+                    <h3 class="text-sm font-semibold mb-3 text-muted-foreground">Tech Stack</h3>
+                    <div class="flex flex-wrap gap-2">
+                      ${project.tech.map(t => `<span class="text-xs px-3 py-1 bg-secondary/20 rounded-full">${t}</span>`).join('')}
+                    </div>
+                  </div>` : ''}
+
+                <div class="flex flex-wrap gap-3">
+                  ${project.external_link ? `
+                    <a href="${project.external_link}" target="_blank" 
+                       class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black rounded-xl font-medium hover:bg-white/90 transition-colors">
+                      Visit Website
+                    </a>` : ''}
+                  ${project.video_url ? `
+                    <button onclick="openVideoModal('${project.video_url}')" 
+                            class="inline-flex items-center gap-2 px-6 py-3 border border-white/30 hover:border-white/70 rounded-xl font-medium transition-colors">
+                      Watch Video
+                    </button>` : ''}
                 </div>
               </div>
             </div>
           `;
-
           modal.showModal();
         });
       });
 
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) modal.close();
-      });
+      modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });
 
-      window.openVideoModal = function(url) {
-        videoFrame.src = url;
-        videoModal.classList.remove('hidden');
-        videoModal.showModal();
-      };
+      // Year filter
+      const yearFilter = document.getElementById('year-filter');
+      const grid = document.getElementById('projects-grid');
 
-      closeVideoBtn.addEventListener('click', () => {
-        videoModal.close();
-        videoFrame.src = '';
-        videoModal.classList.add('hidden');
-      });
-    }
+      if (yearFilter && grid) {
+        yearFilter.addEventListener('change', () => {
+          const val = yearFilter.value;
+          grid.querySelectorAll('.project-card').forEach(card => {
+            card.style.display = (val === 'all' || card.dataset.year === val) ? '' : 'none';
+          });
+        });
+      }
+    });
 
-    document.addEventListener('DOMContentLoaded', initProjectModals);
+    window.openVideoModal = function(url) {
+      const videoModal = document.getElementById('videoModalHome');
+      const container = document.getElementById('videoContainer');
+      container.innerHTML = `<iframe width="100%" height="500" src="${url}" frameborder="0" allowfullscreen></iframe>`;
+      videoModal.showModal();
+    };
+
+    window.closeVideoModal = function() {
+      const videoModal = document.getElementById('videoModalHome');
+      const container = document.getElementById('videoContainer');
+      container.innerHTML = '';
+      videoModal.close();
+    };
   </script>
 </Layout>

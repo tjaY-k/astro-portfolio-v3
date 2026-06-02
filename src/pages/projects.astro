@@ -123,7 +123,7 @@ const sortedProjects = allProjects.sort((a, b) => b.data.year - a.data.year);
       body: p.body
     }));
 
-    document.addEventListener('DOMContentLoaded', () => {
+    function initProjectModals() {
       const modal = document.getElementById('project-modal');
       const modalContent = document.getElementById('modal-content');
       const cards = document.querySelectorAll('.project-card');
@@ -289,6 +289,12 @@ const sortedProjects = allProjects.sort((a, b) => b.data.year - a.data.year);
           }
         });
       }
-    });
+    }
+
+    // Run on initial full page load
+    initProjectModals();
+
+    // Re-run after View Transitions / client-side navigation (e.g. clicking the top menu link to /projects)
+    document.addEventListener('astro:page-load', initProjectModals);
   </script>
 </Layout>

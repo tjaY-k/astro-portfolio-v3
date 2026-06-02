@@ -321,6 +321,32 @@ const isDefaultOgImage = image === defaultOgImage;
     <div transition:persist='socials'>
       <StickySocials />
     </div>
+
+    <!-- Close any open modals (e.g. project dialog) before View Transitions navigation.
+         This ensures the persistent Navbar remains interactive while a modal is open. -->
+    <script>
+      // Close open dialogs when Astro starts a navigation (link click detected by router).
+      document.addEventListener('astro:before-preparation', () => {
+        document.querySelectorAll('dialog[open]').forEach((dialog) => {
+          try { dialog.close(); } catch (e) {}
+        });
+      });
+
+      // Extra safety: capture-phase listener on document for any link click.
+      // If a modal is open (making background inert), force-close it so the nav click can proceed.
+      // This helps in cases where the inert state blocks normal activation of persistent nav links.
+      document.addEventListener('click', (e) => {
+        const link = e.target.closest && e.target.closest('a[href]');
+        if (link) {
+          const openDialogs = document.querySelectorAll('dialog[open]');
+          if (openDialogs.length) {
+            openDialogs.forEach((d) => {
+              try { d.close(); } catch (err) {}
+            });
+          }
+        }
+      }, true); // capture phase, so it runs early
+    </script>
   </body><style is:global>
     body {
       font-family: var(--font-inter), sans-serif;

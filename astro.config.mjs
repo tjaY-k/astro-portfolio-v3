@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 
 import cloudflare from '@astrojs/cloudflare';
 
-const SITE_URL = 'https://konstantin-laptev.pages.dev';
+const SITE_URL = 'https://konstantinlaptev.pro';
 
 // https://astro.build/config
 export default defineConfig({

@@ -4,7 +4,7 @@
  */
 
 // Site Configuration
-export const SITE_URL = import.meta.env.SITE || 'https://konstantin-laptev.pages.dev';
+export const SITE_URL = import.meta.env.SITE || 'https://konstantinlaptev.pro';
 
 /**
  * Check if we're in production

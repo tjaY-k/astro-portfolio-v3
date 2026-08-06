@@ -25,7 +25,7 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   name: 'Konstantin Laptev',
   title: 'Video Technical Manager & Senior disguise Operator',
-  url: 'https://konstantin-laptev.pages.dev',
+  url: 'https://konstantinlaptev.pro',
   description:
     'Video Technical Manager and disguise Certified Operator based in Dubai. 18 years of projection mapping, media servers and xR for Formula 1, Noor Riyadh and MDLBEAST Soundstorm.',
   tagline: 'Video Technical Manager & Senior disguise Operator',

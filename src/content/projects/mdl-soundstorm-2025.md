@@ -1,15 +1,14 @@
 ---
-title: MDL Soundstorm 2023–2025
-description: "Site-wide video control and distribution system for one of the world's largest music festivals. Unified network across all stages serving 600,000+ attendees with central emergency broadcast capability."
+title: MDLBEAST Soundstorm 2023–2025
+description: "One network linking every stage of MENA's largest music festival — with emergency signal override from a central control room."
 slug: mdl-soundstorm-2025
 pubDate: 2025-01-01
 year: 2025
 featured: true
-cover_image: https://picsum.photos/id/1016/800/600
-tech: ["disguise", "Media Servers", "LED Screens", "Video Distribution", "Real-time Control"]
+cover_image: /projects/covers/placeholder.png
+tech: ["disguise", "Media Servers", "LED Screens", "Video Distribution", "Festival Infrastructure"]
 made_at: 'MediaPro International LLC'
-location: 'Saudi Arabia'
-external_link: "https://tinyurl.com/mediapro-soundstorm-2025"
+location: 'Riyadh, Saudi Arabia'
 ---
 
-Managed end-to-end site-wide screens control system for MDL Soundstorm — a major music festival attracting over 600,000 attendees. Designed and operated a unified network that connected all festival stages into a single control ecosystem. Enabled seamless content exchange between stages and real-time signal distribution from the central control room to any stage in emergency situations. Optimized video workflows for reliability and speed at massive scale.
+Managed the site-wide screens control system for MDLBEAST Soundstorm in Banban, Riyadh — the largest music festival in the Middle East and North Africa, and one of the largest in the world. The 2024 edition spanned over 1.2 million square metres with ten stages (up from eight in 2023) and more than 250 hours of live music, drawing headliners including Eminem, Linkin Park, and David Guetta. The control system connected all festival stages into a single network for seamless content exchange, and enabled the central control room to push signal to any stage instantly in an emergency — critical redundancy at a site of this scale.

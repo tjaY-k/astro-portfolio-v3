@@ -1,15 +1,15 @@
 ---
 title: The Spirit of Algeria 2024
-description: "Video technical direction and projection mapping for an epic 13-scene historical art show commemorating the 70th anniversary of the Algerian revolution."
+description: "13 immersive scenes retelling a nation's history — the flagship show of Algeria's 70th revolution anniversary."
 slug: spirit-of-algeria-2024
 pubDate: 2024-01-01
 year: 2024
 featured: false
-cover_image: https://picsum.photos/id/201/800/600
-tech: ["Projection Mapping", "Media Servers", "Immersive Experiences", "Large-scale Shows"]
+cover_image: /projects/covers/placeholder.png
+tech: ["disguise", "Projection Mapping", "Media Servers", "Immersive Experiences", "National Commemoration"]
 made_at: 'MediaPro International LLC'
 location: 'Algiers, Algeria'
 external_link: "https://www.linkedin.com/posts/mediapro-international-middle-east_mediaproav-audiovisual-activity-7263122061206675457-ndtU"
 ---
 
-Directed video technical management for an epic historical art show at Mohamed Boudiaf Olympic Complex. Created 13 immersive projection mapping scenes spanning Algeria’s history. Coordinated projection mapping, media servers and full audiovisual integration in collaboration with EXASMART for a powerful cultural commemoration.
+Directed video technical management, including disguise media server programming and projection mapping, for 'The Spirit of Algeria' — a large-scale historical show at the Mohamed Boudiaf Olympic Complex in Algiers. The production was a centrepiece of Algeria's national programme marking the 70th anniversary of the outbreak of the November 1954 revolution, staged under the theme 'Glorious November, Loyalty and Renewal'. The show spanned 13 immersive scenes tracing Algeria's history, delivered in collaboration with EXASMART.

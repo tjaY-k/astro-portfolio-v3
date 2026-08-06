@@ -4,6 +4,7 @@ import EmailIcon from '@/components/ui/icons/EmailIcon.astro';
 import LinkedInIcon from '@/components/ui/icons/LinkedInIcon.astro';
 import Layout from '@/layouts/Layout.astro';
 import { siteConfig } from '@/config';
+import { FORMSPREE_FORM_ID } from 'astro:env/client';
 
 const lookingForOptions = [
   { value: 'projection-mapping', label: 'Projection Mapping Project' },
@@ -88,7 +89,12 @@ const contactMethods = [
     <div id='form-tab' class='tab-content'>
       <div class='grid lg:grid-cols-5 gap-8'>
         <div class='lg:col-span-3'>
-          <form id='contact-form' class='space-y-8 h-full'>
+          <form
+            id='contact-form'
+            class='space-y-8 h-full'
+            data-formspree-id={FORMSPREE_FORM_ID}
+            data-fallback-email={siteConfig.email}
+          >
             <div class='grid md:grid-cols-2 gap-6'>
               <div class='flex flex-col gap-2'>
                 <label for='name' class='text-sm font-medium text-foreground'>
@@ -174,13 +180,30 @@ const contactMethods = [
               ></textarea>
             </div>
 
-            <button
-              type='submit'
-              class='w-full md:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors'
-            >
-              Send Message
-              <ArrowIcon class='w-4 h-4' />
-            </button>
+            <!-- Honeypot: hidden from people, tempting to bots. Formspree drops anything that fills it. -->
+            <div class='hidden' aria-hidden='true'>
+              <label for='_gotcha'>Leave this field empty</label>
+              <input type='text' id='_gotcha' name='_gotcha' tabindex='-1' autocomplete='off' />
+            </div>
+
+            <div class='flex flex-col gap-4'>
+              <button
+                type='submit'
+                id='submit-button'
+                class='w-full md:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors disabled:opacity-60 disabled:cursor-not-allowed'
+              >
+                <span id='submit-label'>Send Message</span>
+                <ArrowIcon class='w-4 h-4' />
+              </button>
+
+              <p
+                id='form-status'
+                role='status'
+                aria-live='polite'
+                class='hidden text-sm rounded-lg px-4 py-3 border'
+              >
+              </p>
+            </div>
           </form>
         </div>
 
@@ -223,34 +246,110 @@ const contactMethods = [
   </div>
 
   <script>
-    // Tab switching logic
-    const formTabBtn = document.getElementById('form-tab-btn');
-    const calendlyTabBtn = document.getElementById('calendly-tab-btn');
-    const formTab = document.getElementById('form-tab');
-    const calendlyTab = document.getElementById('calendly-tab');
+    const SUCCESS_CLASSES = ['bg-primary/10', 'border-primary/30', 'text-foreground'];
+    const ERROR_CLASSES = ['bg-destructive/10', 'border-destructive/30', 'text-destructive'];
 
-    formTabBtn.addEventListener('click', () => {
-      formTab.classList.remove('hidden');
-      calendlyTab.classList.add('hidden');
-      formTabBtn.classList.add('active');
-      calendlyTabBtn.classList.remove('active');
-    });
+    function initContactPage() {
+      const formTabBtn = document.getElementById('form-tab-btn');
+      const calendlyTabBtn = document.getElementById('calendly-tab-btn');
+      const formTab = document.getElementById('form-tab');
+      const calendlyTab = document.getElementById('calendly-tab');
 
-    calendlyTabBtn.addEventListener('click', () => {
-      formTab.classList.add('hidden');
-      calendlyTab.classList.remove('hidden');
-      formTabBtn.classList.remove('active');
-      calendlyTabBtn.classList.add('active');
-    });
+      if (formTabBtn && calendlyTabBtn && formTab && calendlyTab) {
+        formTabBtn.addEventListener('click', () => {
+          formTab.classList.remove('hidden');
+          calendlyTab.classList.add('hidden');
+          formTabBtn.classList.add('active');
+          calendlyTabBtn.classList.remove('active');
+        });
 
-    // Form submission
-    const form = document.getElementById('contact-form');
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Thank you! Your message has been sent. I will reply within 24 hours.');
-        form.reset();
+        calendlyTabBtn.addEventListener('click', () => {
+          formTab.classList.add('hidden');
+          calendlyTab.classList.remove('hidden');
+          formTabBtn.classList.remove('active');
+          calendlyTabBtn.classList.add('active');
+        });
+      }
+
+      const form = document.getElementById('contact-form') as HTMLFormElement | null;
+      const status = document.getElementById('form-status');
+      const button = document.getElementById('submit-button') as HTMLButtonElement | null;
+      const label = document.getElementById('submit-label');
+
+      if (!form || !status || !button || !label) return;
+      // Guard against double-binding when the View Transitions router re-runs this.
+      if (form.dataset.bound === 'true') return;
+      form.dataset.bound = 'true';
+
+      function showStatus(message: string, ok: boolean) {
+        status!.textContent = message;
+        status!.classList.remove('hidden', ...SUCCESS_CLASSES, ...ERROR_CLASSES);
+        status!.classList.add(...(ok ? SUCCESS_CLASSES : ERROR_CLASSES));
+      }
+
+      function setBusy(busy: boolean) {
+        button!.disabled = busy;
+        label!.textContent = busy ? 'Sending…' : 'Send Message';
+      }
+
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        // Read these per submit, not once at init: the router can swap the form element.
+        const formId = form.dataset.formspreeId || '';
+        const fallbackEmail = form.dataset.fallbackEmail || '';
+
+        // The asterisk on "I'm looking for" promises this is required,
+        // but a checkbox group cannot enforce it natively.
+        const checked = form.querySelectorAll('input[name="looking_for"]:checked');
+        if (checked.length === 0) {
+          showStatus('Please pick at least one option under “I’m looking for”.', false);
+          return;
+        }
+
+        if (!formId) {
+          showStatus(
+            `The form isn’t connected yet. Please email me directly at ${fallbackEmail}.`,
+            false,
+          );
+          return;
+        }
+
+        setBusy(true);
+
+        try {
+          const response = await fetch(`https://formspree.io/f/${formId}`, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' },
+          });
+
+          if (response.ok) {
+            form.reset();
+            showStatus(
+              'Thanks — your message is on its way. I’ll get back to you within 24 hours.',
+              true,
+            );
+          } else {
+            const data = await response.json().catch(() => null);
+            const detail = data?.errors?.map((e: { message: string }) => e.message).join(' ');
+            showStatus(
+              detail || `Something went wrong sending that. Please email me at ${fallbackEmail}.`,
+              false,
+            );
+          }
+        } catch {
+          showStatus(
+            `Couldn’t reach the server — check your connection, or email me at ${fallbackEmail}.`,
+            false,
+          );
+        } finally {
+          setBusy(false);
+        }
       });
     }
+
+    initContactPage();
+    document.addEventListener('astro:page-load', initContactPage);
   </script>
 </Layout>

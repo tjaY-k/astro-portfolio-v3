@@ -33,6 +33,13 @@ export default defineConfig({
         access: 'public',
         default: '',
       }),
+      // Formspree form id (the part after /f/ in the endpoint URL).
+      // Public by design — it is visible in the form's network request.
+      FORMSPREE_FORM_ID: envField.string({
+        context: 'client',
+        access: 'public',
+        default: '',
+      }),
     },
   },
   i18n: {

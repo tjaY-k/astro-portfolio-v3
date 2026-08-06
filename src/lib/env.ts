@@ -4,7 +4,7 @@
  */
 
 // Site Configuration
-export const SITE_URL = import.meta.env.SITE || 'https://lewiskori.com';
+export const SITE_URL = import.meta.env.SITE || 'https://konstantin-laptev.pages.dev';
 
 /**
  * Check if we're in production

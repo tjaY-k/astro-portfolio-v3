@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 
 import cloudflare from '@astrojs/cloudflare';
 
-const SITE_URL = 'https://lewiskori.com';
+const SITE_URL = 'https://konstantin-laptev.pages.dev';
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,16 +28,6 @@ export default defineConfig({
   },
   env: {
     schema: {
-      BEEHIIV_PUBLICATION_ID: envField.string({
-        context: 'server',
-        access: 'secret',
-        default: 'abc',
-      }),
-      BEEHIIV_API_KEY: envField.string({
-        context: 'server',
-        access: 'secret',
-        default: '',
-      }),
       GTM_ID: envField.string({
         context: 'client',
         access: 'public',
@@ -73,27 +63,12 @@ export default defineConfig({
           return item;
         }
 
-        if (/\/blog\/[^/]+\/?$/.test(item.url)) {
-          item.changefreq = 'weekly';
-          item.priority = 0.8;
-          return item;
-        }
-
-        if (
-          /\/(about|contact|projects|advisory|operating-notes)\/?$/.test(
-            item.url,
-          )
-        ) {
+        if (/\/(contact|projects)\/?$/.test(item.url)) {
           item.changefreq = 'monthly';
           item.priority = 0.9;
           return item;
         }
 
-        if (/\/blog\/?$/.test(item.url)) {
-          item.changefreq = 'daily';
-          item.priority = 0.9;
-          return item;
-        }
         if (/\/resources\/?$/.test(item.url)) {
           item.changefreq = 'monthly';
           item.priority = 0.6;

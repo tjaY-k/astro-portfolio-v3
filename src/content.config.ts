@@ -54,43 +54,6 @@ const about = defineCollection({
   }),
 });
 
-const operatingNotes = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    subtitle: z.string(),
-    description: z.string(),
-    lastUpdated: z.coerce.date(),
-  }),
-});
-
-const advisory = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    subtitle: z.string(),
-    description: z.string(),
-    lastUpdated: z.coerce.date(),
-    featuredImage: z.string().optional(),
-  }),
-});
-
-const blog = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    author: z.string(),
-    tags: z.array(z.string()),
-    description: z.string(),
-    dateCreated: z.coerce.date(),
-    dateModified: z.coerce.date().optional(),
-    cover_image: z.string().optional(),
-    series: z.string().optional(),
-    sponsors: z.array(z.string()).optional(),
-    canonical_url: z.string().url().optional(),
-  }),
-});
-
 const experience = defineCollection({
   type: 'content',
   schema: z.object({
@@ -120,28 +83,12 @@ const projects = defineCollection({
   }),
 });
 
-const sponsors = defineCollection({
-  type: 'content',
-  schema: z.object({
-    name: z.string(),
-    url: z.string().url(),
-    twitter: z.string().url().optional(),
-    logo: z.string().optional(),
-    excerpt: z.string(),
-    is_featured: z.boolean(),
-  }),
-});
-
 export const collections = {
   socials,
   books,
   techStack,
   desktopSetup,
   about,
-  operatingNotes,
-  advisory,
   experience,
   projects,
-  blog,
-  sponsors,
 };

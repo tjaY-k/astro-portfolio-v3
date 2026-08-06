@@ -25,7 +25,7 @@ interface Props {
   keywords?: string[];
 }
 
-const siteName = 'Konstantin Laptev – Video Ninja';
+const siteName = 'Konstantin Laptev – Video Technical Manager';
 const siteUrl = SITE_URL;
 const defaultDescription = siteConfig.description;
 const defaultOgTitle = siteConfig.title;
@@ -64,7 +64,7 @@ const isDefaultOgImage = image === defaultOgImage;
     <link rel='icon' type='image/svg+xml' href='/favicon.svg' />
     <link rel='shortcut icon' href='/favicon.ico' />
     <link rel='apple-touch-icon' sizes='180x180' href='/apple-touch-icon.png' />
-    <meta name='apple-mobile-web-app-title' content='Lewis Portfolio' />
+    <meta name='apple-mobile-web-app-title' content='Konstantin Laptev' />
     <link rel='manifest' href='/site.webmanifest' />
     <meta name='generator' content={Astro.generator} />
     <title>{pageTitle}</title>
@@ -99,16 +99,6 @@ const isDefaultOgImage = image === defaultOgImage;
         <meta property='article:author' content={author} />
       )
     }
-
-    <!-- Twitter -->
-    <meta name='twitter:card' content='summary_large_image' />
-    <meta name='twitter:site' content='@lewis_kihiu' />
-    <meta name='twitter:creator' content='@lewis_kihiu' />
-    <meta name='twitter:url' content={Astro.url} />
-    <meta name='twitter:title' content={openGraphTitle} />
-    <meta name='twitter:description' content={openGraphDescription} />
-    <meta name='twitter:image' content={image} />
-    <meta name='twitter:image:alt' content={openGraphTitle} />
 
     <!-- Canonical URL -->
     <link rel='canonical' href={canonicalUrl} />
@@ -145,31 +135,23 @@ const isDefaultOgImage = image === defaultOgImage;
               height: 630,
             },
             description: siteConfig.authorDescription,
-            jobTitle: 'Video Ninja',
+            jobTitle: siteConfig.title,
             address: {
               '@type': 'PostalAddress',
               addressCountry: 'UAE',
               addressLocality: 'Dubai',
             },
-            worksFor: {
-              '@type': 'Organization',
-              name: 'Inflection Studio',
-              url: 'https://inflectionstudio.io/',
-            },
             knowsAbout: [
-              'Entrepreneurship',
-              'Product Development',
-              'Software Engineering',
-              'Venture Building',
-              'Technology Strategy',
-              'Platform Architecture',
-              'Advisory',
-              'Systems Thinking',
+              'Projection Mapping',
+              'Media Servers',
+              'disguise (d3)',
+              'Pixera',
+              'xR Technologies',
+              'Live Production',
+              'Broadcast Engineering',
             ],
             sameAs: [
-              'https://twitter.com/lewis_kihiu',
-              'https://github.com/lewis-kori',
-              'https://linkedin.com/in/lewis-kihiu-aba63011b/',
+              'https://www.linkedin.com/in/konstantin-laptev-dxb',
             ],
           },
           type === 'article' && publishedTime

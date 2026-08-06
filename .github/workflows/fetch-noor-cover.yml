@@ -1,0 +1,30 @@
+name: Fetch Noor Riyadh Cover
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/fetch-noor-cover.yml'
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download cover JPEG
+        run: |
+          mkdir -p public/projects/covers
+          curl -L --fail -o public/projects/covers/noor-riyadh-2025.jpg \
+            "https://www.mediaproav.com/wp-content/uploads/2025/12/DSC02058-scaled.jpg"
+          ls -la public/projects/covers/noor-riyadh-2025.jpg
+          python3 -c "import pathlib; p=pathlib.Path('public/projects/covers/noor-riyadh-2025.jpg'); d=p.read_bytes(); print(len(d), d[:2].hex()); assert d[:2]==b'\\xff\\xd8'"
+          rm -f public/projects/covers/_download_noor.yml public/projects/covers/_copy_noor.py public/projects/covers/_write_test.txt
+      - name: Commit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add public/projects/covers/noor-riyadh-2025.jpg
+          git add -u public/projects/covers/ || true
+          git diff --cached --quiet && echo 'No changes' && exit 0
+          git commit -m 'assets: set Noor Riyadh 2025 cover from mediaproav DSC02058'
+          git push

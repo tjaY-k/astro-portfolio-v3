@@ -5,9 +5,17 @@ import { ArrowIcon } from '../ui/icons';
 import { siteConfig } from '@/config';
 
 const socials = await getCollection('socials');
+
+// "·"-separated list. Each item is kept unbreakable so a line can only wrap at
+// a separator — otherwise "Media Server Operations" splits across lines and
+// reads as two separate things.
+const specialisms = siteConfig.specialisms.split('·').map((s) => s.trim());
 ---
 
-<div class='space-y-4 animate-slide-in-left max-w-2xl'>
+<!-- w-full is required: the parent is a column flex with items-center, which
+     sizes children to their content instead of the container. Without it the
+     block grows past the viewport on mobile and gets cut off by overflow-x-clip. -->
+<div class='space-y-4 animate-slide-in-left w-full max-w-2xl'>
   <p class='text-lg text-muted-foreground font-light tracking-wide'>
     Hi, my name is
   </p>
@@ -21,6 +29,19 @@ const socials = await getCollection('socials');
   >
     {siteConfig.tagline}
   </h2>
+
+  <p
+    class='flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-medium uppercase tracking-wider text-muted-foreground'
+  >
+    {
+      specialisms.map((item, index) => (
+        <>
+          {index > 0 && <span class='text-secondary' aria-hidden='true'>·</span>}
+          <span>{item}</span>
+        </>
+      ))
+    }
+  </p>
 
   <p class='text-lg text-muted-foreground leading-relaxed'>
     {siteConfig.authorDescription}

@@ -13,6 +13,7 @@ export interface SiteConfig {
   title: string;
   description: string;
   tagline: string;
+  specialisms: string;
   authorDescription: string;
   avatar: ImageMetadata;
   profileImage: ImageMetadata;
@@ -29,6 +30,7 @@ export const siteConfig: SiteConfig = {
   description:
     'Video Technical Manager and disguise Certified Operator based in Dubai. 18 years of projection mapping, media server programming and site-wide video systems for Formula 1, Noor Riyadh and MDLBEAST Soundstorm.',
   tagline: 'Video Technical Manager & Senior disguise Operator',
+  specialisms: 'Media Server Operations · Projection Mapping · Site-Wide Video Systems',
   authorDescription:
     "I plan and run the video systems behind large-scale live events — projection mapping, media server programming, site-wide signal distribution — from the first 3D scan to the final show. 18 years across Formula 1, Noor Riyadh, MDLBEAST Soundstorm and a three-record projection on One Za’abeel.",
   avatar: aboutImage,

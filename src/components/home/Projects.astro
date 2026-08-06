@@ -156,7 +156,7 @@ const projectsWithContent = await Promise.all(
 <!-- Video Modal для home -->
 <dialog id="videoModalHome" class="backdrop:bg-black/90 bg-black rounded-2xl max-w-4xl w-full p-0 shadow-2xl m-auto hidden">
   <div class="flex justify-end p-4 border-b border-white/10">
-    <button id="closeVideoModalHome" class="text-3xl text-white/70 hover:text-white">×</button>
+    <button data-close-video aria-label="Close video" class="text-3xl text-white/70 hover:text-white">×</button>
   </div>
   <div class="aspect-video bg-black">
     <iframe id="videoFrameHome" class="w-full h-full" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -335,38 +335,96 @@ const projectsWithContent = await Promise.all(
   // Reinitialize after view transitions
   document.addEventListener('astro:page-load', initProjectModals);
 
-  // Video Modal — исправлено на event delegation (работает с динамическими кнопками)
-  const videoModalHome = document.getElementById('videoModalHome');
-  const videoFrameHome = document.getElementById('videoFrameHome');
-  const closeVideoHome = document.getElementById('closeVideoModalHome');
+  /*
+   * Video modal.
+   *
+   * Everything below looks the dialog up at event time rather than caching it.
+   * The View Transitions router swaps the DOM on client-side navigation, so any
+   * element reference captured when this script first ran would point at a
+   * detached node afterwards — the button would silently do nothing.
+   */
+  function toEmbedUrl(raw) {
+    try {
+      const url = new URL(raw, window.location.origin);
+      const host = url.hostname.replace(/^www\./, '');
 
-  document.addEventListener('click', (e) => {
-    const btn = e.target.closest('.video-btn');
-    if (btn) {
-      e.stopImmediatePropagation();
-      const url = btn.getAttribute('data-video-url');
-      if (url) {
-        videoFrameHome.src = url;
-        videoModalHome.showModal();
-        videoModalHome.classList.remove('hidden');
+      if (host === 'youtu.be') {
+        const id = url.pathname.slice(1);
+        return id ? 'https://www.youtube.com/embed/' + id + url.search : raw;
       }
-    }
-  });
 
-  if (closeVideoHome) {
-    closeVideoHome.addEventListener('click', () => {
-      videoModalHome.close();
-      videoModalHome.classList.add('hidden');
-      videoFrameHome.src = '';
-    });
+      if (host.endsWith('youtube.com') && url.pathname === '/watch') {
+        const id = url.searchParams.get('v');
+        if (id) {
+          url.searchParams.delete('v');
+          const rest = url.searchParams.toString();
+          return 'https://www.youtube.com/embed/' + id + (rest ? '?' + rest : '');
+        }
+      }
+
+      if (host === 'vimeo.com') {
+        const id = url.pathname.split('/').filter(Boolean)[0];
+        if (/^\d+$/.test(id)) return 'https://player.vimeo.com/video/' + id;
+      }
+
+      return raw;
+    } catch (err) {
+      return raw;
+    }
   }
 
-  if (videoModalHome) {
-    videoModalHome.addEventListener('click', (e) => {
-      if (e.target === videoModalHome) {
-        closeVideoHome.click();
+  function openVideo(url) {
+    const modal = document.getElementById('videoModalHome');
+    const frame = document.getElementById('videoFrameHome');
+    if (!modal || !frame) return;
+
+    frame.src = toEmbedUrl(url);
+    modal.classList.remove('hidden');
+    if (!modal.open) modal.showModal();
+  }
+
+  function closeVideo() {
+    const modal = document.getElementById('videoModalHome');
+    const frame = document.getElementById('videoFrameHome');
+    if (!modal || !frame) return;
+
+    if (modal.open) modal.close();
+    modal.classList.add('hidden');
+    frame.src = ''; // unload the player, otherwise audio keeps running
+  }
+
+  // Bind once: the listener lives on document, which survives page swaps.
+  if (!window.__videoModalBound) {
+    window.__videoModalBound = true;
+
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!target || typeof target.closest !== 'function') return;
+
+      const playButton = target.closest('.video-btn');
+      if (playButton) {
+        const url = playButton.getAttribute('data-video-url');
+        if (url) openVideo(url);
+        return;
       }
+
+      if (target.closest('[data-close-video]')) {
+        closeVideo();
+        return;
+      }
+
+      // Click on the dialog element itself is a backdrop click.
+      if (target.id === 'videoModalHome') closeVideo();
     });
+
+    // Esc closes a <dialog> natively — catch it so the player is unloaded too.
+    document.addEventListener(
+      'close',
+      (e) => {
+        if (e.target && e.target.id === 'videoModalHome') closeVideo();
+      },
+      true,
+    );
   }
 </script>
 

@@ -1,5 +1,5 @@
 ---
-title: signal live NN 2021
+title: "signal live NN"
 description: "Real-time VJ mixing and projections for a multimedia festival edition in Nizhny Novgorod."
 slug: signal-live-nn-2021
 pubDate: 2021-01-01

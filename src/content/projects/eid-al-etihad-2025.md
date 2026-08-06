@@ -1,5 +1,5 @@
 ---
-title: Eid Al Etihad 2025, Al Dhafra Fort
+title: "Eid Al Etihad, Al Dhafra Fort"
 description: "3D projection mapping and a drone show reimagining the UAE flag on a 50-metre canvas, for the UAE's 54th Eid Al Etihad at the historic Al Dhafra Fort."
 slug: eid-al-etihad-2025
 pubDate: 2025-01-01

@@ -1,6 +1,6 @@
 ---
-title: Formula 1 STC Saudi Arabian Grand Prix 2022–2025
-description: "Fanzone projection mapping and ceremony video ops at the Jeddah Corniche Circuit — F1's fastest street track."
+title: "Formula 1 STC Saudi Arabian Grand Prix"
+description: "Four consecutive editions at the Jeddah Corniche Circuit — fanzone projection mapping and ceremony video ops on F1's fastest street track."
 slug: f1-saudi-2025
 pubDate: 2025-01-01
 year: 2025

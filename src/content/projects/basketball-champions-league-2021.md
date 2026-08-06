@@ -1,5 +1,5 @@
 ---
-title: Basketball Champions League Final 8 2021
+title: "Basketball Champions League Final 8"
 description: "Pre-game shows and live media server ops for FIBA's season finale — 8 clubs, 6 countries, international broadcast."
 slug: basketball-champions-league-2021
 pubDate: 2021-01-01

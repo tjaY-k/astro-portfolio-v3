@@ -1,6 +1,6 @@
 ---
-title: Dubai World Cup 2024–2026
-description: "Screens and video ops for the world's richest race day — a record 65,000+ crowd, broadcast to 170+ countries."
+title: "Dubai World Cup"
+description: "Three consecutive editions of the world's richest race day — screens and video ops for a record 65,000+ crowd, broadcast to 170+ countries."
 slug: dubai-world-cup-2025
 pubDate: 2026-01-01
 year: 2026

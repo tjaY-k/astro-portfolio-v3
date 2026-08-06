@@ -1,5 +1,5 @@
 ---
-title: KHL All-Star Week (FONBET 2020)
+title: "KHL All-Star Week"
 description: "Video systems and in-arena visuals for the KHL's showcase weekend at Moscow's VTB Arena."
 slug: khl-all-star-week-2020
 pubDate: 2020-01-01

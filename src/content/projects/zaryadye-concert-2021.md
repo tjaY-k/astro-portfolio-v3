@@ -1,5 +1,5 @@
 ---
-title: Concert at Zaryadye Concert Hall 2021
+title: "Zaryadye Concert Hall"
 description: "LED-driven visual storytelling at Moscow's Zaryadye Hall, one of Russia's most acoustically advanced venues."
 slug: zaryadye-concert-2021
 pubDate: 2021-01-01

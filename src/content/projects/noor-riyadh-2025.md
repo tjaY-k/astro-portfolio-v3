@@ -1,5 +1,5 @@
 ---
-title: Noor Riyadh 2025
+title: "Noor Riyadh"
 description: "AVL and structure lead across 20+ artworks at the world's largest light art festival — six sites, citywide, 17 nights."
 slug: noor-riyadh-2025
 pubDate: 2025-01-01

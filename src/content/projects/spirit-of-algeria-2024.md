@@ -1,5 +1,5 @@
 ---
-title: The Spirit of Algeria 2024
+title: "The Spirit of Algeria"
 description: "13 immersive scenes retelling a nation's history — the flagship show of Algeria's 70th revolution anniversary."
 slug: spirit-of-algeria-2024
 pubDate: 2024-01-01

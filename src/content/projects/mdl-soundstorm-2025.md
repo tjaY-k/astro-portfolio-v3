@@ -1,6 +1,6 @@
 ---
-title: MDLBEAST Soundstorm 2023–2025
-description: "One network linking every stage of MENA's largest music festival — with emergency signal override from a central control room."
+title: "MDLBEAST Soundstorm"
+description: "Three consecutive editions of MENA's largest music festival — one network linking every stage, with emergency signal override from a central control room."
 slug: mdl-soundstorm-2025
 pubDate: 2025-01-01
 year: 2025

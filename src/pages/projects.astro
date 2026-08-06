@@ -11,15 +11,16 @@ const sortedProjects = allProjects.sort((a, b) => b.data.year - a.data.year);
 <Layout
   title='Projects – Konstantin Laptev'
   description='Large-scale live production, projection mapping, media server programming and immersive events'
-  ogTitle="Featured Projects"
-  ogDescription='Selected large-scale live production and immersive visual projects'
+  ogTitle='Selected Work'
+  ogDescription='Eighteen years of projection mapping, media server programming and large-scale video systems.'
 >
   <div class='container-fluid py-8 md:py-16'>
     <!-- Header -->
     <div class='mb-10'>
-      <h1 class='text-4xl md:text-5xl font-semibold tracking-tight mb-3'>Featured Projects</h1>
+      <h1 class='text-4xl md:text-5xl font-semibold tracking-tight mb-3'>Selected Work</h1>
       <p class='text-lg text-muted-foreground max-w-2xl'>
-        Selected large-scale live production, projection mapping and immersive visual experiences.
+        Eighteen years of projection mapping, media server programming and large-scale video systems —
+        from desert festivals to world-record building projections.
       </p>
     </div>
 
@@ -227,7 +228,7 @@ const sortedProjects = allProjects.sort((a, b) => b.data.year - a.data.year);
             <div class="p-8 space-y-6">
               <div>
                 <h2 class="text-4xl font-bold text-foreground mb-2">${project.title}</h2>
-                ${project.made_at ? `<p class="text-muted-foreground mb-4">Made at ${project.made_at} • ${project.year}</p>` : ''}
+                ${project.made_at ? `<p class="text-muted-foreground mb-4">${project.made_at} • ${project.year}</p>` : ''}
                 <div class="text-muted-foreground text-lg leading-relaxed prose prose-lg dark:prose-invert max-w-none">
                   ${project.body}
                 </div>

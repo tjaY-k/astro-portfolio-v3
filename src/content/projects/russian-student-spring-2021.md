@@ -1,5 +1,5 @@
 ---
-title: Russian Student Spring — Opening Ceremony 2021
+title: "Russian Student Spring — Opening Ceremony"
 description: "Opening ceremony visuals for Russia's national student arts festival — the launch event of Nizhny Novgorod's 800th anniversary year."
 slug: russian-student-spring-2021
 pubDate: 2021-01-01

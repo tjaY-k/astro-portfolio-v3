@@ -1,5 +1,5 @@
 ---
-title: ONE&ONLY One Za'abeel Grand Opening 2024
+title: "One Za'abeel Grand Opening"
 description: "Three Guinness World Records in one show — 165 projectors mapping 230 metres of Dubai skyline for a luxury hotel launch."
 slug: one-zabeel-2024
 pubDate: 2024-01-01

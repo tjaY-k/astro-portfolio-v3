@@ -1,5 +1,5 @@
 ---
-title: Moscow Light Festival (Circle of Light) 2019
+title: "Moscow Light Festival (Circle of Light)"
 description: "Turning Moscow's architecture into a nighttime canvas — projection mapping at the Polytech and Ostankino sites."
 slug: moscow-light-fest-2019
 pubDate: 2019-01-01

@@ -1,6 +1,6 @@
 ---
-title: FIFA World Cup 2018 – Mordovia Arena
-description: "Broadcast Stadium Manager at Mordovia Arena during the 2018 FIFA World Cup. Full responsibility for broadcast infrastructure, camera platforms, infotainment and giant video screens."
+title: "FIFA World Cup 2018 — Mordovia Arena"
+description: "Broadcast infrastructure at a 44,000-seat World Cup venue — camera platforms, CATV, control room and giant screens, all to FIFA spec."
 slug: fifa-world-cup-2018
 pubDate: 2018-01-01
 year: 2018

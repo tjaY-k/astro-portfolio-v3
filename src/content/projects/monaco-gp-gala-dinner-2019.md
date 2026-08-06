@@ -1,5 +1,5 @@
 ---
-title: Monaco Grand Prix Gala Dinner 2019
+title: "Monaco Grand Prix Gala Dinner"
 description: "Projection-mapped visuals for the official gala dinner of the Formula 1 Monaco Grand Prix weekend."
 slug: monaco-gp-gala-dinner-2019
 pubDate: 2019-01-01

@@ -1,5 +1,5 @@
 ---
-title: IBM xR Studio 2020
+title: "IBM xR Studio"
 description: "Virtual xR studio build for IBM — LED walls plus camera tracking for broadcast-grade corporate presentations."
 slug: ibm-xr-studio-2020
 pubDate: 2020-01-01

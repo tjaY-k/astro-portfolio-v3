@@ -1,5 +1,5 @@
 ---
-title: Live Broadcast xR Studio — Nizhny Novgorod Government House 2020
+title: "Nizhny Novgorod Government House — xR Studio"
 description: "xR studio operations for regional government broadcasts — virtual sets for official public announcements."
 slug: nnov-government-house-xr-2020
 pubDate: 2020-01-01

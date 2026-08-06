@@ -1,5 +1,5 @@
 ---
-title: AZIMUTH AlUla, amplified by MDLBEAST 2022–2023
+title: "AZIMUTH AlUla, amplified by MDLBEAST"
 description: "Dusk-till-dawn projection mapping among 6th-century BC ruins in AlUla — Saudi Arabia's first UNESCO World Heritage Site."
 slug: azimuth-mdl-beast-2023
 pubDate: 2023-01-01

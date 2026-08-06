@@ -33,7 +33,7 @@ const projectsWithContent = await Promise.all(
         Featured Projects
       </h2>
       <p class='text-center text-muted-foreground text-lg mb-3'>
-        A selection of my recent work
+        The projects I'd point to first
       </p>
       <div
         class='h-1 w-20 bg-linear-to-r from-primary to-secondary rounded-full mx-auto mb-16'
@@ -88,7 +88,7 @@ const projectsWithContent = await Promise.all(
                 </h3>
 
                 <p class='text-white/90 leading-relaxed line-clamp-2 drop-shadow-[0_2px_6px_rgba(0,0,0,0.8)]'>
-                  {project.data.made_at && `Made at ${project.data.made_at}`}
+                  {project.data.made_at}
                 </p>
 
                 <div class='flex flex-wrap gap-2'>
@@ -289,7 +289,7 @@ const projectsWithContent = await Promise.all(
           <div class="p-8 space-y-6">
             <div>
               <h2 class="text-4xl font-bold text-foreground mb-2">${project.title}</h2>
-              ${project.made_at ? `<p class="text-muted-foreground mb-4">Made at ${project.made_at} • ${project.year}</p>` : ''}
+              ${project.made_at ? `<p class="text-muted-foreground mb-4">${project.made_at} • ${project.year}</p>` : ''}
               <div class="text-muted-foreground text-lg leading-relaxed prose prose-lg dark:prose-invert max-w-none">
                 ${project.body}
               </div>

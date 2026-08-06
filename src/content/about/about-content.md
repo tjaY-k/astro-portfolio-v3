@@ -1,20 +1,16 @@
 ---
 title: About Konstantin Laptev
-subtitle: Video Technical Manager
+subtitle: From the first site survey to the last cue of the show
 ---
 
-Hi, I'm Konstantin Laptev
+Most of the work happens long before an audience arrives. A building gets laser-scanned, the projection study gets built in Mapping Matter, every projector position is checked in Vectorworks — so that on show night the image simply lands where it should.
 
-**Video Technical Manager & Senior Disguise Operator** with over 18 years of experience delivering large-scale immersive productions for major international events.
+I handle the technical planning and delivery of video systems for live events and permanent installations: projection mapping, media server programming on disguise and Pixera, LED screen design, and xR studio builds. In practice that means owning the whole chain — equipment specs, signal design, crew coordination — and sitting at the desk when the show goes live.
 
-I specialise in the technical planning and delivery of video systems for both live events and fixed installations. My core expertise includes projection mapping, media server programming, and LED screen planning and execution.
+Eighteen years in, the work has ranged from a 230-metre projection on One Za'abeel that took three Guinness World Records, to a single control system linking ten stages at MDLBEAST Soundstorm, to broadcast infrastructure at a FIFA World Cup stadium. Different scales, same discipline: plan for what can fail, and keep a way to fix it live.
 
-Notable projects include the world’s longest projection mapping on ONE Zabeel, site-wide video systems for MDL Soundstorm, xR studio operations for broadcast, and technical video delivery for Formula 1 and the FIFA World Cup. I focus on technical precision combined with strong creative execution.
+**Where to go next**
 
-**Ready to create something epic together?**
-
-- Explore my **[Projects](#projects)** — see the biggest shows I've delivered  
-- View my full **[Experience](#work)** and **[Skills](/resources)**  
-- Or just **[get in touch](/contact)** — I'm always open to new collaborations worldwide (Dubai-based)
-
-Let's make the next big event visually unforgettable.
+- **[Projects](#projects)** — the shows, with the technical detail behind them
+- **[Experience](#work)** and **[Technical Toolkit](/resources)** — the track record and the kit
+- **[Get in touch](/contact)** — based in Dubai, working worldwide

@@ -5,6 +5,7 @@ slug: dubai-world-cup-2025
 pubDate: 2026-01-01
 year: 2026
 featured: true
+order: 5
 cover_image: /projects/covers/dubai-world-cup.jpg
 tech: ["Video Operations", "Broadcast", "LED Screens", "Live Production", "Sports"]
 made_at: 'MediaPro International LLC'

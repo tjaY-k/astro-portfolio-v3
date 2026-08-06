@@ -5,6 +5,7 @@ slug: azimuth-mdl-beast-2023
 pubDate: 2023-01-01
 year: 2023
 featured: true
+order: 6
 cover_image: /projects/covers/azimuth-mdl-beast.jpg
 tech: ["disguise", "Projection Mapping", "Desert Production", "UNESCO Site", "Festival"]
 made_at: 'MediaPro International LLC'

@@ -4,8 +4,9 @@ description: "Broadcast Stadium Manager at Mordovia Arena during the 2018 FIFA W
 slug: fifa-world-cup-2018
 pubDate: 2018-01-01
 year: 2018
-featured: false
-cover_image: https://picsum.photos/id/1018/800/600
+featured: true
+order: 7
+cover_image: /projects/covers/placeholder.png
 tech: ["Broadcast", "Stadium Infrastructure", "Infotainment", "FIFA Standards", "CATV"]
 made_at: '2018 FIFA World Cup Russia™ Local Organising Committee'
 location: 'Saransk, Russia'

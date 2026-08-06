@@ -77,6 +77,7 @@ const projects = defineCollection({
     google_play: z.string().url().optional(),
     cover_image: z.string().optional(),
     featured: z.boolean().optional(),
+    order: z.number().optional(),
     year: z.number(),
     made_at: z.string().optional(),
     video_url: z.string().optional(),

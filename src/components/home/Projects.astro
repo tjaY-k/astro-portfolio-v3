@@ -3,10 +3,17 @@ import { getCollection } from 'astro:content';
 import { ArrowIcon } from '../ui/icons';
 
 const allProjects = await getCollection('projects');
-// Filter only featured projects and sort by year (descending)
+// Filter only featured projects and sort by curated order (falls back to year descending)
 const projects = allProjects
   .filter((p) => p.data.featured === true)
-  .sort((a, b) => b.data.year - a.data.year);
+  .sort((a, b) => {
+    if (a.data.order != null && b.data.order != null) {
+      return a.data.order - b.data.order;
+    }
+    if (a.data.order != null) return -1;
+    if (b.data.order != null) return 1;
+    return b.data.year - a.data.year;
+  });
 
 // Get project body content for modal
 const projectsWithContent = await Promise.all(

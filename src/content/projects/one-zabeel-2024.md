@@ -5,6 +5,7 @@ slug: one-zabeel-2024
 pubDate: 2024-01-01
 year: 2024
 featured: true
+order: 1
 cover_image: /projects/covers/one-zabeel-opening.jpg
 tech: ["disguise", "Projection Mapping", "Media Servers", "Mapping Matter", "Guinness World Records"]
 made_at: 'MediaPro International LLC'

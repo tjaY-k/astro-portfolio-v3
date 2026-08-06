@@ -5,6 +5,7 @@ slug: noor-riyadh-2025
 pubDate: 2025-01-01
 year: 2025
 featured: true
+order: 3
 cover_image: /projects/covers/noor-riyadh-2025.jpg
 tech: ["AVL", "Projection Mapping", "Lighting", "Ceremonies", "Light Art Festival", "Infotainment"]
 made_at: 'MediaPro International LLC'

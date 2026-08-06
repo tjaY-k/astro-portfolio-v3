@@ -5,6 +5,7 @@ slug: f1-saudi-2025
 pubDate: 2025-01-01
 year: 2025
 featured: true
+order: 2
 cover_image: /projects/covers/placeholder.png
 tech: ["disguise", "Projection Mapping", "Broadcast", "Ceremonies", "Fanzone", "Motorsport"]
 made_at: 'MediaPro International LLC'

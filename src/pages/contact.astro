@@ -6,11 +6,16 @@ import Layout from '@/layouts/Layout.astro';
 import { siteConfig } from '@/config';
 import { FORMSPREE_FORM_ID } from 'astro:env/client';
 
+// Kept in step with the site's positioning: projection mapping, media server
+// programming and site-wide video systems lead; xR sits with LED rather than
+// heading its own option, since the last xR build was 2020.
 const lookingForOptions = [
   { value: 'projection-mapping', label: 'Projection Mapping Project' },
   { value: 'media-server-programming', label: 'Media Server Programming' },
-  { value: 'xr-led-setup', label: 'LED Walls / xR Setup' },
-  { value: 'technical-consulting', label: 'Technical Consulting for Events' },
+  { value: 'site-wide-video', label: 'Site-Wide Video System' },
+  { value: 'led-screens', label: 'LED Screens / xR' },
+  { value: 'broadcast-ceremony', label: 'Broadcast / Ceremony Video Ops' },
+  { value: 'technical-direction', label: 'Technical Direction' },
   { value: 'festival-production', label: 'Festival / Large Event Production' },
   { value: 'collaboration', label: 'Collaboration / Partnership' },
   { value: 'other', label: 'Something Else' },

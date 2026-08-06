@@ -7,6 +7,7 @@ year: 2025
 featured: true
 order: 3
 cover_image: /projects/covers/noor-riyadh-2025.jpg
+image_credit: "Image: MediaPro International"
 tech: ["AVL", "Projection Mapping", "Lighting", "Ceremonies", "Light Art Festival", "Infotainment"]
 made_at: 'MediaPro International LLC'
 location: 'Riyadh, Saudi Arabia'

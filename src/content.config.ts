@@ -76,6 +76,9 @@ const projects = defineCollection({
     app_store: z.string().url().optional(),
     google_play: z.string().url().optional(),
     cover_image: z.string().optional(),
+    // Where the cover image came from. Attribution only — it records the source,
+    // it does not by itself grant a licence to publish the image.
+    image_credit: z.string().optional(),
     featured: z.boolean().optional(),
     order: z.number().optional(),
     year: z.number(),

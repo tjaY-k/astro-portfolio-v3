@@ -123,6 +123,7 @@ const sortedProjects = allProjects.sort((a, b) => b.data.year - a.data.year);
       year: p.data.year,
       tech: p.data.tech || [],
       cover_image: p.data.cover_image,
+      image_credit: p.data.image_credit,
       external_link: p.data.external_link,
       github_link: p.data.github_link,
       app_store: p.data.app_store,
@@ -225,10 +226,17 @@ const sortedProjects = allProjects.sort((a, b) => b.data.year - a.data.year);
 
             ${
               project.cover_image
-                ? `<div class="aspect-[16/9] overflow-hidden">
-                     <img src="${project.cover_image}" alt="${project.title}" 
-                       class="w-full h-full object-cover" />
-                   </div>`
+                ? `<figure class="m-0">
+                     <div class="aspect-[16/9] overflow-hidden">
+                       <img src="${project.cover_image}" alt="${project.title}"
+                         class="w-full h-full object-cover" />
+                     </div>
+                     ${
+                       project.image_credit
+                         ? `<figcaption class="px-8 pt-2 text-xs text-muted-foreground">${project.image_credit}</figcaption>`
+                         : ''
+                     }
+                   </figure>`
                 : ''
             }
 

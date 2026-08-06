@@ -177,6 +177,7 @@ const projectsWithContent = await Promise.all(
       title: project.data.title,
       tech: project.data.tech,
       cover_image: project.data.cover_image,
+      image_credit: project.data.image_credit,
       external_link: project.data.external_link,
       github_link: project.data.github_link,
       app_store: project.data.app_store,
@@ -286,10 +287,17 @@ const projectsWithContent = await Promise.all(
 
           ${
             project.cover_image
-              ? `<div class="aspect-[16/9] overflow-hidden">
-                   <img src="${project.cover_image}" alt="${project.title}" 
-                     class="w-full h-full object-cover" />
-                 </div>`
+              ? `<figure class="m-0">
+                   <div class="aspect-[16/9] overflow-hidden">
+                     <img src="${project.cover_image}" alt="${project.title}"
+                       class="w-full h-full object-cover" />
+                   </div>
+                   ${
+                     project.image_credit
+                       ? `<figcaption class="px-8 pt-2 text-xs text-muted-foreground">${project.image_credit}</figcaption>`
+                       : ''
+                   }
+                 </figure>`
               : ''
           }
 

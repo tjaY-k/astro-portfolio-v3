@@ -7,6 +7,7 @@ year: 2026
 featured: true
 order: 5
 cover_image: /projects/covers/dubai-world-cup.jpg
+image_credit: "Image: Dubai Racing Club"
 tech: ["Video Operations", "Broadcast", "LED Screens", "Live Production", "Sports"]
 made_at: 'MediaPro International LLC'
 location: 'Dubai, UAE'

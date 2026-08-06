@@ -7,6 +7,7 @@ year: 2024
 featured: true
 order: 1
 cover_image: /projects/covers/one-zabeel-opening.jpg
+image_credit: "Image: disguise"
 tech: ["disguise", "Projection Mapping", "Media Servers", "Mapping Matter", "Guinness World Records"]
 made_at: 'MediaPro International LLC'
 location: 'Dubai, UAE'

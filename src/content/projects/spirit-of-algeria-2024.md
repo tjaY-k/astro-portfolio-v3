@@ -6,6 +6,7 @@ pubDate: 2024-01-01
 year: 2024
 featured: false
 cover_image: /projects/covers/spirit-of-algeria.jpg
+image_credit: "Image: MediaPro International"
 tech: ["disguise", "Projection Mapping", "Media Servers", "Immersive Experiences", "National Commemoration"]
 made_at: 'MediaPro International LLC'
 location: 'Algiers, Algeria'

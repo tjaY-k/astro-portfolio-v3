@@ -18,10 +18,4 @@ Directed video technical operations for the Dubai World Cup at Meydan Racecourse
 
 For the 2025 and 2026 editions the entire LED production ran in <strong>10-bit HLG Rec.2020</strong> — HDR end to end, across both the venue's permanent screen and the temporary structures built by MediaPro. Holding a wide-gamut HDR pipeline consistent across surfaces of different make and age, in daylight and then under floodlight, is a materially harder problem than running the same content in SDR.
 
-The combined canvas came to roughly <strong>103 million pixels</strong> — around twelve 4K screens' worth:
-
-<ul>
-<li>Permanent screen — 9,984 &times; 960</li>
-<li>Superstructure above it — 26,624 &times; 1,536</li>
-<li>Two side screens — 10,240 &times; 2,560 each</li>
-</ul>
+Across the permanent screen, the superstructure above it and two side screens, the combined canvas came to roughly <strong>103 million pixels</strong> — around twelve 4K screens' worth.

@@ -6,7 +6,7 @@ pubDate: 2025-01-01
 year: 2025
 featured: false
 cover_image: /projects/covers/eid-al-etihad-2025-al-dhafra-fort.jpg
-image_credit: "Image: Gulf News / WAM"
+image_credit: "Image: Artnovi"
 tech: ["Technical Direction", "3D Projection Mapping", "National Celebration", "Heritage Site"]
 made_at: 'MediaPro International LLC'
 location: 'Abu Dhabi, UAE'

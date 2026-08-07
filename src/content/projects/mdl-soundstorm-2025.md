@@ -6,7 +6,8 @@ pubDate: 2025-01-01
 year: 2025
 featured: true
 order: 4
-cover_image: /projects/covers/placeholder.png
+cover_image: /projects/covers/mdl-soundstorm.jpg
+image_credit: "Image: Konstantin Laptev"
 tech: ["disguise", "Media Servers", "LED Screens", "Video Distribution", "Festival Infrastructure"]
 made_at: 'MediaPro International LLC'
 location: 'Riyadh, Saudi Arabia'

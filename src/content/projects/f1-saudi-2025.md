@@ -6,7 +6,8 @@ pubDate: 2025-01-01
 year: 2025
 featured: true
 order: 2
-cover_image: /projects/covers/placeholder.png
+cover_image: /projects/covers/f1-saudi-jeddah.jpg
+image_credit: "Image: Konstantin Laptev"
 tech: ["disguise", "Projection Mapping", "Broadcast", "Ceremonies", "Fanzone", "Motorsport"]
 made_at: 'MediaPro International LLC'
 location: 'Jeddah, Saudi Arabia'

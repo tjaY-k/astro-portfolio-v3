@@ -6,7 +6,8 @@ pubDate: 2018-01-01
 year: 2018
 featured: true
 order: 7
-cover_image: /projects/covers/placeholder.png
+cover_image: /projects/covers/fifa-world-cup-2018.jpg
+image_credit: "Image: Konstantin Laptev"
 tech: ["Broadcast", "Stadium Infrastructure", "Infotainment", "FIFA Standards", "CATV"]
 made_at: '2018 FIFA World Cup Russia™ Local Organising Committee'
 location: 'Saransk, Russia'

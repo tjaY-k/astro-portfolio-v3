@@ -8,8 +8,18 @@
 <script>
   const canvas = document.getElementById('artPlumCanvas') as HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
-  let particles: Array<{ x: number; y: number; vx: number; vy: number; radius: number }> = [];
-  let animationFrameId: number;
+  let animationFrameId = 0;
+  let looping = false;
+
+  type Particle = {
+    x: number; y: number;
+    vx: number; vy: number;
+    // Смещение от курсора живёт отдельно от дрейфа, иначе толчок
+    // навсегда остаётся в скорости и частица улетает.
+    ox: number; oy: number;
+    z: number;
+  };
+  let particles: Particle[] = [];
 
   // Количество считается от площади окна, а не фиксировано: одно и то же
   // число частиц на ноутбуке выглядит нормально, а на широком мониторе —
@@ -20,7 +30,15 @@
 
   const CONNECT_DISTANCE = 125;
   const CONNECT_DISTANCE_SQ = CONNECT_DISTANCE * CONNECT_DISTANCE;
+  const CURSOR_RADIUS = 190;
+  const CURSOR_RADIUS_SQ = CURSOR_RADIUS * CURSOR_RADIUS;
+  // 75 даёт пик расталкивания около 24 px при радиусе 190 — заметно,
+  // но частицы не разлетаются. Затухание 0.92 возвращает смещение
+  // к нулю за ~3 с после ухода курсора.
+  const CURSOR_FORCE = 75;
   const SPEED = 0.14;
+  const Z_MIN = 0.35;
+  const DEPTH_NORM = 2 / (1 + Z_MIN);
 
   // Цвет берётся из --secondary, а не прописывается здесь: иначе светлая
   // тема получает акцент тёмной. На белом фоне точкам нужно больше
@@ -30,7 +48,11 @@
     light: { particle: 0.6, line: 0.32, lineOpacity: 0.6, glow: 0 },
   };
 
-  let paint = { particle: '', line: '', lineOpacity: 0.55, glow: 10, glowColor: '' };
+  let rgb: [number, number, number] = [64, 183, 196];
+  let paint = { particle: 0.5, line: 0.25, lineOpacity: 0.55, glow: 10, glowColor: '' };
+
+  const cursor = { x: 0, y: 0, strength: 0, active: false };
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   function resolveRGB(color: string): [number, number, number] {
     const probe = document.createElement('canvas').getContext('2d')!;
@@ -46,17 +68,11 @@
     const accent = getComputedStyle(document.documentElement)
       .getPropertyValue('--secondary')
       .trim();
-    const [r, g, b] = resolveRGB(accent || '#40B7C4');
+    rgb = resolveRGB(accent || '#40B7C4');
     const t = document.documentElement.classList.contains('light')
       ? TUNING.light
       : TUNING.dark;
-    paint = {
-      particle: `rgba(${r}, ${g}, ${b}, ${t.particle})`,
-      line: `rgba(${r}, ${g}, ${b}, ${t.line})`,
-      lineOpacity: t.lineOpacity,
-      glow: t.glow,
-      glowColor: `rgb(${r}, ${g}, ${b})`,
-    };
+    paint = { ...t, glowColor: `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})` };
   }
 
   function particleCount() {
@@ -81,12 +97,17 @@
     particles = [];
     const count = particleCount();
     for (let i = 0; i < count; i++) {
+      // z — глубина: дальние частицы мельче, бледнее и медленнее,
+      // за счёт этого при дрейфе появляется параллакс.
+      const z = Z_MIN + Math.random() * (1 - Z_MIN);
       particles.push({
         x: Math.random() * window.innerWidth,
         y: Math.random() * window.innerHeight,
-        vx: (Math.random() - 0.5) * SPEED,
-        vy: (Math.random() - 0.5) * SPEED,
-        radius: Math.random() * 2.4 + 1.1,
+        vx: (Math.random() - 0.5) * SPEED * z,
+        vy: (Math.random() - 0.5) * SPEED * z,
+        ox: 0,
+        oy: 0,
+        z,
       });
     }
   }
@@ -94,57 +115,133 @@
   function draw() {
     const width = window.innerWidth;
     const height = window.innerHeight;
+    const [r, g, b] = rgb;
     ctx.clearRect(0, 0, width, height);
 
-    // glow настраивается один раз вне цикла
     ctx.shadowBlur = paint.glow;
     ctx.shadowColor = paint.glowColor;
 
-    // Обновление частиц
     for (let i = 0; i < particles.length; i++) {
       const p = particles[i];
+
       p.x += p.vx;
       p.y += p.vy;
 
-      p.vx += (Math.random() - 0.5) * 0.09;
-      p.vy += (Math.random() - 0.5) * 0.09;
+      p.vx += (Math.random() - 0.5) * 0.09 * p.z;
+      p.vy += (Math.random() - 0.5) * 0.09 * p.z;
       p.vx *= 0.97;
       p.vy *= 0.97;
 
       if (p.x < 0 || p.x > width) p.vx *= -0.9;
       if (p.y < 0 || p.y > height) p.vy *= -0.9;
 
-      ctx.fillStyle = paint.particle;
+      // Курсор расталкивает частицы, но смещение всё время
+      // возвращается к нулю — иначе дырка от мыши остаётся навсегда.
+      if (cursor.strength > 0.01) {
+        const dx = p.x + p.ox - cursor.x;
+        const dy = p.y + p.oy - cursor.y;
+        const dSq = dx * dx + dy * dy;
+        if (dSq < CURSOR_RADIUS_SQ && dSq > 1) {
+          const d = Math.sqrt(dSq);
+          const push =
+            (1 - d / CURSOR_RADIUS) ** 2 * CURSOR_FORCE * cursor.strength * p.z;
+          p.ox += (dx / d) * push * 0.08;
+          p.oy += (dy / d) * push * 0.08;
+        }
+      }
+      p.ox *= 0.92;
+      p.oy *= 0.92;
+
+      const px = p.x + p.ox;
+      const py = p.y + p.oy;
+
+      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${paint.particle * p.z})`;
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+      ctx.arc(px, py, 0.8 + p.z * 2.2, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    // Соединяющие линии
     ctx.lineWidth = 0.75;
-    ctx.strokeStyle = paint.line;
     for (let i = 0; i < particles.length; i++) {
+      const p1 = particles[i];
+      const x1 = p1.x + p1.ox;
+      const y1 = p1.y + p1.oy;
+
       for (let j = i + 1; j < particles.length; j++) {
-        const p1 = particles[i];
         const p2 = particles[j];
-        const dx = p1.x - p2.x;
-        const dy = p1.y - p2.y;
+        const x2 = p2.x + p2.ox;
+        const y2 = p2.y + p2.oy;
+        const dx = x1 - x2;
+        const dy = y1 - y2;
         const distSq = dx * dx + dy * dy;
 
         if (distSq < CONNECT_DISTANCE_SQ) {
           const dist = Math.sqrt(distSq);
-          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * paint.lineOpacity;
+          // Глубина ближней из двух частиц задаёт вес связи —
+          // дальний слой не спорит по яркости с ближним.
+          const depth = Math.min(p1.z, p2.z);
+          // DEPTH_NORM компенсирует средний множитель глубины (~0.67),
+          // чтобы общая яркость сетки осталась той же, что была до
+          // появления слоёв, а менялся только контраст между ними.
+          const a =
+            (1 - dist / CONNECT_DISTANCE) * paint.lineOpacity * depth * DEPTH_NORM;
+          ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${paint.line * a})`;
           ctx.beginPath();
-          ctx.moveTo(p1.x, p1.y);
-          ctx.lineTo(p2.x, p2.y);
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+        }
+      }
+
+      if (cursor.strength > 0.01) {
+        const dx = x1 - cursor.x;
+        const dy = y1 - cursor.y;
+        const dSq = dx * dx + dy * dy;
+        if (dSq < CURSOR_RADIUS_SQ) {
+          const a =
+            (1 - Math.sqrt(dSq) / CURSOR_RADIUS) * 0.5 * cursor.strength * p1.z;
+          ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${a})`;
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(cursor.x, cursor.y);
           ctx.stroke();
         }
       }
     }
-    ctx.globalAlpha = 1;
+
+    if (!cursor.active) cursor.strength *= 0.94;
     ctx.shadowBlur = 0;
 
+    if (looping) animationFrameId = requestAnimationFrame(draw);
+  }
+
+  function start() {
+    if (looping) return;
+    looping = true;
     animationFrameId = requestAnimationFrame(draw);
+  }
+
+  function stop() {
+    looping = false;
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = 0;
+  }
+
+  function drawStaticFrame() {
+    // При prefers-reduced-motion рисуем один кадр: stop() снимает флаг,
+    // поэтому draw() не поставит себя в очередь заново.
+    stop();
+    cursor.strength = 0;
+    draw();
+  }
+
+  function render() {
+    if (reduceMotion.matches) {
+      stop();
+      drawStaticFrame();
+    } else {
+      start();
+    }
   }
 
   function init() {
@@ -155,15 +252,44 @@
     readPalette();
     resizeCanvas();
     createParticles();
-    draw();
+    render();
 
     window.addEventListener('resize', () => {
       resizeCanvas();
       createParticles();
+      if (reduceMotion.matches) drawStaticFrame();
     });
 
-    // Переключатель темы меняет класс на <html> — перечитываем акцент.
-    new MutationObserver(readPalette).observe(document.documentElement, {
+    window.addEventListener(
+      'pointermove',
+      (e) => {
+        if (e.pointerType === 'touch') return;
+        cursor.x = e.clientX;
+        cursor.y = e.clientY;
+        cursor.active = true;
+        cursor.strength = Math.min(1, cursor.strength + 0.25);
+      },
+      { passive: true },
+    );
+    window.addEventListener('pointerleave', () => {
+      cursor.active = false;
+    });
+    document.addEventListener('mouseleave', () => {
+      cursor.active = false;
+    });
+
+    // Вкладка в фоне не должна крутить rAF.
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else render();
+    });
+
+    reduceMotion.addEventListener('change', render);
+
+    new MutationObserver(() => {
+      readPalette();
+      if (reduceMotion.matches) drawStaticFrame();
+    }).observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['class'],
     });

@@ -20,11 +20,44 @@
 
   const CONNECT_DISTANCE = 125;
   const CONNECT_DISTANCE_SQ = CONNECT_DISTANCE * CONNECT_DISTANCE;
-  const PARTICLE_COLOR = '#40B7C480';
-  const LINE_COLOR = '#40B7C440';
-  const LINE_OPACITY = 0.55;
   const SPEED = 0.14;
-  const GLOW = 10;
+
+  // Цвет берётся из --secondary, а не прописывается здесь: иначе светлая
+  // тема получает акцент тёмной. На белом фоне точкам нужно больше
+  // непрозрачности и не нужен glow — свечение по белому даёт грязь.
+  const TUNING = {
+    dark: { particle: 0.5, line: 0.25, lineOpacity: 0.55, glow: 10 },
+    light: { particle: 0.6, line: 0.32, lineOpacity: 0.6, glow: 0 },
+  };
+
+  let paint = { particle: '', line: '', lineOpacity: 0.55, glow: 10, glowColor: '' };
+
+  function resolveRGB(color: string): [number, number, number] {
+    const probe = document.createElement('canvas').getContext('2d')!;
+    probe.canvas.width = probe.canvas.height = 1;
+    probe.fillStyle = '#000';
+    probe.fillStyle = color;
+    probe.fillRect(0, 0, 1, 1);
+    const [r, g, b] = probe.getImageData(0, 0, 1, 1).data;
+    return [r, g, b];
+  }
+
+  function readPalette() {
+    const accent = getComputedStyle(document.documentElement)
+      .getPropertyValue('--secondary')
+      .trim();
+    const [r, g, b] = resolveRGB(accent || '#40B7C4');
+    const t = document.documentElement.classList.contains('light')
+      ? TUNING.light
+      : TUNING.dark;
+    paint = {
+      particle: `rgba(${r}, ${g}, ${b}, ${t.particle})`,
+      line: `rgba(${r}, ${g}, ${b}, ${t.line})`,
+      lineOpacity: t.lineOpacity,
+      glow: t.glow,
+      glowColor: `rgb(${r}, ${g}, ${b})`,
+    };
+  }
 
   function particleCount() {
     const area = window.innerWidth * window.innerHeight;
@@ -64,8 +97,8 @@
     ctx.clearRect(0, 0, width, height);
 
     // glow настраивается один раз вне цикла
-    ctx.shadowBlur = GLOW;
-    ctx.shadowColor = '#40B7C4';
+    ctx.shadowBlur = paint.glow;
+    ctx.shadowColor = paint.glowColor;
 
     // Обновление частиц
     for (let i = 0; i < particles.length; i++) {
@@ -81,7 +114,7 @@
       if (p.x < 0 || p.x > width) p.vx *= -0.9;
       if (p.y < 0 || p.y > height) p.vy *= -0.9;
 
-      ctx.fillStyle = PARTICLE_COLOR;
+      ctx.fillStyle = paint.particle;
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
       ctx.fill();
@@ -89,7 +122,7 @@
 
     // Соединяющие линии
     ctx.lineWidth = 0.75;
-    ctx.strokeStyle = LINE_COLOR;
+    ctx.strokeStyle = paint.line;
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const p1 = particles[i];
@@ -100,7 +133,7 @@
 
         if (distSq < CONNECT_DISTANCE_SQ) {
           const dist = Math.sqrt(distSq);
-          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * LINE_OPACITY;
+          ctx.globalAlpha = (1 - dist / CONNECT_DISTANCE) * paint.lineOpacity;
           ctx.beginPath();
           ctx.moveTo(p1.x, p1.y);
           ctx.lineTo(p2.x, p2.y);
@@ -119,6 +152,7 @@
     if (!tempCtx) return;
     ctx = tempCtx;
 
+    readPalette();
     resizeCanvas();
     createParticles();
     draw();
@@ -126,6 +160,12 @@
     window.addEventListener('resize', () => {
       resizeCanvas();
       createParticles();
+    });
+
+    // Переключатель темы меняет класс на <html> — перечитываем акцент.
+    new MutationObserver(readPalette).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
     });
   }
 

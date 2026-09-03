@@ -101,8 +101,9 @@ Covers are 1600×900 JPEG in `public/projects/covers/`; `placeholder.png` is the
 fallback. `video_url` accepts normal YouTube, `youtu.be` and Vimeo links — they
 are normalised to embed URLs at runtime.
 
-Themes: light, dark and a sepia "retro" variant, switched via a class on `<html>`
-and persisted to `localStorage`.
+Themes: light and dark, switched via a class on `<html>` and persisted to
+`localStorage`. The palette is neutral greys plus one accent — bright cyan on
+dark, a deeper cyan on light so it stays readable as a text colour.
 
 ## Deployment
 

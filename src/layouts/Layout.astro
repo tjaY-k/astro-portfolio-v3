@@ -220,22 +220,28 @@ const isDefaultOgImage = image === defaultOgImage;
     <!-- Initialize theme before page renders to prevent flash -->
     <script is:inline>
       (function () {
+        const stored = localStorage.getItem('theme');
+        // Всё, кроме light/dark, считаем устаревшим (была ещё тема retro)
+        // и откатываем на системную настройку.
         const theme =
-          localStorage.getItem('theme') ||
-          (window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light');
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
         document.documentElement.className = theme;
       })();
     </script>
 
     <script>
       document.addEventListener('astro:after-swap', () => {
+        const stored = localStorage.getItem('theme');
         const theme =
-          localStorage.getItem('theme') ||
-          (window.matchMedia('(prefers-color-scheme: dark)').matches
-            ? 'dark'
-            : 'light');
+          stored === 'light' || stored === 'dark'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
         document.documentElement.classList.remove('light', 'dark', 'retro');
         document.documentElement.classList.add(theme);
       });

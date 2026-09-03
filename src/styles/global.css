@@ -2,7 +2,6 @@
 @import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
-@custom-variant retro (&:is(.retro *));
 
 html {
   scroll-behavior: smooth;
@@ -120,42 +119,6 @@ html {
   --sidebar-ring: oklch(0.439 0 0);
 }
 
-.retro {
-  /* DaisyUI retro color palette */
-  --background: oklch(91.637% 0.034 90.515); /* Base 100 */
-  --foreground: oklch(44% 0.011 73.639); /* Neutral */
-  --card: oklch(88.272% 0.049 91.774); /* Base 200 */
-  --card-foreground: oklch(44% 0.011 73.639);
-  --popover: oklch(88.272% 0.049 91.774);
-  --popover-foreground: oklch(44% 0.011 73.639);
-  --primary: oklch(0.58 0.15 35);
-  --primary-foreground: oklch(98% 0.01 90);
-  --secondary: oklch(0.52 0.08 120);
-  --secondary-foreground: oklch(98% 0.01 90);
-  --muted: oklch(84.133% 0.065 90.856); /* Base 300 */
-  --muted-foreground: oklch(54% 0.011 73.639);
-  --accent: oklch(68% 0.162 75.834); /* Accent */
-  --accent-foreground: oklch(20% 0.011 73.639);
-  --destructive: oklch(70% 0.191 22.216); /* Error */
-  --destructive-foreground: oklch(98% 0.01 90);
-  --border: oklch(84.133% 0.065 90.856);
-  --input: oklch(88.272% 0.049 91.774);
-  --ring: oklch(80% 0.114 19.571);
-  --chart-1: oklch(80% 0.114 19.571); /* Primary */
-  --chart-2: oklch(92% 0.084 155.995); /* Secondary */
-  --chart-3: oklch(68% 0.162 75.834); /* Accent */
-  --chart-4: oklch(58% 0.158 241.966); /* Info */
-  --chart-5: oklch(51% 0.096 186.391); /* Success */
-  --sidebar: oklch(88.272% 0.049 91.774);
-  --sidebar-foreground: oklch(44% 0.011 73.639);
-  --sidebar-primary: oklch(80% 0.114 19.571);
-  --sidebar-primary-foreground: oklch(20% 0.011 73.639);
-  --sidebar-accent: oklch(84.133% 0.065 90.856);
-  --sidebar-accent-foreground: oklch(44% 0.011 73.639);
-  --sidebar-border: oklch(84.133% 0.065 90.856);
-  --sidebar-ring: oklch(80% 0.114 19.571);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -174,7 +137,7 @@ html {
     @apply px-4 sm:px-6  w-full mx-auto max-w-6xl;
   }
   .first-letter-color {
-    @apply first-letter:text-secondary  retro:first-letter:text-primary;
+    @apply first-letter:text-secondary;
   }
 }
 

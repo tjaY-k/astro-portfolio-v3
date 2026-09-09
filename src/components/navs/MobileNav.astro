@@ -4,7 +4,7 @@ import { siteConfig } from '@/config';
 import { Image } from 'astro:assets';
 
 interface Props {
-  navLinks: Array<{ name: string; href: string }>;
+  navLinks: Array<{ name: string; href: string; section?: string }>;
 }
 
 const { navLinks } = Astro.props;
@@ -114,6 +114,7 @@ const isActive = (href: string) => {
               >
                 <a
                   href={link.href}
+                  data-nav-section={link.section}
                   class={`mobile-nav-link block px-4 py-3 rounded-lg text-foreground hover:bg-primary/10 hover:text-primary transition-all duration-200 font-medium ${isActive(link.href) ? 'bg-primary/10 text-primary font-semibold border-l-4 border-primary' : ''}`}
                 >
                   {link.name}

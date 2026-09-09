@@ -7,14 +7,20 @@ import { Image } from 'astro:assets';
 const pathname = Astro.url.pathname;
 const isHomePage = pathname === '/';
 
+// section — то, что подсвечивается на главной по скроллу. Ссылки без
+// него (Toolkit, Contact) остаются на серверной подсветке по pathname.
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: isHomePage ? '#about' : '/#about' },
-  { name: 'Work', href: isHomePage ? '#work' : '/#work' },
-  { name: 'Projects', href: isHomePage ? '#projects' : '/projects' },
+  { name: 'Home', href: '/', section: 'home' },
+  { name: 'About', href: isHomePage ? '#about' : '/#about', section: 'about' },
+  { name: 'Work', href: isHomePage ? '#work' : '/#work', section: 'work' },
+  {
+    name: 'Projects',
+    href: isHomePage ? '#projects' : '/projects',
+    section: 'projects',
+  },
   { name: 'Toolkit', href: '/resources' },
   { name: 'Contact', href: '/contact' },
-];
+] as Array<{ name: string; href: string; section?: string }>;
 
 // Helper function to check if a link is active
 const isActive = (href: string) => {
@@ -57,6 +63,7 @@ const isActive = (href: string) => {
               <a
                 href={link.href}
                 data-astro-history='auto | push | replace'
+                data-nav-section={link.section}
                 class={`text-foreground hover:text-primary transition-colors text-sm ${isActive(link.href) ? 'text-primary font-semibold border-b-2 border-primary' : ''}`}
               >
                 {link.name}
@@ -74,3 +81,68 @@ const isActive = (href: string) => {
     <MobileNav navLinks={navLinks} />
   </nav>
 </header>
+<script>
+  // На главной About/Work/Projects — это якоря, путь при клике не
+  // меняется, поэтому серверная подсветка по pathname навсегда оставляет
+  // активным Home. Здесь подсветка ведётся по секции в зоне видимости.
+  // Порог rect.top <= 200 / rect.bottom >= 200 взят тот же, что в
+  // SideNav, иначе две навигации показывали бы разные секции.
+  const SECTIONS = ['about', 'work', 'projects'];
+  const DESKTOP_ACTIVE = [
+    'text-primary',
+    'font-semibold',
+    'border-b-2',
+    'border-primary',
+  ];
+  const MOBILE_ACTIVE = [
+    'bg-primary/10',
+    'text-primary',
+    'font-semibold',
+    'border-l-4',
+    'border-primary',
+  ];
+
+  function currentSection() {
+    for (const id of SECTIONS) {
+      const el = document.getElementById(id);
+      if (!el) continue;
+      const rect = el.getBoundingClientRect();
+      if (rect.top <= 200 && rect.bottom >= 200) return id;
+    }
+    return 'home';
+  }
+
+  function paintNav() {
+    // На остальных страницах подсветка приходит с сервера — не трогаем.
+    if (window.location.pathname !== '/') return;
+    const current = currentSection();
+    document.querySelectorAll<HTMLElement>('[data-nav-section]').forEach((a) => {
+      const active = a.dataset.navSection === current;
+      const classes = a.classList.contains('mobile-nav-link')
+        ? MOBILE_ACTIVE
+        : DESKTOP_ACTIVE;
+      classes.forEach((c) => a.classList.toggle(c, active));
+    });
+  }
+
+  let queued = false;
+  function onScroll() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(() => {
+      queued = false;
+      paintNav();
+    });
+  }
+
+  // Слушатели вешаются один раз: astro:page-load срабатывает на каждом
+  // клиентском переходе, и без флага они бы накапливались.
+  if (!(window as any).__navSpyBound) {
+    (window as any).__navSpyBound = true;
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('hashchange', paintNav);
+  }
+
+  paintNav();
+  document.addEventListener('astro:page-load', paintNav);
+</script>

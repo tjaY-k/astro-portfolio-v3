@@ -1,4 +1,12 @@
+<!-- transition:persist обязателен: ClientRouter подменяет содержимое
+     body при переходе, а скрипт ниже выполняется один раз за загрузку.
+     Без него на новой странице оказывается неинициализированный канвас
+     (400x400 из атрибутов), а цикл продолжает рисовать в узел, уже
+     удалённый из документа — частицы пропадают до F5.
+     Директиву нельзя ставить на <BackgroundArt /> в Layout: компонент
+     не пробрасывает Astro.props, и до этого div она не доходит. -->
 <div
+  transition:persist='background-art'
   class='pointer-events-none fixed bottom-0 left-0 right-0 top-0 print:hidden'
   style='mask-image: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 45%, black 100%); -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 45%, black 100%);'
 >

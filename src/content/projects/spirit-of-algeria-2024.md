@@ -7,12 +7,12 @@ year: 2024
 featured: false
 cover_image: /projects/covers/spirit-of-algeria.jpg
 image_credit: "Image: MediaPro International"
-tech: ["disguise", "Projection Mapping", "Media Servers", "Immersive Experiences", "National Commemoration"]
+tech: ["disguise", "Projection Mapping", "Dome Projection", "Media Servers", "Immersive Experiences", "National Commemoration"]
 made_at: 'MediaPro International LLC'
 location: 'Algiers, Algeria'
 external_link: "https://www.mediaproav.com/projects/the-spirit-of-algeria/"
 ---
 
-Directed video technical management, including disguise media server programming and projection mapping, for 'The Spirit of Algeria' — a large-scale historical show at the Mohamed Boudiaf Olympic Complex in Algiers. The production was a centrepiece of Algeria's national programme marking the 70th anniversary of the outbreak of the November 1954 revolution, staged under the theme 'Glorious November, Loyalty and Renewal'. The show spanned 13 immersive scenes tracing Algeria's history, delivered in collaboration with EXASMART.
+Directed video technical management, including disguise media server programming and projection mapping, for 'The Spirit of Algeria' — a large-scale historical show at La Coupole d'Alger, the Oscar Niemeyer dome at the Mohamed Boudiaf Olympic Complex. The production was a centrepiece of Algeria's national programme marking the 70th anniversary of the outbreak of the November 1954 revolution, staged under the theme 'Glorious November, Loyalty and Renewal'. The show spanned 13 immersive scenes tracing Algeria's history, delivered in collaboration with EXASMART.
 
-The canvas was the stadium roof in full — a continuous ring rather than a flat façade, which leaves no edge to hide a seam and requires every blend to close back on itself. 64 projectors covered it.
+The canvas was the dome in full, mapped as one continuous surface on 64 projectors. A circle offers no edge on which to hide a seam, so every blend has to close back on itself — a materially different problem from mapping a façade.

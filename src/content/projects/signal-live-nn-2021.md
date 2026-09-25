@@ -5,7 +5,7 @@ slug: signal-live-nn-2021
 pubDate: 2021-01-01
 year: 2021
 featured: false
-cover_image: /projects/covers/placeholder.png
+cover_image: /projects/covers/signal-live-nn.jpg
 tech: ["VJ-ing", "Live Mixing", "Multimedia Festival", "Real-time Visuals"]
 made_at: 'dreamlaser'
 location: 'Nizhny Novgorod, Russia'

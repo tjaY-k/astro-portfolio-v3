@@ -80,6 +80,9 @@ const projects = defineCollection({
     // it does not by itself grant a licence to publish the image.
     image_credit: z.string().optional(),
     featured: z.boolean().optional(),
+    // Убирает проект из обеих витрин, не удаляя файл. Отдельных страниц
+    // у проектов нет, поэтому фильтра в двух списках достаточно.
+    draft: z.boolean().optional(),
     order: z.number().optional(),
     year: z.number(),
     made_at: z.string().optional(),

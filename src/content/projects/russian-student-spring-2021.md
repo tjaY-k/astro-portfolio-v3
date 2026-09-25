@@ -5,7 +5,7 @@ slug: russian-student-spring-2021
 pubDate: 2021-01-01
 year: 2021
 featured: false
-cover_image: /projects/covers/placeholder.png
+cover_image: /projects/covers/russian-student-spring.jpg
 tech: ["MadMapper", "LED", "Show Programming", "National Festival", "Ceremonies"]
 made_at: 'dreamlaser'
 location: 'Nizhny Novgorod, Russia'

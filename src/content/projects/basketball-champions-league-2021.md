@@ -5,6 +5,7 @@ slug: basketball-champions-league-2021
 pubDate: 2021-01-01
 year: 2021
 featured: false
+draft: true
 cover_image: /projects/covers/placeholder.png
 tech: ["Media Servers", "Broadcast", "Sports", "Real-time Graphics", "Arena Screens"]
 made_at: 'dreamlaser'

@@ -5,7 +5,9 @@ import { getCollection } from 'astro:content';
 const allProjects = await getCollection('projects');
 
 // Sort by year (descending)
-const sortedProjects = allProjects.sort((a, b) => b.data.year - a.data.year);
+const sortedProjects = allProjects
+  .filter((p) => p.data.draft !== true)
+  .sort((a, b) => b.data.year - a.data.year);
 ---
 
 <Layout

@@ -5,7 +5,7 @@ import { ArrowIcon } from '../ui/icons';
 const allProjects = await getCollection('projects');
 // Filter only featured projects and sort by curated order (falls back to year descending)
 const projects = allProjects
-  .filter((p) => p.data.featured === true)
+  .filter((p) => p.data.featured === true && p.data.draft !== true)
   .sort((a, b) => {
     if (a.data.order != null && b.data.order != null) {
       return a.data.order - b.data.order;

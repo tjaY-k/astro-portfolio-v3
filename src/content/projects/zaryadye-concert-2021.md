@@ -5,6 +5,7 @@ slug: zaryadye-concert-2021
 pubDate: 2021-01-01
 year: 2021
 featured: false
+draft: true
 cover_image: /projects/covers/placeholder.png
 tech: ["LED", "Show Programming", "Concert Hall", "Live Production"]
 made_at: 'dreamlaser'

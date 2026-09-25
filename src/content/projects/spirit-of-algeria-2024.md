@@ -14,3 +14,5 @@ external_link: "https://www.mediaproav.com/projects/the-spirit-of-algeria/"
 ---
 
 Directed video technical management, including disguise media server programming and projection mapping, for 'The Spirit of Algeria' — a large-scale historical show at the Mohamed Boudiaf Olympic Complex in Algiers. The production was a centrepiece of Algeria's national programme marking the 70th anniversary of the outbreak of the November 1954 revolution, staged under the theme 'Glorious November, Loyalty and Renewal'. The show spanned 13 immersive scenes tracing Algeria's history, delivered in collaboration with EXASMART.
+
+The canvas was the stadium roof in full — a continuous ring rather than a flat façade, which leaves no edge to hide a seam and requires every blend to close back on itself. 64 projectors covered it.

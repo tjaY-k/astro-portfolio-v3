@@ -6,6 +6,7 @@ pubDate: 2019-01-01
 year: 2019
 featured: false
 cover_image: /projects/covers/circle-of-light-moscow.jpg
+image_credit: "Image: dreamlaser"
 tech: ["disguise", "Projection Mapping", "LED", "Urban Art", "Light Festival"]
 made_at: 'dreamlaser'
 location: 'Moscow, Russia'

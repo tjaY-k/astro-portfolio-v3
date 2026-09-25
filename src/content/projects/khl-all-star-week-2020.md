@@ -5,7 +5,8 @@ slug: khl-all-star-week-2020
 pubDate: 2020-01-01
 year: 2020
 featured: false
-cover_image: /projects/covers/placeholder.png
+cover_image: /projects/covers/khl-all-star-week.jpg
+image_credit: "Image: Match TV"
 tech: ["Media Servers", "Broadcast", "Sports", "In-arena Visuals", "Arena Screens"]
 made_at: 'dreamlaser'
 location: 'Moscow, Russia'

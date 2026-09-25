@@ -5,7 +5,8 @@ slug: monaco-gp-gala-dinner-2019
 pubDate: 2019-01-01
 year: 2019
 featured: false
-cover_image: /projects/covers/placeholder.png
+cover_image: /projects/covers/monaco-gp-gala-dinner.jpg
+image_credit: "Image: EG-Production"
 tech: ["Projection Mapping", "Show Programming", "Motorsport", "Luxury Events"]
 made_at: 'dreamlaser'
 location: 'Monaco'

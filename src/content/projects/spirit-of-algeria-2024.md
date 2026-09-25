@@ -1,6 +1,6 @@
 ---
 title: "The Spirit of Algeria"
-description: "13 immersive scenes retelling a nation's history — the flagship show of Algeria's 70th revolution anniversary."
+description: "A 360° projection mapped inside Oscar Niemeyer's Algiers dome — the flagship show of Algeria's 70th revolution anniversary."
 slug: spirit-of-algeria-2024
 pubDate: 2024-01-01
 year: 2024

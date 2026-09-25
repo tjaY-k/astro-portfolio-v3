@@ -6,6 +6,7 @@ pubDate: 2021-01-01
 year: 2021
 featured: false
 cover_image: /projects/covers/signal-live-nn.jpg
+image_credit: "Image: dreamlaser"
 tech: ["VJ-ing", "Live Mixing", "Multimedia Festival", "Real-time Visuals"]
 made_at: 'dreamlaser'
 location: 'Nizhny Novgorod, Russia'

@@ -9,7 +9,7 @@ cover_image: /projects/covers/ibm-xr-studio.jpg
 image_credit: "Image: dreamlaser"
 tech: ["xR", "LED Walls", "stYpe RedSpy", "disguise", "Notch", "Virtual Production", "Corporate Broadcast"]
 made_at: 'dreamlaser'
-location: 'Nizhny Novgorod, Russia'
+location: 'Moscow, Russia'
 external_link: "https://www.notch.one/madewithnotch/ibm-cloud-and-ai-forum"
 ---
 

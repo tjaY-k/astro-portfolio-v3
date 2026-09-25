@@ -5,7 +5,8 @@ slug: nnov-government-house-xr-2020
 pubDate: 2020-01-01
 year: 2020
 featured: false
-cover_image: /projects/covers/placeholder.png
+cover_image: /projects/covers/nnov-government-house-xr.jpg
+image_credit: "Image: dreamlaser"
 tech: ["xR", "Broadcast", "Government", "Virtual Sets", "Live Operations"]
 made_at: 'dreamlaser'
 location: 'Nizhny Novgorod, Russia'
